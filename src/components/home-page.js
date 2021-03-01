@@ -1,5 +1,4 @@
 import {Link} from "react-router-dom";
-import LoginPage from "./login/login-page";
 
 export default () =>
     <>
@@ -8,8 +7,8 @@ export default () =>
             <Link to="./login" className="list-group-item">
                 Login
             </Link>
-            <Link to="#" className="list-group-item">
-                Page 2
+            <Link to="./issues" className="list-group-item">
+                Issues
             </Link>
             <Link to="#" className="list-group-item">
                 Page 3
