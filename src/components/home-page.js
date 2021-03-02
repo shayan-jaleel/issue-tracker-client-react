@@ -10,6 +10,9 @@ export default () =>
             <Link to="./issues" className="list-group-item">
                 Issues
             </Link>
+            <Link to="./issues/create-issue" className="list-group-item">
+                Create Issue
+            </Link>
             <Link to="#" className="list-group-item">
                 Page 3
             </Link>
