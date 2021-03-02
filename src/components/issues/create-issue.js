@@ -53,6 +53,7 @@ const CreateIssue = () => (
                 </div>
             </div>
 
+            {/*type*/}
             <div className="mb-3 row">
                 <label htmlFor="issue-type"
                        className="col-sm-2 col-form-label">
