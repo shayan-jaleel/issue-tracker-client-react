@@ -1,6 +1,3 @@
-import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import 'react-pro-sidebar/dist/css/styles.css';
-
 const Sidebar = () =>
     <div>
         <ul className="list-group">

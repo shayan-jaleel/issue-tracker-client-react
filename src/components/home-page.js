@@ -15,8 +15,8 @@ export default () =>
             <Link to="./issues/create-issue" className="list-group-item">
                 Create Issue
             </Link>
-            <Link to="#" className="list-group-item">
-                Page 3
+            <Link to="./user-roles" className="list-group-item">
+                Manage User Roles
             </Link>
         </div>
     </>
