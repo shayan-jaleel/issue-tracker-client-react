@@ -3,13 +3,14 @@ export const CREATE_USER = "CREATE_USER"
 export const DELETE_USER = "DELETE_USER"
 export const UPDATE_USER = "UPDATE_USER"
 
+//id will need to be changed when moving servers
 const initialState = {
     users: [
         {
-            firstName: 'Shayan',
-            lastName: 'Jaleel',
+            firstname: 'Shayan',
+            lastname: 'Jaleel',
             role: 'ADMINISTRATOR',
-            userName: 'hello'
+            username: 'hello'
         }
     ]
 }
@@ -17,11 +18,13 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
     switch(action.type) {
         case FIND_ALL_USERS:
+            console.log(FIND_ALL_USERS)
             return{
                 ...state,
                 users: action.users
             }
         case CREATE_USER:
+            console.log(CREATE_USER)
             return{
                 ...state,
                 users: [
@@ -32,13 +35,13 @@ const userReducer = (state = initialState, action) => {
         case DELETE_USER:
             return{
                 ...state,
-                users: state.users.filter(u => u.id !== action.id)
+                users: state.users.filter(u => u._id !== action.userId)
             }
         case UPDATE_USER:
             return{
                 ...state,
                 users: state.users.map(
-                    u => u.id === action.id ? action.user : u
+                    u => u._id === action._id ? action.user : u
                 )
             }
         default:

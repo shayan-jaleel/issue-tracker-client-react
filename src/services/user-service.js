@@ -1,4 +1,4 @@
-const USERS_URL = "https://wbdv-generic-server.herokuapp.com/api/001372648/users";
+const USERS_URL = "https://wbdv-generic-server.herokuapp.com/api/001372648/it-users";
 
 const findAllUsers = () =>
     fetch(USERS_URL)
