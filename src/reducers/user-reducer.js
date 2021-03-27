@@ -1,10 +1,17 @@
-const FIND_ALL_USERS = "FIND_ALL_USERS"
-const ADD_USER = "ADD_USER"
-const DELETE_USER = "DELETE_USER"
-const UPDATE_USER = "UPDATE_USER"
+export const FIND_ALL_USERS = "FIND_ALL_USERS"
+export const CREATE_USER = "CREATE_USER"
+export const DELETE_USER = "DELETE_USER"
+export const UPDATE_USER = "UPDATE_USER"
 
 const initialState = {
-    users: []
+    users: [
+        {
+            firstName: 'Shayan',
+            lastName: 'Jaleel',
+            role: 'ADMINISTRATOR',
+            userName: 'hello'
+        }
+    ]
 }
 
 const userReducer = (state = initialState, action) => {
@@ -14,7 +21,7 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 users: action.users
             }
-        case ADD_USER:
+        case CREATE_USER:
             return{
                 ...state,
                 users: [
