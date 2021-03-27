@@ -1,9 +1,11 @@
 import {Link} from "react-router-dom";
+import Sidebar from "./sidebar/sidebar";
 
 export default () =>
     <>
         <h1>Home</h1>
         <div className="list-group">
+            {/*<Sidebar/>*/}
             <Link to="./login" className="list-group-item">
                 Login
             </Link>
