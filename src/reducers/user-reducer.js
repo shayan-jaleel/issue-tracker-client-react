@@ -5,14 +5,7 @@ export const UPDATE_USER = "UPDATE_USER"
 
 //id will need to be changed when moving servers
 const initialState = {
-    users: [
-        {
-            firstname: 'Shayan',
-            lastname: 'Jaleel',
-            role: 'ADMINISTRATOR',
-            username: 'hello'
-        }
-    ]
+    users: []
 }
 
 const userReducer = (state = initialState, action) => {
@@ -33,15 +26,17 @@ const userReducer = (state = initialState, action) => {
                         ]
             }
         case DELETE_USER:
+            console.log(DELETE_USER)
             return{
                 ...state,
                 users: state.users.filter(u => u._id !== action.userId)
             }
         case UPDATE_USER:
+            console.log(UPDATE_USER)
             return{
                 ...state,
                 users: state.users.map(
-                    u => u._id === action._id ? action.user : u
+                    u => u._id === action.user._id ? action.user : u
                 )
             }
         default:

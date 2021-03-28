@@ -18,5 +18,8 @@ export default () =>
             <Link to="./user-roles" className="list-group-item">
                 Manage User Roles
             </Link>
+            <Link to="./projects" className="list-group-item">
+                My Projects
+            </Link>
         </div>
     </>

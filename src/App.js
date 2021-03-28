@@ -11,9 +11,12 @@ import {combineReducers, createStore} from "redux";
 import userReducer from "./reducers/user-reducer";
 import {Provider} from "react-redux";
 import UserRoles from "./components/users/user-roles"
+import projectReducer from "./reducers/project-reducer";
+import ProjectsTable from "./components/projects/projects-table";
 
 const reducer = combineReducers({
-    userReducer: userReducer
+    userReducer: userReducer,
+    projectReducer: projectReducer
 })
 
 const store = createStore(reducer)
@@ -35,6 +38,7 @@ function App() {
                             <Route path="/user-roles" exact={true} component={UserRoles}/>
                             <Route path="/login" exact={true} component={LoginPage}/>
                             <Route path="/issues" exact={true} component={Issues}/>
+                            <Route path="/projects" exact={true} component={ProjectsTable}/>
                             <Route path="/issues/create-issue" exact={true} component={CreateIssue}/>
                         </div>
                     </div>
