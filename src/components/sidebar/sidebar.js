@@ -1,11 +1,15 @@
+import {Link} from "react-router-dom";
+
 const Sidebar = () =>
     <div>
-        <ul className="list-group">
-            <h3 className="list-group-item">Manage Roles</h3>
-            <h3 className="list-group-item">My Projects</h3>
-            <h3 className="list-group-item">My Tickets</h3>
-            <h3 className="list-group-item">My Profile</h3>
-        </ul>
+        <h4>
+            <ul className="list-group">
+                <li className="list-group-item"><Link to="/user-roles">Manage Roles</Link></li>
+                <li className="list-group-item"><Link to="/projects"  >My Projects</Link></li>
+                <li className="list-group-item">My Tickets</li>
+                <li className="list-group-item">My Profile</li>
+            </ul>
+        </h4>
     </div>
 
 export default Sidebar

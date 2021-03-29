@@ -25,7 +25,7 @@ const ProjectDetails = ({
                 <h3>Project :{projectId}</h3>
                 <h4>Name: {project.name}</h4>
                 <h5>Description: {project.description}</h5>
-                <h3>Issues</h3>
+                <h4>Issues</h4>
                 <ul className="list-group">
                 {
                     issues &&
