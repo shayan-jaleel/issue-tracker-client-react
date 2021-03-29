@@ -1,5 +1,5 @@
 const ISSUES_URL = "https://wbdv-generic-server.herokuapp.com/api/001372648/issues";
-const PROJECTS_URL = "https://wbdv-generic-server.herokuapp.com/api/001372648/projects"
+const PROJECTS_URL = "https://wbdv-generic-server.herokuapp.com/api/001372648/it-projects"
 
 const findAllIssues = () =>
     fetch(ISSUES_URL)

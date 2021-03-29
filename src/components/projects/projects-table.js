@@ -4,6 +4,7 @@ import projectService from "../../services/project-service";
 import {CREATE_PROJECT, DELETE_PROJECT, FIND_ALL_PROJECTS} from "../../reducers/project-reducer";
 import {connect} from "react-redux";
 import {useEffect} from "react";
+import {Link} from "react-router-dom";
 
 const ProjectsTable = ({
     projects,
@@ -11,7 +12,9 @@ const ProjectsTable = ({
     createProject,
     deleteProject
 }) => {
-    // useEffect(() => findProjects, [])
+    useEffect(() => {
+        findProjects()
+    }, [])
     return <div className="mt-3">
         <h2>Projects Table</h2>
         <table className="table table-striped">
@@ -32,9 +35,9 @@ const ProjectsTable = ({
             {
                 projects.map(project =>
                     <tr key={project._id}>
-                        <td>{project.name}</td>
+                        <td><Link to={`/projects/${project._id}`}>{project.name}</Link></td>
                         <td>{project.description}</td>
-                        <td></td>
+                        <td/>
                     </tr>
                 )
             }

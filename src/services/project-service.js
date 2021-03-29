@@ -4,6 +4,10 @@ const findAllProjects = () =>
     fetch(PROJECTS_URL)
         .then(response => response.json())
 
+const findProject = (projectId) =>
+    fetch(`${PROJECTS_URL}/${projectId}`)
+        .then(response => response.json())
+
 const createProject = (project) =>
     fetch(PROJECTS_URL, {
         method: 'POST',
@@ -32,6 +36,7 @@ const deleteProject = (projectId) =>
 const projectService = {
     createProject,
     updateProject,
+    findProject,
     findAllProjects,
     deleteProject
 }
