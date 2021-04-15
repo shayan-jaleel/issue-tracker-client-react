@@ -1,10 +1,5 @@
 import {Link, useParams} from "react-router-dom";
 import React, {useEffect, useState} from 'react'
-import issuesService from "../../services/issues-service"
-import userService from "../../services/user-service";
-import {CREATE_USER, DELETE_USER, FIND_ALL_USERS} from "../../reducers/user-reducer";
-import {connect} from "react-redux";
-import {FIND_ISSUES_FOR_PROJECT, FIND_PROJECT} from "../../reducers/project-issues-reducer";
 import projectService from "../../services/project-service";
 import IssuesTable from "../issues/issues-table";
 import UsersTable from "../users/users-table";

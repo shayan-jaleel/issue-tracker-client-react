@@ -19,8 +19,7 @@ const IssueDetails = () => {
                 <h4>Type: {issue.type}</h4>
                 <h4>Priority: {issue.priority}</h4>
                 <br/>
-                <ul className="list-group">
-                </ul>
+                <CommentsTable/>
             </div>
         </div>
     )
