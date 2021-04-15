@@ -18,8 +18,6 @@ const IssueDetails = () => {
                 <h5>Description: {issue.description}</h5>
                 <h4>Type: {issue.type}</h4>
                 <h4>Priority: {issue.priority}</h4>
-                <br/>
-                <CommentsTable/>
             </div>
         </div>
     )
