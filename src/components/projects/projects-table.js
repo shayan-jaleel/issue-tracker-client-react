@@ -33,9 +33,10 @@ const ProjectsTable = ({
             </thead>
             <tbody>
             {
-                projects.map(project =>
-                    <tr key={project._id}>
-                        <td><Link to={`/projects/${project._id}`}>{project.name}</Link></td>
+                projects.map((project, i) =>
+                    //Warns when using project id as key
+                    <tr key={i}>
+                        <td><Link to={`/projects/${project.id}`}>{project.title}</Link></td>
                         <td>{project.description}</td>
                         <td/>
                     </tr>

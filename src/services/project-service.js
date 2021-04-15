@@ -1,4 +1,4 @@
-const PROJECTS_URL = "https://wbdv-generic-server.herokuapp.com/api/001372648/it-projects";
+const PROJECTS_URL = "http://localhost:8080/api/projects";
 
 const findAllProjects = () =>
     fetch(PROJECTS_URL)

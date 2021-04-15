@@ -7,15 +7,15 @@ export const UPDATE_PROJECT = "UPDATE_PROJECT"
 const initialState = {
     projects: [
         {
-            name: 'BigProject101',
+            title: 'BigProject101',
             description: 'This is a big project',
         },
         {
-            name: 'BigProject102',
+            title: 'BigProject102',
             description: 'This is a v big project',
         },
         {
-            name: 'BigProject103',
+            title: 'BigProject103',
             description: 'This is a vv big project',
         }
     ]

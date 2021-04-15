@@ -21,7 +21,7 @@ const IssuesTable = ({issues}) =>
             {
                 issues.map(issue =>
                     <IssuesRow
-                        key={issue._id}
+                        key={issue.id}
                         issue={issue}/>)
             }
             </tbody>

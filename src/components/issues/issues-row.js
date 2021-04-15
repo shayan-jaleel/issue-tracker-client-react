@@ -1,16 +1,16 @@
 const IssuesRow = ({issue}) => (
     <tr>
         <td>
-            {issue.title}
+            {issue.id}
         </td>
         <td>
-            {issue.project}
+            {issue.description}
         </td>
         <td>
             {issue.type}
         </td>
         <td>
-            {issue.created_by}
+            {issue.priority}
         </td>
     </tr>
 )
