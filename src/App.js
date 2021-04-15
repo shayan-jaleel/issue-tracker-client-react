@@ -16,6 +16,7 @@ import ProjectsTable from "./components/projects/projects-table";
 import projectIssuesReducer from "./reducers/project-issues-reducer";
 import ProjectDetails from "./components/projects/project-details";
 import IssuesTable from "./components/issues/issues-table";
+import IssueDetails from "./components/issues/issue-details";
 
 const reducer = combineReducers({
     userReducer: userReducer,
@@ -46,6 +47,8 @@ function App() {
                             <Route path="/projects/:projectId" exact={true} component={ProjectDetails}/>
                             {/*<Route path="/projects/:projectId" exact={true} component={IssuesTable}/>*/}
                             <Route path="/issues/create-issue" exact={true} component={CreateIssue}/>
+                            <Route path={["/issues/:issueId", "/projects/:projectId/issues/:issueId"]}
+                                   exact={true} component={IssueDetails}/>
                         </div>
                     </div>
                 </div>
