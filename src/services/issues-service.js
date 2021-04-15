@@ -1,5 +1,5 @@
-const ISSUES_URL = "https://wbdv-generic-server.herokuapp.com/api/001372648/issues";
-const PROJECTS_URL = "https://wbdv-generic-server.herokuapp.com/api/001372648/it-projects"
+const ISSUES_URL = "http://localhost:8080/api/issues";
+const PROJECTS_URL = "http://localhost:8080/api/projects"
 
 const findAllIssues = () =>
     fetch(ISSUES_URL)
@@ -7,6 +7,11 @@ const findAllIssues = () =>
 
 const findIssuesForProject = (projectId) =>
     fetch(`${PROJECTS_URL}/${projectId}/issues`)
+        .then(response => response.json())
+
+
+const findIssueById = (issueId) =>
+    fetch(`${ISSUES_URL}/${issueId}`)
         .then(response => response.json())
 
 const createIssue = (issue) =>
@@ -41,7 +46,8 @@ const IssuesService = {
     findIssuesForProject,
     createIssue,
     createIssueForProject,
-    deleteIssue
+    deleteIssue,
+    findIssueById
 }
 
 export default IssuesService
