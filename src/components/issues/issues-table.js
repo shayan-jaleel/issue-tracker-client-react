@@ -1,6 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import IssuesRow from "./issues-row";
 const IssuesTable = ({issues}) => {
+    console.log(issues)
     return (
         <div className="mt-3">
             <h2>Issues Table</h2>
