@@ -36,7 +36,7 @@ const logout = () =>
         headers: {
             'content-type' : 'application/json'
         }
-    }).then(response => response.json())
+    })//.then(response => response.json())
 
 const sessionService = {
     profile,

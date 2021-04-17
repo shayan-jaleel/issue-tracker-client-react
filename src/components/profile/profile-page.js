@@ -1,10 +1,16 @@
 import projectService from "../../services/project-service";
 import {CREATE_PROJECT, DELETE_PROJECT, FIND_ALL_PROJECTS} from "../../reducers/project-reducer";
 import {connect} from "react-redux";
+import {Link, Redirect} from "react-router-dom";
+import sessionService from "../../services/session-service";
+import {SET_CURRENT_USER} from "../../reducers/session-reducer";
 
 const ProfilePage = ({
-     userLoggedIn
+     userLoggedIn,
+     setUserLoggedOut
  }) => (
+    <>
+         {userLoggedIn ? null : <Redirect to="/login" />}
     <div className="container mt-3">
         <h1>
             Profile for:
@@ -100,16 +106,26 @@ const ProfilePage = ({
 
             </label>
             <div className="col-sm-10">
-                <a className="btn btn-danger btn-block"
-                   href="../index.html">
+                <span className="btn btn-danger btn-block"
+                    onClick={setUserLoggedOut}>
                     Logout
-                </a>
+                </span>
             </div>
         </div>
 
     </div>
+</>
 )
 
 const stpm = (state) => ({userLoggedIn: state.sessionReducer.userLoggedIn})
 
-export default connect(stpm)(ProfilePage)
+const dtpm = (dispatch) => ({
+    setUserLoggedOut: () => sessionService.logout()
+        .then(user =>
+            dispatch({
+                type: SET_CURRENT_USER,
+                userLoggedIn: null
+            }))
+})
+
+export default connect(stpm, dtpm)(ProfilePage)
