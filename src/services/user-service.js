@@ -1,4 +1,4 @@
-const USERS_URL = "https://wbdv-generic-server.herokuapp.com/api/001372648/it-users";
+const USERS_URL = "http://localhost:8080/api/users";
 
 const findAllUsers = () =>
     fetch(USERS_URL)
@@ -13,14 +13,15 @@ const createUser = (user) =>
         }
     }).then(response => response.json())
 
-const updateUser = (userId, user) =>
-    fetch(`${USERS_URL}/${userId}`, {
+const updateUser = (userId, user) => {
+    return fetch(`${USERS_URL}/${userId}`, {
         method: 'PUT',
         body: JSON.stringify(user),
         headers: {
             'content-type': 'application/json'
         }
     }).then(response => response.json())
+}
 
 const deleteUser = (userId) =>
     fetch(`${USERS_URL}/${userId}`, {
