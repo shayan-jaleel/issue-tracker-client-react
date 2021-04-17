@@ -18,6 +18,7 @@ import ProjectDetails from "./components/projects/project-details";
 import IssuesTable from "./components/issues/issues-table";
 import IssueDetails from "./components/issues/issue-details";
 import IssuesPage from "./components/issues/issues-page";
+import SignupPage from "./components/login/signup-page";
 
 const reducer = combineReducers({
     userReducer: userReducer,
@@ -43,6 +44,7 @@ function App() {
                             <Route path="/" exact={true} component={Home}/>
                             <Route path="/user-roles" exact={true} component={UserRoles}/>
                             <Route path="/login" exact={true} component={LoginPage}/>
+                            <Route path="/signup" exact={true} component={SignupPage}/>
                             {/*<Route path="/issues" exact={true} component={Issues}/>*/}
                             <Route path="/projects" exact={true} component={ProjectsTable}/>
                             <Route path="/projects/:projectId" exact={true} component={ProjectDetails}/>
