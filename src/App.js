@@ -21,6 +21,7 @@ import IssuesPage from "./components/issues/issues-page";
 import SignupPage from "./components/login/signup-page";
 import ProfilePage from "./components/profile/profile-page";
 import sessionReducer from "./reducers/session-reducer";
+import LandingPage from "./components/home/landing-page";
 
 const reducer = combineReducers({
     userReducer: userReducer,
@@ -49,6 +50,7 @@ function App() {
                             <Route path="/login" exact={true} component={LoginPage}/>
                             <Route path="/signup" exact={true} component={SignupPage}/>
                             <Route path="/profile" exact={true} component={ProfilePage}/>
+                            <Route path="/landing" exact={true} component={LandingPage}/>
                             {/*<Route path="/issues" exact={true} component={Issues}/>*/}
                             <Route path="/projects" exact={true} component={ProjectsTable}/>
                             <Route path="/projects/:projectId" exact={true} component={ProjectDetails}/>
