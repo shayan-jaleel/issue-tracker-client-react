@@ -8,7 +8,7 @@ const Sidebar = () =>
                 <li className="list-group-item"><Link to="/projects"  >My Projects</Link></li>
                 <li className="list-group-item"><Link to="/issues">My Issues</Link></li>
                 <li className="list-group-item"><Link to="/login">Login</Link></li>
-                <li className="list-group-item">My Profile</li>
+                <li className="list-group-item"><Link to="/profile">My Profile</Link></li>
             </ul>
         </h4>
     </div>

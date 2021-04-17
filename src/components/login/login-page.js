@@ -1,6 +1,15 @@
 import React, {useState} from "react"
 import {Link} from "react-router-dom";
-const LoginPage = () => {
+import sessionService from "../../services/session-service";
+import projectService from "../../services/project-service";
+import {CREATE_PROJECT, DELETE_PROJECT, FIND_ALL_PROJECTS} from "../../reducers/project-reducer";
+import {SET_CURRENT_USER} from "../../reducers/session-reducer";
+import {connect} from "react-redux";
+
+const LoginPage = ({
+                       userLoggedIn,
+                       setUserLoggedIn
+                   }) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     return (
@@ -42,7 +51,7 @@ const LoginPage = () => {
 
             <div className="col-sm-10">
                 <a className="btn btn-primary btn-block"
-                    onClick={() => login(username, password)}>
+                    onClick={() => login(username, password, setUserLoggedIn)}>
                     Sign In
                 </a>
             </div>
@@ -69,9 +78,26 @@ const LoginPage = () => {
     )
 }
 
-const login = (username, password) => {
+
+const stpm = (state) => ({userLoggedIn: state.sessionReducer.userLoggedIn})
+const dtpm = (dispatch) => ({
+    setUserLoggedIn: (user) => sessionService.login(user)
+        .then(user =>
+            dispatch({
+                type: SET_CURRENT_USER,
+                userLoggedIn: user
+            }))
+})
+
+const login = (username, password, setUserLoggedIn) => {
     console.log(username)
     console.log(password)
+    const user = {
+        username,
+        password
+    }
+    setUserLoggedIn(user)
+    // sessionService.login(user).then((returnedUser) => console.log(returnedUser))
 }
 
-export default LoginPage
+export default connect(stpm, dtpm)(LoginPage)

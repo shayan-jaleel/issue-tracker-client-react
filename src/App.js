@@ -19,11 +19,14 @@ import IssuesTable from "./components/issues/issues-table";
 import IssueDetails from "./components/issues/issue-details";
 import IssuesPage from "./components/issues/issues-page";
 import SignupPage from "./components/login/signup-page";
+import ProfilePage from "./components/profile/profile-page";
+import sessionReducer from "./reducers/session-reducer";
 
 const reducer = combineReducers({
     userReducer: userReducer,
     projectReducer: projectReducer,
-    projectIssuesReducer: projectIssuesReducer
+    projectIssuesReducer: projectIssuesReducer,
+    sessionReducer: sessionReducer
 })
 
 const store = createStore(reducer)
@@ -45,6 +48,7 @@ function App() {
                             <Route path="/user-roles" exact={true} component={UserRoles}/>
                             <Route path="/login" exact={true} component={LoginPage}/>
                             <Route path="/signup" exact={true} component={SignupPage}/>
+                            <Route path="/profile" exact={true} component={ProfilePage}/>
                             {/*<Route path="/issues" exact={true} component={Issues}/>*/}
                             <Route path="/projects" exact={true} component={ProjectsTable}/>
                             <Route path="/projects/:projectId" exact={true} component={ProjectDetails}/>
