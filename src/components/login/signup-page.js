@@ -1,6 +1,10 @@
 import React, {useState} from "react"
 import {Link} from "react-router-dom";
-const SignupPage = () => {
+import userService from "../../services/user-service";
+import sessionService from "../../services/session-service";
+import {SET_CURRENT_USER} from "../../reducers/session-reducer";
+import {connect} from "react-redux";
+const SignupPage = ({userLoggedIn, register}) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
@@ -80,11 +84,20 @@ const SignupPage = () => {
     )
 }
 
-const register = (username, password, confirmPassword) => {
-    console.log(username)
-    console.log(password)
-    console.log(confirmPassword)
+const stpm = (state) => ({userLoggedIn: state.sessionReducer.userLoggedIn})
 
-}
+const dtpm = (dispatch) => ({
+    register: (username, password) => {
+        const user = {
+            username,
+            password
+        }
+        sessionService.register(user).then(actualUser => dispatch({
+            type: SET_CURRENT_USER,
+            userLoggedIn: actualUser
+        }))
+    }
+})
 
-export default SignupPage
+
+export default connect(stpm, dtpm)(SignupPage)

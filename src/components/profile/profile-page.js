@@ -20,12 +20,12 @@ const ProfilePage = ({
 
     useEffect(() => {
         if(userLoggedIn) {
-            setUsername(userLoggedIn.username)
-            setFirstname(userLoggedIn.firstname)
-            setLastname(userLoggedIn.lastname)
-            setRole(userLoggedIn.role.name)
-            setPassword(userLoggedIn.password)
-            setEmail(userLoggedIn.email)
+            setUsername(userLoggedIn.username ? userLoggedIn.username : '')
+            setFirstname(userLoggedIn.firstname ? userLoggedIn.firstname : '')
+            setLastname(userLoggedIn.lastname ? userLoggedIn.lastname : '')
+            setRole(userLoggedIn.role ? userLoggedIn.role.name : 'DEVELOPER')
+            setPassword(userLoggedIn.password ? userLoggedIn.password : '')
+            setEmail(userLoggedIn.email ? userLoggedIn.email : '')
         }
     }, [userLoggedIn])
     return (
