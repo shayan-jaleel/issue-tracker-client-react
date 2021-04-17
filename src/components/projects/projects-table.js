@@ -3,19 +3,22 @@ import userService from "../../services/user-service";
 import projectService from "../../services/project-service";
 import {CREATE_PROJECT, DELETE_PROJECT, FIND_ALL_PROJECTS} from "../../reducers/project-reducer";
 import {connect} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 const ProjectsTable = ({
-    projects,
-    findProjects,
-    createProject,
-    deleteProject
+    userLoggedIn
 }) => {
+    const [projects, setProjects] = useState([])
     useEffect(() => {
-        findProjects()
-    }, [])
-    return <div className="mt-3">
+        if(userLoggedIn) {
+            projectService.findProjectsForUser(userLoggedIn.id)
+                .then(projects => setProjects(projects))
+        }
+        console.log(projects)
+    }, [userLoggedIn])
+    return (
+        <div className="mt-3">
         <h2>Projects Table</h2>
         <table className="table table-striped">
             <thead>
@@ -33,7 +36,7 @@ const ProjectsTable = ({
             </thead>
             <tbody>
             {
-                projects.map((project, i) =>
+                projects && projects.map((project, i) =>
                     //Warns when using project id as key
                     <tr key={i}>
                         <td><Link to={`/projects/${project.id}`}>{project.title}</Link></td>
@@ -45,30 +48,8 @@ const ProjectsTable = ({
             </tbody>
         </table>
     </div>
+    )
 }
-const stpm = (state) => ({projects: state.projectReducer.projects})
+const stpm = (state) => ({userLoggedIn: state.sessionReducer.userLoggedIn})
 
-const dtpm = (dispatch) => ({
-    findProjects: () => projectService.findAllProjects()
-        .then(projects =>
-            dispatch({
-                type: FIND_ALL_PROJECTS,
-                projects: projects
-            })),
-    createProject: (project) => projectService.createProject(project)
-        .then(project => dispatch(
-            {
-                type: CREATE_PROJECT,
-                project: project
-            }
-        )),
-    deleteProject: (projectId) => projectService.deleteProject(projectId)
-        .then(status => dispatch(
-            {
-                type: DELETE_PROJECT,
-                projectId: projectId
-            }
-        ))
-})
-
-export default connect(stpm, dtpm)(ProjectsTable)
+export default connect(stpm)(ProjectsTable)

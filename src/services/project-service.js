@@ -1,4 +1,5 @@
 const PROJECTS_URL = "http://localhost:8080/api/projects";
+const USERS_URL = "http://localhost:8080/api/users"
 
 const findAllProjects = () =>
     fetch(PROJECTS_URL)
@@ -7,6 +8,13 @@ const findAllProjects = () =>
 const findProject = (projectId) =>
     fetch(`${PROJECTS_URL}/${projectId}`)
         .then(response => response.json())
+
+const findProjectsForUser = (userId) => {
+    console.log('reached findProjectsForUser')
+    console.log(userId)
+    return fetch(`${USERS_URL}/${userId}/projects`)
+        .then(response => response.json())
+}
 
 const createProject = (project) =>
     fetch(PROJECTS_URL, {
@@ -38,7 +46,8 @@ const projectService = {
     updateProject,
     findProject,
     findAllProjects,
-    deleteProject
+    deleteProject,
+    findProjectsForUser
 }
 
 export default projectService
