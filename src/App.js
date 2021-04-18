@@ -23,48 +23,52 @@ import ProfilePage from "./components/profile/profile-page";
 import sessionReducer from "./reducers/session-reducer";
 import LandingPage from "./components/home/landing-page";
 import UserProfile from "./components/users/user-profile";
+import {PersistGate} from "redux-persist/integration/react"
+import {store, persistor} from "./redux/store";
 
-const reducer = combineReducers({
-    userReducer: userReducer,
-    projectReducer: projectReducer,
-    projectIssuesReducer: projectIssuesReducer,
-    sessionReducer: sessionReducer
-})
-
-const store = createStore(reducer)
+// const reducer = combineReducers({
+//     userReducer: userReducer,
+//     projectReducer: projectReducer,
+//     projectIssuesReducer: projectIssuesReducer,
+//     sessionReducer: sessionReducer
+// })
+//
+// const store = createStore(reducer)
 
 function App() {
   return (
       <div>
         <Provider store={store}>
             <BrowserRouter>
-                <Navbar/>
-                {/*<div className="row"><Navbar/></div>*/}
-                <div className="row">
-                    <div className="col-2">
-                        <Sidebar/>
-                    </div>
-                    <div className="col-8">
-                        <div className="container-fluid">
-                            <Route path="/" exact={true} component={Home}/>
-                            <Route path="/user-roles" exact={true} component={UserRoles}/>
-                            <Route path="/login" exact={true} component={LoginPage}/>
-                            <Route path="/signup" exact={true} component={SignupPage}/>
-                            <Route path="/profile" exact={true} component={ProfilePage}/>
-                            <Route path="/landing" exact={true} component={LandingPage}/>
-                            {/*<Route path="/issues" exact={true} component={Issues}/>*/}
-                            <Route path="/projects" exact={true} component={ProjectsTable}/>
-                            <Route path="/projects/:projectId" exact={true} component={ProjectDetails}/>
-                            {/*<Route path="/projects/:projectId" exact={true} component={IssuesTable}/>*/}
-                            <Route path={["users/:userId/issues", "/issues"]} exact={true} component={IssuesPage}/>
-                            <Route path="/issues/create-issue" exact={true} component={CreateIssue}/>
-                            <Route path={["/issues/:issueId", "/projects/:projectId/issues/:issueId"]}
-                                   exact={true} component={IssueDetails}/>
-                            <Route path={["/users/:userId", "/projects/:projectId/users/:userId"]}
-                                   exact={true} component={UserProfile}/>
+                <PersistGate persistor={persistor}>
+                    <Navbar/>
+                    {/*<div className="row"><Navbar/></div>*/}
+                    <div className="row">
+                        <div className="col-2">
+                            <Sidebar/>
+                        </div>
+                        <div className="col-8">
+                            <div className="container-fluid">
+                                <Route path="/" exact={true} component={Home}/>
+                                <Route path="/user-roles" exact={true} component={UserRoles}/>
+                                <Route path="/login" exact={true} component={LoginPage}/>
+                                <Route path="/signup" exact={true} component={SignupPage}/>
+                                <Route path="/profile" exact={true} component={ProfilePage}/>
+                                <Route path="/landing" exact={true} component={LandingPage}/>
+                                {/*<Route path="/issues" exact={true} component={Issues}/>*/}
+                                <Route path="/projects" exact={true} component={ProjectsTable}/>
+                                <Route path="/projects/:projectId" exact={true} component={ProjectDetails}/>
+                                {/*<Route path="/projects/:projectId" exact={true} component={IssuesTable}/>*/}
+                                <Route path={["users/:userId/issues", "/issues"]} exact={true} component={IssuesPage}/>
+                                <Route path="/issues/create-issue" exact={true} component={CreateIssue}/>
+                                <Route path={["/issues/:issueId", "/projects/:projectId/issues/:issueId"]}
+                                       exact={true} component={IssueDetails}/>
+                                <Route path={["/users/:userId", "/projects/:projectId/users/:userId"]}
+                                       exact={true} component={UserProfile}/>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </PersistGate>
             </BrowserRouter>
         </Provider>
       </div>

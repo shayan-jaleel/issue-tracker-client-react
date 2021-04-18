@@ -159,7 +159,7 @@ const ProfilePage = ({
     )
 }
 
-const stpm = (state) => ({userLoggedIn: state.sessionReducer.userLoggedIn})
+const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
 
 const dtpm = (dispatch) => ({
     setUserLoggedOut: () => sessionService.logout()

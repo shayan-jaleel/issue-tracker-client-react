@@ -79,7 +79,7 @@ const LoginPage = ({
 }
 
 
-const stpm = (state) => ({userLoggedIn: state.sessionReducer.userLoggedIn})
+const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
 const dtpm = (dispatch) => ({
     setUserLoggedIn: (user) => sessionService.login(user)
         .then(user =>

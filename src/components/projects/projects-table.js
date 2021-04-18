@@ -50,6 +50,6 @@ const ProjectsTable = ({
     </div>
     )
 }
-const stpm = (state) => ({userLoggedIn: state.sessionReducer.userLoggedIn})
+const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
 
 export default connect(stpm)(ProjectsTable)
