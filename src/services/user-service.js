@@ -4,6 +4,16 @@ const findAllUsers = () =>
     fetch(USERS_URL)
         .then(response => response.json())
 
+const findUserById = (userId) => {
+    console.log('reached findUserById')
+    console.log(userId)
+    return fetch(`${USERS_URL}/${userId}`)
+        .then(response => {
+            return response.json()
+        })
+}
+
+
 const createUser = (user) =>
     fetch(USERS_URL, {
         method: 'POST',
@@ -34,7 +44,8 @@ const userService = {
     createUser,
     findAllUsers,
     updateUser,
-    deleteUser
+    deleteUser,
+    findUserById
 }
 
 export default userService

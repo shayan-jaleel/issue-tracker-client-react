@@ -22,6 +22,7 @@ import SignupPage from "./components/login/signup-page";
 import ProfilePage from "./components/profile/profile-page";
 import sessionReducer from "./reducers/session-reducer";
 import LandingPage from "./components/home/landing-page";
+import UserProfile from "./components/users/user-profile";
 
 const reducer = combineReducers({
     userReducer: userReducer,
@@ -59,6 +60,8 @@ function App() {
                             <Route path="/issues/create-issue" exact={true} component={CreateIssue}/>
                             <Route path={["/issues/:issueId", "/projects/:projectId/issues/:issueId"]}
                                    exact={true} component={IssueDetails}/>
+                            <Route path={["/users/:userId", "/projects/:projectId/users/:userId"]}
+                                   exact={true} component={UserProfile}/>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,11 @@
-const UsersRow = ({user}) => (
-    <tr>
+import {Link, useParams} from "react-router-dom";
+
+const UsersRow = ({user}) => {
+        const {projectId} = useParams()
+        return (
+        <tr>
         <td>
-            {user.username}
+                <Link to={`/projects/${projectId}/users/${user.id}`}>{user.username}</Link>
         </td>
         <td>
             {user.firstname}
@@ -14,7 +18,8 @@ const UsersRow = ({user}) => (
         </td>
         <td>
         </td>
-    </tr>
-)
+        </tr>
+        )
+}
 
 export default UsersRow
