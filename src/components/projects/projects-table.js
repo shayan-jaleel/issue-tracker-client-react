@@ -28,9 +28,8 @@ const ProjectsTable = ({
                 {/*<th className="d-none d-sm-table-cell">Type</th>*/}
                 {/*<th className="d-none d-sm-table-cell">Created By</th>*/}
                 <th>
-                    <i className="fas fa-th float-right fa-2x"/>
-                    <i className="fas fa-sort-alpha-up float-right fa-2x mr-3"/>
-                    <i className="fas fa-folder float-right fa-2x mr-3"/>
+                    {userLoggedIn && userLoggedIn.role.name === 'ADMIN' &&
+                    <Link to="/create-project"><i className="text-danger fas btn fa-plus-square float-right fa-2x"/></Link>}
                 </th>
             </tr>
             </thead>

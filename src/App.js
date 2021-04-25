@@ -24,6 +24,7 @@ import LandingPage from "./components/home/landing-page";
 import UserProfile from "./components/users/user-profile";
 import {PersistGate} from "redux-persist/integration/react"
 import {store, persistor} from "./redux/store";
+import CreateProject from "./components/projects/create-project";
 
 // const reducer = combineReducers({
 //     userReducer: userReducer,
@@ -56,6 +57,7 @@ function App() {
                                 <Route path="/landing" exact={true} component={LandingPage}/>
                                 {/*<Route path="/issues" exact={true} component={Issues}/>*/}
                                 <Route path="/projects" exact={true} component={ProjectsTable}/>
+                                <Route path="/create-project" exact={true} component={CreateProject}/>
                                 <Route path="/projects/:projectId" exact={true} component={ProjectDetails}/>
                                 {/*<Route path="/projects/:projectId" exact={true} component={IssuesTable}/>*/}
                                 <Route path={["users/:userId/issues", "/issues"]} exact={true} component={IssuesPage}/>
