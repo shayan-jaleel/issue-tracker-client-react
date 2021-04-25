@@ -5,7 +5,7 @@ const IssuesSummaryRow = ({issue}) => {
     return (
         <tr>
             <td>
-                <Link to={`/issues/${issue.id}`}>{issue.issueId}</Link>
+                <Link to={`/issues/${issue.issueId}`}>{issue.issueId}</Link>
             </td>
             <td>
                 {issue.description}
