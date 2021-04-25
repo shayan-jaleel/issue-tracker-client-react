@@ -8,9 +8,8 @@ import CreateIssue from "./components/issues/create-issue"
 import Sidebar from "./components/sidebar/sidebar";
 import Navbar from "./components/navbar/navbar";
 import {combineReducers, createStore} from "redux";
-import userReducer from "./reducers/user-reducer";
 import {Provider} from "react-redux";
-import UserRoles from "./components/users/user-roles"
+import ManageUsers from "./components/users/manage-users"
 import projectReducer from "./reducers/project-reducer";
 import ProjectsTable from "./components/projects/projects-table";
 import projectIssuesReducer from "./reducers/project-issues-reducer";
@@ -50,7 +49,7 @@ function App() {
                         <div className="col-8">
                             <div className="container-fluid">
                                 <Route path="/" exact={true} component={Home}/>
-                                <Route path="/user-roles" exact={true} component={UserRoles}/>
+                                <Route path="/user-roles" exact={true} component={ManageUsers}/>
                                 <Route path="/login" exact={true} component={LoginPage}/>
                                 <Route path="/signup" exact={true} component={SignupPage}/>
                                 <Route path="/profile" exact={true} component={ProfilePage}/>
