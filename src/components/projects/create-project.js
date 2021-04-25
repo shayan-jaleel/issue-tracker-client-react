@@ -3,13 +3,13 @@ import React, {useState} from 'react'
 import projectService from "../../services/project-service"
 
 const CreateProject = () => {
-    const [issueTitle, setIssueTitle] = useState('')
-    const [issueDescription, setIssueDescription] = useState('')
+    const [projectTitle, setProjectTitle] = useState('')
+    const [projectDescription, setProjectDescription] = useState('')
 
     const createProject = () => {
         const newProject = {
-            issueTitle,
-            issueDescription
+            title: projectTitle,
+            description: projectDescription
         }
         console.log('create service called')
         projectService.createProject(newProject).then(r => console.log(r))
@@ -36,8 +36,8 @@ const CreateProject = () => {
                         <input type="text"
                                className="form-control"
                                id="project-title"
-                               onChange={(e) => setIssueTitle(e.target.value)}
-                               value={issueTitle}
+                               onChange={(e) => setProjectTitle(e.target.value)}
+                               value={projectTitle}
                                placeholder="Name your project"/>
                     </div>
                 </div>
@@ -51,8 +51,8 @@ const CreateProject = () => {
                         <textarea type="text"
                                   className="form-control"
                                   id="project-description"
-                                  onChange={(e) => setIssueDescription(e.target.value)}
-                                  value={issueDescription}
+                                  onChange={(e) => setProjectDescription(e.target.value)}
+                                  value={projectDescription}
                                   placeholder="Describe the project"
                                   rows="6"/>
                     </div>
