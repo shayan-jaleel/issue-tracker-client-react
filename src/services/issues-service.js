@@ -15,6 +15,10 @@ const findIssuesForUser = (userId) =>
     fetch(`${USERS_URL}/${userId}/issues`)
         .then(response => response.json())
 
+const findMatchingIssuesForUser = (userId, descriptionString) =>
+    fetch(`${USERS_URL}/${userId}/issues?description=${descriptionString}`)
+        .then(response => response.json())
+
 const findIssueById = (issueId) =>
     fetch(`${ISSUES_URL}/${issueId}`)
         .then(response => response.json())
@@ -50,6 +54,7 @@ const IssuesService = {
     findAllIssues,
     findIssuesForProject,
     findIssuesForUser,
+    findMatchingIssuesForUser,
     createIssue,
     createIssueForProject,
     deleteIssue,

@@ -2,7 +2,6 @@ import {Link, useParams} from "react-router-dom";
 import IssuesRow from "./issues-row";
 import IssuesSummaryRow from "./issues-summary-row";
 const IssuesSummaryTable = ({userIssues}) => {
-    console.log(userIssues)
     return (
         <div className="mt-3">
             <h2>Issues Table</h2>
@@ -24,7 +23,7 @@ const IssuesSummaryTable = ({userIssues}) => {
                 {
                     userIssues.map(issue =>
                         <IssuesSummaryRow
-                            key={issue.id}
+                            key={issue.issueId}
                             issue={issue}/>)
                 }
                 </tbody>
