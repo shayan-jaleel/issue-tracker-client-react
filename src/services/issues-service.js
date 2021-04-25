@@ -1,5 +1,6 @@
 const ISSUES_URL = "http://localhost:8080/api/issues";
 const PROJECTS_URL = "http://localhost:8080/api/projects"
+const USERS_URL = "http://localhost:8080/api/users"
 
 const findAllIssues = () =>
     fetch(ISSUES_URL)
@@ -9,6 +10,10 @@ const findIssuesForProject = (projectId) =>
     fetch(`${PROJECTS_URL}/${projectId}/issues`)
         .then(response => response.json())
 
+
+const findIssuesForUser = (userId) =>
+    fetch(`${USERS_URL}/${userId}/issues`)
+        .then(response => response.json())
 
 const findIssueById = (issueId) =>
     fetch(`${ISSUES_URL}/${issueId}`)
@@ -44,6 +49,7 @@ const deleteIssue = (issueId) =>
 const IssuesService = {
     findAllIssues,
     findIssuesForProject,
+    findIssuesForUser,
     createIssue,
     createIssueForProject,
     deleteIssue,
