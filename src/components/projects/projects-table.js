@@ -11,8 +11,12 @@ const ProjectsTable = ({
 }) => {
     const [projects, setProjects] = useState([])
     useEffect(() => {
-        if(userLoggedIn) {
+        if(userLoggedIn && userLoggedIn.role.name !== 'ADMIN') {
             projectService.findProjectsForUser(userLoggedIn.id)
+                .then(projects => setProjects(projects))
+        }
+        else if(userLoggedIn && userLoggedIn.role.name === 'ADMIN') {
+            projectService.findAllProjects()
                 .then(projects => setProjects(projects))
         }
         console.log(projects)
