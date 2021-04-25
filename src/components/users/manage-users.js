@@ -7,10 +7,11 @@ const ManageUsers = () => {
         userService.findAllUsers().then((users) => setUsers(users))
     }, [])
     const [users, setUsers] = useState([])
+    const [editingUser, setEditingUser] = useState(null)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
-    const [role, setRole] = useState('')
+    const [role, setRole] = useState('DEVELOPER')
     return <>
         <table className="table">
             <thead>
@@ -31,11 +32,11 @@ const ManageUsers = () => {
                 {/*           type="password"*/}
                 {/*           placeholder="Password"/></td>*/}
                 <td><input className="form-control"
-                           placeholder="First Name"
+                           placeholder="Email"
                            onChange={(e) => setEmail(e.target.value)}
                            value={email}/></td>
                 <td><input className="form-control"
-                           placeholder="Last Name"
+                           placeholder="Password"
                            onChange={(e) => setPassword(e.target.value)}
                            value={password}/></td>
                 <td>
@@ -49,16 +50,39 @@ const ManageUsers = () => {
                 {/*<td><span className="pull-right" style="white-space: nowrap">*/}
                 <td>
                     <span className="pull-right fa-button-pull-fix">
-                    <i className="fa fa-search wbdv-update-icon btn btn-dark"/>
-                    <i className="fa fa-plus wbdv-create-icon btn btn-dark"
-                       // onClick={() => createUser({
-                       //     username: username,
-                       //     firstname: firstname,
-                       //     lastname: lastname,
-                       //     role: role
-                       // })}/>
-                        />
-                    <i className="fa fa-check wbdv-update-icon btn btn-dark"/>
+                    <i className="fa fa-search btn btn-dark"/>
+                        {!editingUser && <i className="fa fa-plus btn btn-dark"
+                            onClick={() => userService.createUserForRole({
+                                username,
+                                email,
+                                password
+                            }, roleToId(role)).then((createdUser) => {
+                                setUsers(
+                                    [...users, createdUser])
+                            })}
+                        />}
+                        {editingUser && <i className="fa fa-check btn btn-dark"
+                                           onClick={() => {
+                                               const newUser = {
+                                                   id: editingUser.id,
+                                                   username:username,
+                                                   email:email,
+                                                   password:password
+                                               }
+                                               userService.updateUserForRole(editingUser.id,
+                                                   roleToId(role),
+                                                   newUser).then((updatedUser) =>
+                                                   setUsers(users.map((user) => {
+                                                           if(user.id === editingUser.id){
+                                                               return updatedUser
+                                                           } else return user
+                                               })))
+                                               setEditingUser(null)
+                                               setUsername('')
+                                               setEmail('')
+                                               setPassword('')
+                                               setRole('DEVELOPER')
+                                           }}/>}
                     </span>
                 </td>
             </tr>
@@ -74,10 +98,18 @@ const ManageUsers = () => {
                         <td>{user.role.name}</td>
                         <td>
                         <span className="pull-right fa-button-pull-fix">
-                        <i className="fa fa-times-circle wbdv-delete btn btn-dark"
-                           // onClick={() => deleteUser(user._id)}/>
-                            />
-                        <i className="fa fa-edit wbdv-select btn btn-dark"/>
+                        <i className="fa fa-times-circle btn btn-dark"
+                           onClick={() => userService.deleteUser(user.id).then(() => setUsers(
+                               users.filter((u) => user.id !== u.id)
+                           ))}/>
+                        <i className="fa fa-edit btn btn-dark"
+                           onClick={() => {
+                               setEditingUser(user)
+                               setEmail(user.email)
+                               setPassword(user.password)
+                               setUsername(user.username)
+                               setRole(user.role.name)
+                           }}/>
                         </span>
                         </td>
                     </tr>)
@@ -85,6 +117,26 @@ const ManageUsers = () => {
             </tbody>
         </table>
     </>
+}
+
+export const roleToId = role => {
+    if(role === 'ADMIN') return 1
+    else if(role === 'MANAGER') return 3
+    else return 2
+}
+export const roleIdToObject = role => {
+    if(role === 'ADMIN') return {
+        id: 1,
+        name: 'ADMIN'
+    }
+    else if(role === 'MANAGER') return {
+        id: 3,
+        name: 'MANAGER'
+    }
+    else return {
+        id: 2,
+        name: 'DEVELOPER'
+    }
 }
 
     // const stpm = (state) => ({users: state.userReducer.users})
@@ -112,4 +164,4 @@ const ManageUsers = () => {
     //     })
 
 
-export default ManageUsers
+export default ManageUsers;

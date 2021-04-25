@@ -1,4 +1,5 @@
 const USERS_URL = "http://localhost:8080/api/users";
+const ROLES_URL = "http://localhost:8080/api/roles";
 
 const findAllUsers = () =>
     fetch(USERS_URL)
@@ -13,9 +14,8 @@ const findUserById = (userId) => {
         })
 }
 
-
-const createUser = (user) =>
-    fetch(USERS_URL, {
+const createUserForRole = (user, roleId) =>
+    fetch(`${ROLES_URL}/${roleId}/users`, {
         method: 'POST',
         body: JSON.stringify(user),
         headers: {
@@ -24,7 +24,20 @@ const createUser = (user) =>
     }).then(response => response.json())
 
 const updateUser = (userId, user) => {
+    console.log(JSON.stringify(user))
     return fetch(`${USERS_URL}/${userId}`, {
+        method: 'PUT',
+        body: JSON.stringify(user),
+        headers: {
+            'content-type': 'application/json'
+        }
+    }).then(response => response.json())
+}
+
+const updateUserForRole = (userId, roleId, user) => {
+    console.log(JSON.stringify(user))
+    console.log(JSON.stringify(roleId))
+    return fetch(`${ROLES_URL}/${roleId}/users/${userId}`, {
         method: 'PUT',
         body: JSON.stringify(user),
         headers: {
@@ -41,9 +54,10 @@ const deleteUser = (userId) =>
 
 
 const userService = {
-    createUser,
+    createUserForRole,
     findAllUsers,
     updateUser,
+    updateUserForRole,
     deleteUser,
     findUserById
 }
