@@ -24,5 +24,5 @@ const IssuesSummaryRow = ({issue}) => {
             }
         </>
     )
-}
+};
 export default IssuesSummaryRow

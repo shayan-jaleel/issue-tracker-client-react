@@ -5,8 +5,31 @@ import {SET_CURRENT_USER} from "../../reducers/session-reducer";
 import {connect} from "react-redux";
 const SignupPage = ({userLoggedIn, register}) => {
     const [username, setUsername] = useState("")
+    const [usernameError, setUsernameError] = useState("")
     const [password, setPassword] = useState("")
+    const [passwordError, setPasswordError] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const [confirmPasswordError, setConfirmPasswordError] = useState("")
+    const validate = () => {
+        let isValid = true
+        setUsernameError('')
+        setPasswordError('')
+        setConfirmPasswordError('')
+        if(username === '') {
+            isValid = false
+            setUsernameError("Username can't be empty.")
+            console.log(usernameError)
+        }
+        if(password.length < 5){
+            isValid = false
+            setPasswordError("Password must have a length > 4.")
+        }
+        if(password !== confirmPassword){
+            isValid = false
+            setConfirmPasswordError("The two passwords don't match.")
+        }
+        return isValid
+    }
     return (
         <div className="container mt-3">
             {userLoggedIn ? <Redirect to="/profile"/> : null}
@@ -14,7 +37,7 @@ const SignupPage = ({userLoggedIn, register}) => {
                 Register
             </h1>
 
-            <div className="mb-3 row mt-3">
+            <div className="row mt-5">
                 <label htmlFor="username"
                        className="col-sm-2 col-form-label">
                     Username
@@ -27,7 +50,16 @@ const SignupPage = ({userLoggedIn, register}) => {
                            id="username"/>
                 </div>
             </div>
-            <div className="mb-3 row">
+            {
+                usernameError &&
+                <div className="row mt-2">
+                    <div className="col-sm-2"></div>
+                    <div className="col-sm-10" style={{color: "red"}}>
+                        {usernameError}
+                    </div>
+                </div>
+            }
+            <div className="mt-3 row">
                 <label htmlFor="inputPassword"
                        className="col-sm-2 col-form-label">
                     Password
@@ -40,7 +72,16 @@ const SignupPage = ({userLoggedIn, register}) => {
                            id="inputPassword"/>
                 </div>
             </div>
-            <div className="mb-3 row">
+            {
+                passwordError &&
+                <div className="row mt-2">
+                    <div className="col-sm-2"></div>
+                    <div className="col-sm-10" style={{color: "red"}}>
+                        {passwordError}
+                    </div>
+                </div>
+            }
+            <div className="mt-3 row">
                 <label htmlFor="confirmPassword"
                        className="col-sm-2 col-form-label">
                     Confirm Password
@@ -53,19 +94,33 @@ const SignupPage = ({userLoggedIn, register}) => {
                            id="confirmPassword"/>
                 </div>
             </div>
-            <div className="mb-3 row">
+            {
+                confirmPasswordError &&
+                <div className="row mt-2">
+                    <div className="col-sm-2"></div>
+                    <div className="col-sm-10" style={{color: "red"}}>
+                        {confirmPasswordError}
+                    </div>
+                </div>
+            }
+            <div className="mt-3 row">
                 <label htmlFor="confirmPassword"
                        className="col-sm-2 col-form-label">
                 </label>
 
                 <div className="col-sm-10">
                     <a className="btn btn-primary btn-block"
-                       onClick={() => register(username, password, confirmPassword)}>
+                       onClick={() => {
+                           if(validate()) {
+                               console.log('validated')
+                               register(username, password, confirmPassword)
+                           }
+                       }}>
                         Sign Up
                     </a>
                 </div>
             </div>
-            <div className="mb-3 row">
+            <div className="mt-3 row">
                 <label htmlFor="inputPassword"
                        className="col-sm-2 col-form-label">
                 </label>
