@@ -33,7 +33,7 @@ const ProjectsTable = ({
                 {/*<th className="d-none d-sm-table-cell">Created By</th>*/}
                 <th>
                     {userLoggedIn && userLoggedIn.role.name === 'ADMIN' &&
-                    <Link to="/create-project"><i className="text-danger fas btn fa-plus-square float-right fa-2x"/></Link>}
+                    <Link to="/create-project"><i className="text-danger fas btn fa-plus-circle float-right fa-2x"/></Link>}
                 </th>
             </tr>
             </thead>

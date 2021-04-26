@@ -120,16 +120,17 @@ const LoginPage = ({
 const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
 const dtpm = (dispatch) => ({
     setUserLoggedIn: (user) => sessionService.login(user)
-        .then(user =>
-            dispatch({
+        .then(user => {
+            console.log(user)
+            return dispatch({
                 type: SET_CURRENT_USER,
                 userLoggedIn: user
-            }))
+            })
+        })
+        .catch(e => alert('Login failed. Please check your credentials.'))
 })
 
 const login = (username, password, setUserLoggedIn) => {
-    console.log(username)
-    console.log(password)
     const user = {
         username,
         password
