@@ -42,6 +42,17 @@ const createIssueForProject = (issue, projectId) =>
     })
         .then(response => response.json())
 
+const updateIssue = (issueId, issue) => {
+    console.log(JSON.stringify(issue))
+    return fetch(`${ISSUES_URL}/${issueId}`, {
+        method: 'PUT',
+        body: JSON.stringify(issue),
+        headers: {
+            'content-type': 'application/json'
+        }
+    }).then(response => response.json())
+}
+
 const deleteIssue = (issueId) =>
     fetch(
         `${ISSUES_URL}/${issueId}`, {
@@ -57,6 +68,7 @@ const IssuesService = {
     findMatchingIssuesForUser,
     createIssue,
     createIssueForProject,
+    updateIssue,
     deleteIssue,
     findIssueById
 }

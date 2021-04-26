@@ -25,25 +25,26 @@ const IssuesPage = ({userLoggedIn}) => {
         <>
             {userLoggedIn ? null : <Redirect to="/login"/>}
             <div className="mt-3">
-                <h1>Issues Page</h1>
-
-                <div className="float-right">
-                    <label htmlFor="issue-search-box">Search</label>
-                    <input id="issue-search-box"
-                           className="ml-3"
-                           type="text"
-                           value={issueSearchText}
-                           onChange={(e) =>
-                               setIssueSearchText(e.target.value)}
-                           onKeyPress={(ev) => {
-                               if (ev.key === 'Enter') {
-                                   console.log(`Pressed keyCode ${ev.key}`);
-                                   history.push(`/issues?description=${issueSearchText}`)
-                                   ev.preventDefault();
-                               }}
-                           }/>
-                </div>
-                {userLoggedIn && <h1>for {userLoggedIn.username}</h1>}
+                <span className="row">
+                    <h3 className="col-6">Issues Page for {userLoggedIn && userLoggedIn.username}</h3>
+                    <div className="col-6">
+                        <label htmlFor="issue-search-box">Search</label>
+                        <input id="issue-search-box"
+                               className="ml-3"
+                               type="text"
+                               value={issueSearchText}
+                               onChange={(e) =>
+                                   setIssueSearchText(e.target.value)}
+                               onKeyPress={(ev) => {
+                                   if (ev.key === 'Enter') {
+                                       console.log(`Pressed keyCode ${ev.key}`);
+                                       history.push(`/issues?description=${issueSearchText}`)
+                                       ev.preventDefault();
+                                   }}
+                               }/>
+                    </div>
+                </span>
+                {/*{userLoggedIn && <h3>for {userLoggedIn.username}</h3>}*/}
                 {/*<Route path="/issues/table" exact={true} >*/}
                 <IssuesSummaryTable
                     userIssues={userIssues}/>

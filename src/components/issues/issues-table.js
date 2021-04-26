@@ -5,7 +5,7 @@ const IssuesTable = ({issues, projectId, userLoggedIn}) => {
     console.log(issues)
     return (
         <div className="mt-3">
-            <h2>Issues Table</h2>
+            {/*<h2>Issues Table</h2>*/}
             <table className="table table-striped">
                 <thead>
                 <tr>

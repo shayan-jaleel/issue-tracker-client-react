@@ -4,7 +4,7 @@ import IssuesSummaryRow from "./issues-summary-row";
 const IssuesSummaryTable = ({userIssues}) => {
     return (
         <div className="mt-3">
-            <h2>Issues Table</h2>
+            {/*<h3 className="font-weight-bold">Your Issues</h3>*/}
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -13,9 +13,6 @@ const IssuesSummaryTable = ({userIssues}) => {
                     <th className="d-none d-sm-table-cell">Priority</th>
                     <th className="d-none d-sm-table-cell">Project</th>
                     <th>
-                        <i className="fas fa-th float-right fa-2x"/>
-                        <i className="fas fa-sort-alpha-up float-right fa-2x mr-3"/>
-                        <i className="fas fa-folder float-right fa-2x mr-3"/>
                     </th>
                 </tr>
                 </thead>
@@ -23,6 +20,7 @@ const IssuesSummaryTable = ({userIssues}) => {
                 {
                     userIssues.map(issue =>
                         <IssuesSummaryRow
+                            // key={issue.id}
                             key={issue.issueId}
                             issue={issue}/>)
                 }
