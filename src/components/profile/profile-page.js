@@ -1,5 +1,3 @@
-import projectService from "../../services/project-service";
-import {CREATE_PROJECT, DELETE_PROJECT, FIND_ALL_PROJECTS} from "../../reducers/project-reducer";
 import {connect} from "react-redux";
 import {Link, Redirect} from "react-router-dom";
 import sessionService from "../../services/session-service";
@@ -17,6 +15,7 @@ const ProfilePage = ({
     const [lastname, setLastname] = useState("")
     const [role, setRole] = useState("DEVELOPER")
     const [password, setPassword] = useState("")
+    const [passwordError, setPasswordError] = useState("")
     const [email, setEmail] = useState("")
     const [emailError, setEmailError] = useState("")
 
@@ -34,26 +33,27 @@ const ProfilePage = ({
     const validate = () => {
         let isValid = true
         setEmailError('')
+        setPasswordError('')
         if(email && email !== '' && !email.includes('@')) {
             isValid = false
             setEmailError("Please enter a valid email.")
+        }
+        if(password.length < 5) {
+            isValid = false
+            setPasswordError('Password must have a length > 4.')
         }
         return isValid
     }
     return (
         <>
             {userLoggedIn ? null : <Redirect to="/login"/>}
-            {userLoggedIn && JSON.stringify(userLoggedIn)}
+            {/*{userLoggedIn && JSON.stringify(userLoggedIn)}*/}
             <div className="container">
-                <h1 className="font-weight-bold">
+                <h3>
                     Profile
-                </h1>
-                <div className="alert alert-success"
-                     role="alert">
-                    Changes saved!
-                </div>
+                </h3>
 
-                <div className="mt-3 row">
+                <div className="mt-4 row">
                     <label
                         className="col-sm-2 col-form-label">
                         Username
@@ -79,6 +79,15 @@ const ProfilePage = ({
                                value={password}/>
                     </div>
                 </div>
+                {
+                    passwordError &&
+                    <div className="row mt-2">
+                        <div className="col-sm-2"/>
+                        <div className="col-sm-10" style={{color: "red"}}>
+                            {passwordError}
+                        </div>
+                    </div>
+                }
 
                 <div className="mt-3 row">
                     <label htmlFor="firstname"
