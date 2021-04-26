@@ -1,9 +1,14 @@
 const USERS_URL = "http://localhost:8080/api/users";
 const ROLES_URL = "http://localhost:8080/api/roles";
+const PROJECTS_URL = "http://localhost:8080/api/projects";
 
-const findAllUsers = () =>
-    fetch(USERS_URL)
-        .then(response => response.json())
+const findAllUsers = () => {
+    console.log('reached findAllUsers()')
+    return fetch(USERS_URL)
+        .then(response => {
+            return response.json()
+        })
+}
 
 const findUserById = (userId) => {
     console.log('reached findUserById')
@@ -13,6 +18,14 @@ const findUserById = (userId) => {
             return response.json()
         })
 }
+
+const findUsersForProject = (projectId) => {
+    return fetch(`${PROJECTS_URL}/${projectId}/users`)
+        .then(response => {
+            return response.json()
+        })
+}
+
 
 const createUserForRole = (user, roleId) =>
     fetch(`${ROLES_URL}/${roleId}/users`, {
@@ -52,6 +65,19 @@ const deleteUser = (userId) =>
     })
         .then(response => response.json())
 
+const addUserToProject = (projectId, userId) =>
+    fetch(`${PROJECTS_URL}/${projectId}/users/${userId}`)
+        .then(response => {
+            return response.json()
+    })
+
+const removeUserFromProject = (projectId, userId) =>
+    fetch(`${PROJECTS_URL}/${projectId}/users/${userId}`, {
+        method: 'DELETE'
+    })
+        .then(response => {
+            return response.json()
+        })
 
 const userService = {
     createUserForRole,
@@ -59,7 +85,10 @@ const userService = {
     updateUser,
     updateUserForRole,
     deleteUser,
-    findUserById
+    findUserById,
+    findUsersForProject,
+    addUserToProject,
+    removeUserFromProject
 }
 
 export default userService

@@ -14,7 +14,9 @@ const UsersTable = ({users, projectId, userLoggedIn}) =>
                 <th className="d-none d-sm-table-cell">Role</th>
                 <th>
                     {userLoggedIn && userLoggedIn.role.name === 'ADMIN' &&
-                    <Link to="/create-project"><i className="text-danger fas btn fa-cog float-right fa-2x"/></Link>}
+                    <Link to={`/projects/${projectId}/manage-project-users`}>
+                        <i className="text-danger fas btn fa-cog float-right fa-2x"/>
+                    </Link>}
                 </th>
             </tr>
             </thead>
