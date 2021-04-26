@@ -1,4 +1,4 @@
-import {Link, useParams} from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import issuesService from "../../services/issues-service";
 
@@ -10,6 +10,7 @@ const IssueDetails = () => {
     const [issueStatus, setIssueStatus] = useState('OPEN')
     const [issueType, setIssueType] = useState('BUG')
     const [editing, setEditing] = useState(false)
+    const history = useHistory()
     useEffect(() => {
         setIssue(issue)
     }, [])
@@ -22,6 +23,13 @@ const IssueDetails = () => {
         })
     }, [issue])
 
+    const resetIssueFields = () => {
+        setIssueDescription('')
+        setIssuePriority('HIGH')
+        setIssueStatus('OPEN')
+        setIssueType('BUG')
+    }
+
     const updateIssue = () => {
         const newIssue = {
             description:issueDescription,
@@ -30,18 +38,24 @@ const IssueDetails = () => {
             status: issueStatus
         }
         issuesService.updateIssue(issueId, newIssue).then(issue => setIssue(issue))
-        setIssueDescription('')
-        setIssuePriority('HIGH')
-        setIssueStatus('OPEN')
-        setIssueType('BUG')
+        // resetIssueFields()
+        // setIssueDescription('')
+        // setIssuePriority('HIGH')
+        // setIssueStatus('OPEN')
+        // setIssueType('BUG')
     }
 
 
     return (
                 <div className="container mt-3">
-                    <h1 className="mb-5 font-weight-bold">
+                    <h3 className="mb-5">
                         Issue {issueId}
-                    </h1>
+                        <i className="fas fa-trash btn float-right"
+                           onClick={() => {
+                               issuesService.deleteIssue(issueId).then(r => history.goBack())
+                               resetIssueFields()
+                           }}/>
+                    </h3>
 
                     {/*Description*/}
                     <div className="mb-3 row">
