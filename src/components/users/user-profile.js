@@ -1,26 +1,29 @@
 import {useEffect, useState} from "react";
-import {Redirect, useParams} from "react-router-dom";
+import {Link, Redirect, useParams} from "react-router-dom";
 import userService from "../../services/user-service";
+import projectService from "../../services/project-service";
 
 const UserProfile = () => {
     const {userId} = useParams()
     const [user, setUser] = useState(null)
+    const [projects, setProjects] = useState([])
     useEffect(
         () => {
             userService.findUserById(userId).then((user) => {
                 console.log(user)
                 setUser(user)
             })
-        }, []
+            projectService.findProjectsForUser(userId).then(projects => setProjects(projects))
+        }, [userId]
     )
     return (
         <>
-            <div className="container mt-3">
-                <h1 className="font-weight-bold">
+            <div className="container">
+                <h3 className="">
                     Profile
-                </h1>
+                </h3>
 
-                <div className="mb-3 row">
+                <div className="mt-4 row">
                     <label
                         className="col-sm-2 col-form-label">
                         Username
@@ -34,7 +37,7 @@ const UserProfile = () => {
                     </div>
                 </div>
 
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="firstname"
                            className="col-sm-2 col-form-label">
                         Firstname
@@ -48,7 +51,7 @@ const UserProfile = () => {
                     </div>
                 </div>
 
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="lastname"
                            className="col-sm-2 col-form-label">
                         Lastname
@@ -62,7 +65,7 @@ const UserProfile = () => {
                     </div>
                 </div>
 
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="email"
                            className="col-sm-2 col-form-label">
                         Email
@@ -77,7 +80,7 @@ const UserProfile = () => {
                     </div>
                 </div>
 
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="role"
                            className="col-sm-2 col-form-label">
                         Role
@@ -91,6 +94,15 @@ const UserProfile = () => {
                             <option>Manager</option>
                         </select>
                     </div>
+                </div>
+                <div className="mt-5">
+                <h3>Projects</h3>
+                <ol className="list-group mt-2">
+                    {
+                        projects.map((project) =>
+                        <li key={project.id} className="list-group-item"><Link to={`/projects/${project.id}`}>{project.title}</Link></li>)
+                    }
+                </ol>
                 </div>
             </div>
         </>
