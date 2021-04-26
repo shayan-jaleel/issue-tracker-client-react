@@ -15,3 +15,10 @@ code {
 .fa-button-pull-fix {
   white-space: nowrap;
 }
+
+.red-link {
+  color: #662121;
+}
+.red-link:hover {
+  color: #bd1b0f
+}
