@@ -48,7 +48,7 @@ function App() {
                         <div className="col-2">
                             <Sidebar/>
                         </div>
-                        <div className="col-8">
+                        <div className="col-10">
                             <div className="container-fluid">
                                 <Route path="/" exact={true} component={Home}/>
                                 <Route path="/user-roles" exact={true} component={ManageUsers}/>
