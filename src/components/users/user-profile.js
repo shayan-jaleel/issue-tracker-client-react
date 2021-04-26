@@ -16,10 +16,9 @@ const UserProfile = () => {
     return (
         <>
             <div className="container mt-3">
-                <h1>
-                    Profile for:
+                <h1 className="font-weight-bold">
+                    Profile
                 </h1>
-                {user && JSON.stringify(user)}
 
                 <div className="mb-3 row">
                     <label
