@@ -21,10 +21,6 @@ const CreateProject = () => {
                 <h1>
                     Create Project
                 </h1>
-                <div className="alert alert-success"
-                     role="alert">
-                    Changes saved!
-                </div>
 
                 {/*Title*/}
                 <div className="mb-3 row">

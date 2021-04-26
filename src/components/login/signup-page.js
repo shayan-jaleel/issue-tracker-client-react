@@ -33,9 +33,9 @@ const SignupPage = ({userLoggedIn, register}) => {
     return (
         <div className="container">
             {userLoggedIn ? <Redirect to="/profile"/> : null}
-            <h1>
+            <h3>
                 Register
-            </h1>
+            </h3>
 
             <div className="row mt-4">
                 <label htmlFor="username"

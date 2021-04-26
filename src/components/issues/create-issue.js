@@ -30,10 +30,6 @@ const CreateIssue = () => {
                 <h1>
                     Create Issue
                 </h1>
-                <div className="alert alert-success"
-                     role="alert">
-                    Changes saved!
-                </div>
 
                 {/*Description*/}
                 <div className="mb-3 row">
