@@ -50,7 +50,7 @@ function App() {
                         </div>
                         <div className="col-10">
                             <div className="container-fluid">
-                                <Route path="/" exact={true} component={Home}/>
+                                <Route path="/" exact={true} component={LandingPage}/>
                                 <Route path="/user-roles" exact={true} component={ManageUsers}/>
                                 <Route path="/login" exact={true} component={LoginPage}/>
                                 <Route path="/signup" exact={true} component={SignupPage}/>
