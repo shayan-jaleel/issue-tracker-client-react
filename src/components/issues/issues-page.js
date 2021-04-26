@@ -27,7 +27,7 @@ const IssuesPage = ({userLoggedIn}) => {
             <div className="mt-3">
                 <span className="row">
                     <h3 className="col-6">Issues Page for {userLoggedIn && userLoggedIn.username}</h3>
-                    <div className="col-6">
+                    <div className="col-6 d-none d-md-block">
                         <label htmlFor="issue-search-box">Search</label>
                         <input id="issue-search-box"
                                className="ml-3"
