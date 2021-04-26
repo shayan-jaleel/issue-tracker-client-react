@@ -32,10 +32,9 @@ const ProfilePage = ({
         <>
             {userLoggedIn ? null : <Redirect to="/login"/>}
             <div className="container mt-3">
-                <h1>
-                    Profile for:
+                <h1 className="font-weight-bold">
+                    Profile
                 </h1>
-                {userLoggedIn && JSON.stringify(userLoggedIn)}
                 <div className="alert alert-success"
                      role="alert">
                     Changes saved!

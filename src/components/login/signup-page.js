@@ -1,6 +1,5 @@
 import React, {useState} from "react"
-import {Link} from "react-router-dom";
-import userService from "../../services/user-service";
+import {Link, Redirect} from "react-router-dom";
 import sessionService from "../../services/session-service";
 import {SET_CURRENT_USER} from "../../reducers/session-reducer";
 import {connect} from "react-redux";
@@ -10,6 +9,7 @@ const SignupPage = ({userLoggedIn, register}) => {
     const [confirmPassword, setConfirmPassword] = useState("")
     return (
         <div className="container mt-3">
+            {userLoggedIn ? <Redirect to="/profile"/> : null}
             <h1>
                 Register
             </h1>
@@ -84,7 +84,7 @@ const SignupPage = ({userLoggedIn, register}) => {
     )
 }
 
-const stpm = (state) => ({userLoggedIn: state.sessionReducer.userLoggedIn})
+const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
 
 const dtpm = (dispatch) => ({
     register: (username, password) => {

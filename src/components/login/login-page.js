@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import sessionService from "../../services/session-service";
 import projectService from "../../services/project-service";
 import {CREATE_PROJECT, DELETE_PROJECT, FIND_ALL_PROJECTS} from "../../reducers/project-reducer";
@@ -14,6 +14,7 @@ const LoginPage = ({
     const [password, setPassword] = useState("")
     return (
         <div className="container mt-3">
+            {userLoggedIn ? <Redirect to="/profile"/> : null}
         <h1>
             Sign In
         </h1>
