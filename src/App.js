@@ -61,7 +61,7 @@ function App() {
                                 <Route path="/projects/:projectId" exact={true} component={ProjectDetails}/>
                                 {/*<Route path="/projects/:projectId" exact={true} component={IssuesTable}/>*/}
                                 <Route path={["users/:userId/issues", "/issues"]} exact={true} component={IssuesPage}/>
-                                <Route path="/issues/create-issue" exact={true} component={CreateIssue}/>
+                                <Route path="/projects/:projectId/create-issue" exact={true} component={CreateIssue}/>
                                 <Route path={["/issues/:issueId", "/projects/:projectId/issues/:issueId"]}
                                        exact={true} component={IssueDetails}/>
                                 <Route path={["/users/:userId", "/projects/:projectId/users/:userId"]}

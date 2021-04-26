@@ -1,22 +1,27 @@
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import React, {useState} from 'react'
 import issuesService from "../../services/issues-service"
 
 const CreateIssue = () => {
-    const [issueTitle, setIssueTitle] = useState('')
-    const [issueProject, setIssueProject] = useState('PROJECT-ID-OR-SOMETHING-1')
     const [issueDescription, setIssueDescription] = useState('')
+    const [issuePriority, setIssuePriority] = useState('HIGH')
+    const [issueStatus, setIssueStatus] = useState('OPEN')
     const [issueType, setIssueType] = useState('BUG')
+    const {projectId} = useParams()
 
     const createIssue = () => {
         const newIssue = {
-            issueTitle,
-            issueProject,
-            issueDescription,
-            issueType
+            description:issueDescription,
+            type: issueType,
+            priority: issuePriority,
+            status: issueStatus
         }
         console.log('create service called')
-        issuesService.createIssue(newIssue).then(r => console.log(r))
+        issuesService.createIssueForProject(newIssue, projectId).then(r => console.log(r))
+        setIssueDescription('')
+        setIssuePriority('HIGH')
+        setIssueStatus('OPEN')
+        setIssueType('BUG')
     }
 
     return (
@@ -29,39 +34,7 @@ const CreateIssue = () => {
                      role="alert">
                     Changes saved!
                 </div>
-                {/*Project*/}
-                <div className="mb-3 row">
-                    <label htmlFor="issue-project"
-                           className="col-sm-2 col-form-label">
-                        Project
-                    </label>
-                    <div className="col-sm-10">
-                        <select id="issue-project"
-                                className="form-control"
-                                onChange={(e) => setIssueProject(e.target.value)}
-                                value={issueProject}>
-                            <option value="PROJECT-ID-OR-SOMETHING-1">Project 1</option>
-                            <option value="PROJECT-ID-OR-SOMETHING-2">Project 2</option>
-                            <option value="PROJECT-ID-OR-SOMETHING-3">Project 3</option>
-                        </select>
-                    </div>
-                </div>
 
-                {/*Title*/}
-                <div className="mb-3 row">
-                    <label htmlFor="issue-title"
-                           className="col-sm-2 col-form-label">
-                        Title
-                    </label>
-                    <div className="col-sm-10">
-                        <input type="text"
-                               className="form-control"
-                               id="issue-title"
-                               onChange={(e) => setIssueTitle(e.target.value)}
-                               value={issueTitle}
-                               placeholder="Name your issue"/>
-                    </div>
-                </div>
                 {/*Description*/}
                 <div className="mb-3 row">
                     <label htmlFor="issue-description"
@@ -76,6 +49,39 @@ const CreateIssue = () => {
                                   value={issueDescription}
                                   placeholder="Describe the issue"
                                   rows="6"/>
+                    </div>
+                </div>
+                {/*Priority*/}
+                <div className="mb-3 row">
+                    <label htmlFor="issue-priority"
+                           className="col-sm-2 col-form-label">
+                        Priority
+                    </label>
+                    <div className="col-sm-10">
+                        <select id="issue-priority"
+                                onChange={(e) => setIssuePriority(e.target.value)}
+                                value={issuePriority}
+                                className="form-control">
+                            <option value="LOW">Low</option>
+                            <option value="MEDIUM">Medium</option>
+                            <option value="HIGH">High</option>
+                        </select>
+                    </div>
+                </div>
+                {/*status*/}
+                <div className="mb-3 row">
+                    <label htmlFor="issue-status"
+                           className="col-sm-2 col-form-label">
+                        Status
+                    </label>
+                    <div className="col-sm-10">
+                        <select id="issue-status"
+                                onChange={(e) => setIssueStatus(e.target.value)}
+                                value={issueStatus}
+                                className="form-control">
+                            <option value="OPEN">Open</option>
+                            <option value="CLOSED">Closed</option>
+                        </select>
                     </div>
                 </div>
 

@@ -28,11 +28,11 @@ const ProjectDetails = () => {
                 {
 
                     issues &&
-                    <IssuesTable issues={issues}/>
+                    <IssuesTable projectId={projectId} issues={issues}/>
                 }
                 {
                     users &&
-                    <UsersTable users={users}/>
+                    <UsersTable projectId={projectId} users={users}/>
                 }
                 </ul>
             </div>

@@ -1,6 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import IssuesRow from "./issues-row";
-const IssuesTable = ({issues}) => {
+import {connect} from "react-redux";
+const IssuesTable = ({issues, projectId, userLoggedIn}) => {
     console.log(issues)
     return (
         <div className="mt-3">
@@ -13,9 +14,12 @@ const IssuesTable = ({issues}) => {
                     <th className="d-none d-sm-table-cell">Type</th>
                     <th className="d-none d-sm-table-cell">Priority</th>
                     <th>
-                        <i className="fas fa-th float-right fa-2x"/>
-                        <i className="fas fa-sort-alpha-up float-right fa-2x mr-3"/>
-                        <i className="fas fa-folder float-right fa-2x mr-3"/>
+                        {
+                        userLoggedIn && (userLoggedIn.role.name === 'ADMIN' || userLoggedIn.role.name === 'MANAGER') &&
+                        <Link to={`${projectId}/create-issue`}>
+                            <i className="text-danger fas btn fa-plus-circle float-right fa-2x"/>
+                        </Link>
+                        }
                     </th>
                 </tr>
                 </thead>
@@ -31,4 +35,5 @@ const IssuesTable = ({issues}) => {
         </div>
     )
 }
-export default IssuesTable
+const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
+export default connect(stpm)(IssuesTable)
