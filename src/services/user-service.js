@@ -12,7 +12,7 @@ const findAllUsers = () => {
 
 const findUserById = (userId) => {
     console.log('reached findUserById')
-    console.log(userId)
+    // console.log(userId)
     return fetch(`${USERS_URL}/${userId}`)
         .then(response => {
             return response.json()
@@ -37,7 +37,7 @@ const createUserForRole = (user, roleId) =>
     }).then(response => response.json())
 
 const updateUser = (userId, user) => {
-    console.log(JSON.stringify(user))
+    // console.log(JSON.stringify(user))
     return fetch(`${USERS_URL}/${userId}`, {
         method: 'PUT',
         body: JSON.stringify(user),
@@ -48,8 +48,8 @@ const updateUser = (userId, user) => {
 }
 
 const updateUserForRole = (userId, roleId, user) => {
-    console.log(JSON.stringify(user))
-    console.log(JSON.stringify(roleId))
+    // console.log(JSON.stringify(user))
+    // console.log(JSON.stringify(roleId))
     return fetch(`${ROLES_URL}/${roleId}/users/${userId}`, {
         method: 'PUT',
         body: JSON.stringify(user),

@@ -4,12 +4,13 @@ import {connect} from "react-redux";
 import {Link, Redirect} from "react-router-dom";
 import sessionService from "../../services/session-service";
 import {SET_CURRENT_USER} from "../../reducers/session-reducer";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import userService from "../../services/user-service";
 
 const ProfilePage = ({
      userLoggedIn,
-     setUserLoggedOut
+     setUserLoggedOut,
+     updateUserLoggedIn
  }) => {
     const [username, setUsername] = useState("")
     const [firstname, setFirstname] = useState("")
@@ -17,6 +18,7 @@ const ProfilePage = ({
     const [role, setRole] = useState("DEVELOPER")
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
+    const [emailError, setEmailError] = useState("")
 
     useEffect(() => {
         if(userLoggedIn) {
@@ -28,10 +30,21 @@ const ProfilePage = ({
             setEmail(userLoggedIn.email ? userLoggedIn.email : '')
         }
     }, [userLoggedIn])
+
+    const validate = () => {
+        let isValid = true
+        setEmailError('')
+        if(email && email !== '' && !email.includes('@')) {
+            isValid = false
+            setEmailError("Please enter a valid email.")
+        }
+        return isValid
+    }
     return (
         <>
             {userLoggedIn ? null : <Redirect to="/login"/>}
-            <div className="container mt-3">
+            {userLoggedIn && JSON.stringify(userLoggedIn)}
+            <div className="container">
                 <h1 className="font-weight-bold">
                     Profile
                 </h1>
@@ -40,7 +53,7 @@ const ProfilePage = ({
                     Changes saved!
                 </div>
 
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label
                         className="col-sm-2 col-form-label">
                         Username
@@ -53,7 +66,7 @@ const ProfilePage = ({
                                value={username}/>
                     </div>
                 </div>
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="password"
                            className="col-sm-2 col-form-label">
                         Password
@@ -67,7 +80,7 @@ const ProfilePage = ({
                     </div>
                 </div>
 
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="firstname"
                            className="col-sm-2 col-form-label">
                         Firstname
@@ -81,7 +94,7 @@ const ProfilePage = ({
                     </div>
                 </div>
 
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="lastname"
                            className="col-sm-2 col-form-label">
                         Lastname
@@ -95,7 +108,7 @@ const ProfilePage = ({
                     </div>
                 </div>
 
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="email"
                            className="col-sm-2 col-form-label">
                         Email
@@ -110,8 +123,17 @@ const ProfilePage = ({
                                id="email"/>
                     </div>
                 </div>
+                {
+                    emailError &&
+                    <div className="row mt-2">
+                        <div className="col-sm-2"/>
+                        <div className="col-sm-10" style={{color: "red"}}>
+                            {emailError}
+                        </div>
+                    </div>
+                }
 
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="role"
                            className="col-sm-2 col-form-label">
                         Role
@@ -128,20 +150,25 @@ const ProfilePage = ({
                     </div>
                 </div>
 
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="dob"
                            className="col-sm-2 col-form-label">
 
                     </label>
                     <div className="col-sm-10">
                         <button className="btn btn-success btn-block"
-                                onClick={() => updateUser(userLoggedIn, password, firstname, lastname, email, role)}>
+                                onClick={() => {
+                                    if(validate()) {
+                                        console.log('validated')
+                                        updateUser(userLoggedIn, password, firstname,
+                                            lastname, email, role, updateUserLoggedIn)
+                                    }}}>
                             Update
                         </button>
                     </div>
                 </div>
 
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="dob"
                            className="col-sm-2 col-form-label">
 
@@ -166,14 +193,21 @@ const dtpm = (dispatch) => ({
             dispatch({
                 type: SET_CURRENT_USER,
                 userLoggedIn: null
-            }))
+            })),
+    updateUserLoggedIn: (user) =>
+        dispatch({
+            type: SET_CURRENT_USER,
+            userLoggedIn: user
+    })
 })
 
-const updateUser = (userLoggedIn, password, firstname, lastname, email, role) => {
+const updateUser = (userLoggedIn, password, firstname, lastname, email, role, updateUserLoggedIn) => {
     const userId = userLoggedIn.id
     const newUser = {...userLoggedIn, password: password, firstname: firstname, lastname: lastname, email: email}
-    console.log(JSON.stringify(newUser))
-    userService.updateUser(userId, newUser).then(r => console.log(r))
+    // console.log(JSON.stringify(newUser))
+    userService.updateUser(userId, newUser).then(updatedUser => {
+        updateUserLoggedIn(updatedUser)
+    })
 }
 
 export default connect(stpm, dtpm)(ProfilePage)
