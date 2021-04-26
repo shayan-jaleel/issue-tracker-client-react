@@ -31,13 +31,13 @@ const SignupPage = ({userLoggedIn, register}) => {
         return isValid
     }
     return (
-        <div className="container mt-3">
+        <div className="container">
             {userLoggedIn ? <Redirect to="/profile"/> : null}
             <h1>
                 Register
             </h1>
 
-            <div className="row mt-5">
+            <div className="row mt-4">
                 <label htmlFor="username"
                        className="col-sm-2 col-form-label">
                     Username

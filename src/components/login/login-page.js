@@ -1,8 +1,6 @@
 import React, {useState} from "react"
 import {Link, Redirect} from "react-router-dom";
 import sessionService from "../../services/session-service";
-import projectService from "../../services/project-service";
-import {CREATE_PROJECT, DELETE_PROJECT, FIND_ALL_PROJECTS} from "../../reducers/project-reducer";
 import {SET_CURRENT_USER} from "../../reducers/session-reducer";
 import {connect} from "react-redux";
 
@@ -11,15 +9,31 @@ const LoginPage = ({
                        setUserLoggedIn
                    }) => {
     const [username, setUsername] = useState("")
+    const [usernameError, setUsernameError] = useState("")
     const [password, setPassword] = useState("")
+    const [passwordError, setPasswordError] = useState("")
+    const validate = () => {
+        let isValid = true
+        setUsernameError('')
+        setPasswordError('')
+        if(username === '') {
+            isValid = false
+            setUsernameError("Username can't be empty.")
+        }
+        if(password === ''){
+            isValid = false
+            setPasswordError("Password can't be empty.")
+        }
+        return isValid
+    }
     return (
-        <div className="container mt-3">
+        <div className="container">
             {userLoggedIn ? <Redirect to="/profile"/> : null}
         <h1>
             Sign In
         </h1>
 
-        <div className="mb-3 row mt-3">
+        <div className="row mt-4">
             <label htmlFor="username"
                    className="col-sm-2 col-form-label">
                 Username
@@ -32,7 +46,16 @@ const LoginPage = ({
                        id="username"/>
             </div>
         </div>
-        <div className="mb-3 row">
+            {
+                usernameError &&
+                <div className="row mt-2">
+                    <div className="col-sm-2"/>
+                    <div className="col-sm-10" style={{color: "red"}}>
+                        {usernameError}
+                    </div>
+                </div>
+            }
+        <div className="mt-3 row">
             <label htmlFor="inputPassword"
                    className="col-sm-2 col-form-label">
                 Password
@@ -45,19 +68,33 @@ const LoginPage = ({
                        id="inputPassword"/>
             </div>
         </div>
-        <div className="mb-3 row">
+            {
+                passwordError &&
+                <div className="row mt-2">
+                    <div className="col-sm-2"/>
+                    <div className="col-sm-10" style={{color: "red"}}>
+                        {passwordError}
+                    </div>
+                </div>
+            }
+        <div className="mt-3 row">
             <label htmlFor="inputPassword"
                    className="col-sm-2 col-form-label">
             </label>
 
             <div className="col-sm-10">
                 <a className="btn btn-primary btn-block"
-                    onClick={() => login(username, password, setUserLoggedIn)}>
+                    onClick={() => {
+                        if(validate()) {
+                            console.log('validated')
+                            login(username, password, setUserLoggedIn)
+                        }
+                    }}>
                     Sign In
                 </a>
             </div>
         </div>
-        <div className="mb-3 row">
+        <div className="mt-3 row">
             <label htmlFor="inputPassword"
                    className="col-sm-2 col-form-label">
             </label>
