@@ -20,9 +20,13 @@ const ProjectDetails = () => {
     return (
         <div>
             <div className="container mt-3">
-                <h3>Project Id:{project.id}</h3>
-                <h4>Title: {project.title}</h4>
-                <h5>Description: {project.description}</h5>
+                <div className="card">
+                    <h5 className="card-header">Project: <span className="">{project.id}</span></h5>
+                    <div className="card-body">
+                        <h5 className="card-title"><span className="">{project.title}</span></h5>
+                        <p className="card-text"><span className="">{project.description}</span></p>
+                    </div>
+                </div>
                 <br/>
                 <ul className="list-group">
                 {
