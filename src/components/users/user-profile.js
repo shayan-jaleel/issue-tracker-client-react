@@ -97,7 +97,7 @@ const UserProfile = () => {
                 </div>
                 <div className="mt-5">
                 <h3>Projects</h3>
-                <ol className="list-group mt-2">
+                <ol className="list-group mt-4">
                     {
                         projects.map((project) =>
                         <li key={project.id} className="list-group-item"><Link to={`/projects/${project.id}`}>{project.title}</Link></li>)

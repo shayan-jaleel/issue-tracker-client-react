@@ -26,13 +26,13 @@ const CreateIssue = () => {
 
     return (
         <div>
-            <div className="container mt-3">
+            <div className="container">
                 <h1>
                     Create Issue
                 </h1>
 
                 {/*Description*/}
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="issue-description"
                            className="col-sm-2 col-form-label">
                         Description
@@ -48,7 +48,7 @@ const CreateIssue = () => {
                     </div>
                 </div>
                 {/*Priority*/}
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="issue-priority"
                            className="col-sm-2 col-form-label">
                         Priority
@@ -65,7 +65,7 @@ const CreateIssue = () => {
                     </div>
                 </div>
                 {/*status*/}
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="issue-status"
                            className="col-sm-2 col-form-label">
                         Status
@@ -82,7 +82,7 @@ const CreateIssue = () => {
                 </div>
 
                 {/*type*/}
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="issue-type"
                            className="col-sm-2 col-form-label">
                         Issue Type
@@ -99,7 +99,7 @@ const CreateIssue = () => {
                 </div>
 
                 {/*create*/}
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="issue-type"
                            className="col-sm-2 col-form-label">
 
@@ -113,7 +113,7 @@ const CreateIssue = () => {
                 </div>
 
                 {/*cancel*/}
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="dob"
                            className="col-sm-2 col-form-label">
 

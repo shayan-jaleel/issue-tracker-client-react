@@ -22,7 +22,7 @@ const LandingPage = ({userLoggedIn}) =>
         {
             userLoggedIn && <>
                 <h3 className="header text-center font-weight-bold text-secondary m-2 mt-5">Hi {userLoggedIn.username},
-                    Welcome back!</h3>
+                    welcome back!</h3>
                 <div className="d-lg-flex justify-content-center">
                     <Link to="/issues" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold">My Issues</Link>
                     <Link to="/projects" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold">My Projects</Link>
