@@ -25,7 +25,7 @@ const ProjectsTable = ({
         <>
             {userLoggedIn ? null : <Redirect to="/login"/>}
             <div className="mt-3">
-            <h2>Projects Table</h2>
+            <h3>Projects</h3>
             <table className="table table-striped">
                 <thead>
                 <tr>

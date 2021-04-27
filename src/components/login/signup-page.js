@@ -46,6 +46,7 @@ const SignupPage = ({userLoggedIn, register}) => {
                     <input type="text"
                            className="form-control"
                            value={username}
+                           placeholder="Can't be empty"
                            onChange={(e) => setUsername(e.target.value)}
                            id="username"/>
                 </div>
@@ -66,6 +67,7 @@ const SignupPage = ({userLoggedIn, register}) => {
                 </label>
                 <div className="col-sm-10">
                     <input type="password"
+                           placeholder="At least 5 characters long"
                            className="form-control"
                            value={password}
                            onChange={(e) => setPassword(e.target.value)}
@@ -88,6 +90,7 @@ const SignupPage = ({userLoggedIn, register}) => {
                 </label>
                 <div className="col-sm-10">
                     <input type="password"
+                           placeholder="The two passwords must match"
                            className="form-control"
                            value={confirmPassword}
                            onChange={(e) => setConfirmPassword(e.target.value)}
@@ -96,7 +99,7 @@ const SignupPage = ({userLoggedIn, register}) => {
             </div>
             {
                 confirmPasswordError &&
-                <div className="row mt-2">
+                <div className="row mt-n3">
                     <div className="col-sm-2"></div>
                     <div className="col-sm-10" style={{color: "red"}}>
                         {confirmPasswordError}

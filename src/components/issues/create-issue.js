@@ -27,9 +27,9 @@ const CreateIssue = () => {
     return (
         <div>
             <div className="container">
-                <h1>
+                <h3>
                     Create Issue
-                </h1>
+                </h3>
 
                 {/*Description*/}
                 <div className="mt-3 row">

@@ -25,13 +25,15 @@ const IssuesPage = ({userLoggedIn}) => {
         <>
             {userLoggedIn ? null : <Redirect to="/login"/>}
             <div className="mt-3">
-                <span className="row">
-                    <h3 className="col-6">Issues Page for {userLoggedIn && userLoggedIn.username}</h3>
-                    <div className="col-6 d-none d-md-block">
+                {/*<span className="row">*/}
+                    <h3 className="">Issues Page for {userLoggedIn && userLoggedIn.username}
+                    <span className="d-none d-md-block float-right" style={{fontSize: 18}}>
                         <label htmlFor="issue-search-box">Search</label>
                         <input id="issue-search-box"
                                className="ml-3"
                                type="text"
+                               style={{fontSize: 16}}
+                               placeholder="Description keywords"
                                value={issueSearchText}
                                onChange={(e) =>
                                    setIssueSearchText(e.target.value)}
@@ -42,8 +44,9 @@ const IssuesPage = ({userLoggedIn}) => {
                                        ev.preventDefault();
                                    }}
                                }/>
-                    </div>
-                </span>
+                    </span>
+                    </h3>
+                {/*</span>*/}
                 {/*{userLoggedIn && <h3>for {userLoggedIn.username}</h3>}*/}
                 {/*<Route path="/issues/table" exact={true} >*/}
                 <IssuesSummaryTable

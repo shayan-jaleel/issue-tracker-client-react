@@ -73,6 +73,7 @@ const ProfilePage = ({
                     </label>
                     <div className="col-sm-10">
                         <input type="text"
+                               placeholder="Must be at least 5 characters long"
                                className="form-control"
                                id="password"
                                onChange={(e) => setPassword(e.target.value)}
@@ -98,6 +99,7 @@ const ProfilePage = ({
                         <input type="text"
                                className="form-control"
                                id="firstname"
+                               placeholder="Bob"
                                onChange={(e) => setFirstname(e.target.value)}
                                value={firstname}/>
                     </div>
@@ -110,6 +112,7 @@ const ProfilePage = ({
                     </label>
                     <div className="col-sm-10">
                         <input type="text"
+                               placeholder="Moore"
                                className="form-control"
                                id="lastname"
                                onChange={(e) => setLastname(e.target.value)}
@@ -128,7 +131,7 @@ const ProfilePage = ({
                                value={email}
                                onChange={(e) => setEmail(e.target.value)}
                                title="Please enter a valid email"
-                               placeholder={email}
+                               placeholder="bob@ontrack.com"
                                id="email"/>
                     </div>
                 </div>
