@@ -21,7 +21,7 @@ const ManageProjectUsers = () => {
     return(
     <>
         <h3>Users for project {projectId}</h3>
-        <div className="">
+        <div className="mt-3">
             <select onChange={(e) => setSelectedUser(e.target.value)}
                     value={selectedUser? selectedUser: 'no_selection'}
                     className="form-control">
@@ -32,7 +32,7 @@ const ManageProjectUsers = () => {
                 <option value= 'no_selection'>Select User</option>
             </select>
         </div>
-        <button className="btn btn-danger btn-block mt-2 mb-2"
+        <button className="btn btn-success btn-block mt-2 mb-2"
             onClick={() => {
                 userService.addUserToProject(projectId, selectedUser)
                     .then(r => {
@@ -81,6 +81,11 @@ const ManageProjectUsers = () => {
             }
             </tbody>
         </table>
+        <div className="">
+            <Link to={`/projects/${projectId}`} className="btn btn-danger btn-block">
+                Cancel
+            </Link>
+        </div>
     </>
     )
 }

@@ -119,7 +119,7 @@ const CreateIssue = () => {
 
                     </label>
                     <div className="col-sm-10">
-                        <Link to="/" className="btn btn-danger btn-block">
+                        <Link to={`/projects/${projectId}`} className="btn btn-danger btn-block">
                             Cancel
                         </Link>
                     </div>
