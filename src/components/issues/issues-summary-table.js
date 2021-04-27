@@ -8,7 +8,7 @@ const IssuesSummaryTable = ({userIssues}) => {
             <table className="table table-striped">
                 <thead>
                 <tr>
-                    <th>Title</th>
+                    <th>ID</th>
                     <th className="d-none d-sm-table-cell">Description</th>
                     <th className="d-none d-sm-table-cell">Priority</th>
                     <th className="d-none d-sm-table-cell">Project</th>

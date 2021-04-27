@@ -9,7 +9,7 @@ const IssuesTable = ({issues, projectId, userLoggedIn}) => {
             <table className="table table-striped">
                 <thead>
                 <tr>
-                    <th>Title</th>
+                    <th>ID</th>
                     <th className="d-none d-sm-table-cell">Description</th>
                     <th className="d-none d-sm-table-cell">Type</th>
                     <th className="d-none d-sm-table-cell">Priority</th>

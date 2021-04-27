@@ -6,7 +6,7 @@ const IssuesSummaryRow = ({issue}) => {
         <>
             {issue.issueId &&
                 <tr>
-                    <td>
+                    <td className="text-right">
                         <Link to={`/issues/${issue.issueId}`}>{issue.issueId}</Link>
                     </td>
                     <td>
@@ -24,5 +24,5 @@ const IssuesSummaryRow = ({issue}) => {
             }
         </>
     )
-};
+}
 export default IssuesSummaryRow

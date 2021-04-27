@@ -5,7 +5,7 @@ const IssuesRow = ({issue}) => {
     const {projectId} = useParams()
     return (
         <tr>
-            <td>
+            <td className="text-right">
                 <Link to={decideUrl(projectId, issue)}>{issue.id}</Link>
             </td>
             <td>
