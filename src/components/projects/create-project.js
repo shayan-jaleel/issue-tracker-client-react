@@ -17,13 +17,13 @@ const CreateProject = () => {
 
     return (
         <div>
-            <div className="container mt-3">
+            <div className="container ml-n4">
                 <h1>
                     Create Project
                 </h1>
 
                 {/*Title*/}
-                <div className="mb-3 row">
+                <div className="mt-4 row">
                     <label htmlFor="project-title"
                            className="col-sm-2 col-form-label">
                         Title
@@ -38,7 +38,7 @@ const CreateProject = () => {
                     </div>
                 </div>
                 {/*Description*/}
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="project-description"
                            className="col-sm-2 col-form-label">
                         Description
@@ -55,7 +55,7 @@ const CreateProject = () => {
                 </div>
 
                 {/*create*/}
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="project-type"
                            className="col-sm-2 col-form-label">
 
@@ -69,7 +69,7 @@ const CreateProject = () => {
                 </div>
 
                 {/*cancel*/}
-                <div className="mb-3 row">
+                <div className="mt-3 row">
                     <label htmlFor="dob"
                            className="col-sm-2 col-form-label">
 
