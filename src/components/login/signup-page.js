@@ -99,7 +99,7 @@ const SignupPage = ({userLoggedIn, register}) => {
             </div>
             {
                 confirmPasswordError &&
-                <div className="row mt-n3">
+                <div className="row mt-2">
                     <div className="col-sm-2"></div>
                     <div className="col-sm-10" style={{color: "red"}}>
                         {confirmPasswordError}
