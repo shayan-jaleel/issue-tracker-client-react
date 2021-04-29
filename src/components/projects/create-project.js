@@ -18,9 +18,9 @@ const CreateProject = () => {
     return (
         <div>
             <div className="container ml-n4">
-                <h1>
+                <h3>
                     Create Project
-                </h1>
+                </h3>
 
                 {/*Title*/}
                 <div className="mt-4 row">
