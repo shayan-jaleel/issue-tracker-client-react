@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 
 const LandingPage = ({userLoggedIn}) =>
-    <div className="container-fluid">
+    <div className="container-fluid ml-n5">
         <h1 className="header text-center font-weight-bold m-2">
             <i className="fas text-danger fa-tasks"/><span className="ml-2">On</span>
                 <span className="text-danger font-weight-bold">Track </span>

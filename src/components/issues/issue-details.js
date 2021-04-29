@@ -47,7 +47,7 @@ const IssueDetails = () => {
 
 
     return (
-                <div className="container mt-3">
+                <div className="container ml-n3">
                     <h3 className="mb-5">
                         Issue {issueId}
                         <i className="fas fa-trash btn float-right"

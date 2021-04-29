@@ -48,7 +48,7 @@ const ProfilePage = ({
         <>
             {userLoggedIn ? null : <Redirect to="/login"/>}
             {/*{userLoggedIn && JSON.stringify(userLoggedIn)}*/}
-            <div className="container">
+            <div className="container ml-n3">
                 <h3>
                     Profile
                 </h3>

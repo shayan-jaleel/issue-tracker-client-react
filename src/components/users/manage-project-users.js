@@ -19,7 +19,7 @@ const ManageProjectUsers = () => {
         })
     }, [rerender])
     return(
-    <>
+    <div className="mr-3">
         <h3>Users for project {projectId}</h3>
         <div className="mt-3">
             <select onChange={(e) => setSelectedUser(e.target.value)}
@@ -86,7 +86,7 @@ const ManageProjectUsers = () => {
                 Cancel
             </Link>
         </div>
-    </>
+    </div>
     )
 }
 

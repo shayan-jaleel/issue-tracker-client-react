@@ -5,6 +5,7 @@ const Sidebar = ({userLoggedIn}) =>
     <div>
         <h4>
             <span className="d-none d-md-block">
+            {/*<span className="d-none d-md-block">*/}
             <ul className="list-group">
                 {userLoggedIn && userLoggedIn.role.name === 'ADMIN' &&
                 <li className="list-group-item font-weight-bold"><Link to="/user-roles" className="red-link">Manage Users</Link></li>

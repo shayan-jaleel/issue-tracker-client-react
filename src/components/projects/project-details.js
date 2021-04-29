@@ -19,7 +19,7 @@ const ProjectDetails = () => {
 
     return (
         <div>
-            <div className="container mt-3">
+            <div className="container ml-n3">
                 <div className="card">
                     <h5 className="card-header">Project: <span className="">{project.id}</span></h5>
                     <div className="card-body">

@@ -24,7 +24,7 @@ const IssuesPage = ({userLoggedIn}) => {
     return (
         <>
             {userLoggedIn ? null : <Redirect to="/login"/>}
-            <div className="mt-3">
+            <div className="mr-3">
                 {/*<span className="row">*/}
                     <h3 className="">Issues Page for {userLoggedIn && userLoggedIn.username}
                     <span className="d-none d-md-block float-right" style={{fontSize: 18}}>

@@ -27,7 +27,7 @@ const LoginPage = ({
         return isValid
     }
     return (
-        <div className="container">
+        <div className="container ml-n3">
             {userLoggedIn ? <Redirect to="/profile"/> : null}
         <h3>
             Sign In
@@ -103,9 +103,9 @@ const LoginPage = ({
                     <Link to="/signup">
                         Sign Up
                     </Link>
-                    <a href="#">
-                        Forgot Password
-                    </a>
+                    {/*<a href="#">*/}
+                    {/*    Forgot Password*/}
+                    {/*</a>*/}
                     <a className="cancel-button" href="#">
                         Cancel
                     </a>

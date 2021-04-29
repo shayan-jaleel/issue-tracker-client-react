@@ -26,7 +26,7 @@ const CreateIssue = () => {
 
     return (
         <div>
-            <div className="container">
+            <div className="container ml-n3">
                 <h3>
                     Create Issue
                 </h3>

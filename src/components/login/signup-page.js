@@ -31,7 +31,7 @@ const SignupPage = ({userLoggedIn, register}) => {
         return isValid
     }
     return (
-        <div className="container">
+        <div className="container ml-n3">
             {userLoggedIn ? <Redirect to="/profile"/> : null}
             <h3>
                 Register
