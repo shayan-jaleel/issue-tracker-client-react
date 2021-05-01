@@ -4,8 +4,6 @@ import {ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader} from 'react-pro-side
 import 'react-pro-sidebar/dist/css/styles.css';
 import {
     CgProfile,
-    FaGem,
-    FaHeart,
     FaUsersCog, GiFiles,
     IoChevronBackCircleSharp,
     IoChevronForwardCircleSharp,
@@ -14,8 +12,14 @@ import {
 import {useState} from "react";
 import './custom-sidebar-style.scss'
 import './custom-sidebar-extra.scss'
+import {
+    SET_SIDEBAR_ACTIVE_MANAGE_USERS,
+    SET_SIDEBAR_ACTIVE_MY_ISSUES,
+    SET_SIDEBAR_ACTIVE_MY_PROFILE,
+    SET_SIDEBAR_ACTIVE_MY_PROJECTS
+} from "../../reducers/sidebar-reducer";
 
-const Sidebar = () => {
+const Sidebar = ({sidebarActive}) => {
     const [collapsed, setCollapsed] = useState(false);
 
     return (
@@ -28,16 +32,20 @@ const Sidebar = () => {
                          </div>
                     </SidebarHeader>
                     <Menu iconShape="circle">
-                        <MenuItem icon={<FaUsersCog size="2em" color="white"/>} active={true}>
+                        <MenuItem icon={<FaUsersCog size="2em" color="white"/>}
+                                  active={sidebarActive === SET_SIDEBAR_ACTIVE_MANAGE_USERS}>
                             <span className="custom-menu-item font-weight-bold">Manage Users<Link to="/user-roles"/></span>
                         </MenuItem>
-                        <MenuItem icon={<VscFileSubmodule size="2em" color="white"/>}>
+                        <MenuItem icon={<VscFileSubmodule size="2em" color="white"/>}
+                                  active={sidebarActive === SET_SIDEBAR_ACTIVE_MY_PROJECTS}>
                             <span className="custom-menu-item font-weight-bold">My Projects<Link to="/projects"/></span>
                         </MenuItem>
-                        <MenuItem icon={<GiFiles size="2em" color="white"/>}>
+                        <MenuItem icon={<GiFiles size="2em" color="white"/>}
+                                  active={sidebarActive === SET_SIDEBAR_ACTIVE_MY_ISSUES}>
                             <span className="custom-menu-item font-weight-bold">My Issues<Link to="/issues"/></span>
                         </MenuItem>
-                        <MenuItem icon={<CgProfile size="2em" color="white"/>}>
+                        <MenuItem icon={<CgProfile size="2em" color="white"/>}
+                                  active={sidebarActive === SET_SIDEBAR_ACTIVE_MY_PROFILE}>
                             <span className="custom-menu-item font-weight-bold">Profile<Link to="/profile"/></span>
                         </MenuItem>
                     </Menu>
@@ -87,6 +95,7 @@ const Sidebar = () => {
     // </div>
 
 
-const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
+const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn,
+    sidebarActive: state.sidebar.sidebarActive})
 
 export default connect(stpm)(Sidebar)

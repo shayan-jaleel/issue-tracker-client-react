@@ -5,12 +5,15 @@ import {CREATE_PROJECT, DELETE_PROJECT, FIND_ALL_PROJECTS} from "../../reducers/
 import {connect} from "react-redux";
 import React, {useEffect, useState} from "react";
 import {Link, Redirect} from "react-router-dom";
+import {SET_SIDEBAR_ACTIVE_MY_PROFILE, SET_SIDEBAR_ACTIVE_MY_PROJECTS} from "../../reducers/sidebar-reducer";
 
 const ProjectsTable = ({
-    userLoggedIn
+    userLoggedIn,
+    setSidebarActive
 }) => {
     const [projects, setProjects] = useState([])
     useEffect(() => {
+        setSidebarActive()
         if(userLoggedIn && userLoggedIn.role.name !== 'ADMIN') {
             projectService.findProjectsForUser(userLoggedIn.id)
                 .then(projects => setProjects(projects))
@@ -42,7 +45,7 @@ const ProjectsTable = ({
                 <tbody>
                 {
                     projects && projects.map((project, i) =>
-                        //Warns when using project id as key
+                        // Warns when using project id as key
                         <tr key={i}>
                             <td><Link to={`/projects/${project.id}`}>{project.title}</Link></td>
                             <td>{project.description}</td>
@@ -58,4 +61,11 @@ const ProjectsTable = ({
 }
 const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
 
-export default connect(stpm)(ProjectsTable)
+const dtpm = (dispatch) => ({
+    setSidebarActive: () =>
+        dispatch({
+            type: SET_SIDEBAR_ACTIVE_MY_PROJECTS
+        })
+})
+
+export default connect(stpm, dtpm)(ProjectsTable)

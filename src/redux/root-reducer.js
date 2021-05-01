@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage'
 import projectReducer from "../reducers/project-reducer";
 import projectIssuesReducer from "../reducers/project-issues-reducer";
 import sessionReducer from "../reducers/session-reducer";
+import sidebarReducer from "../reducers/sidebar-reducer";
 
 const persistConfig = {
     key: 'root',
@@ -15,7 +16,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
     project: projectReducer,
     projectIssues: projectIssuesReducer,
-    session: sessionReducer
+    session: sessionReducer,
+    sidebar: sidebarReducer
 })
 
 export default persistReducer(persistConfig, rootReducer)

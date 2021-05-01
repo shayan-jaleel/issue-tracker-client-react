@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from './components/home-page'
@@ -7,19 +6,15 @@ import Issues from "./components/issues/issues-page";
 import CreateIssue from "./components/issues/create-issue"
 import Sidebar from "./components/sidebar/sidebar";
 import Navbar from "./components/navbar/navbar";
-import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import ManageUsers from "./components/users/manage-users"
-import projectReducer from "./reducers/project-reducer";
 import ProjectsTable from "./components/projects/projects-table";
-import projectIssuesReducer from "./reducers/project-issues-reducer";
 import ProjectDetails from "./components/projects/project-details";
 import IssuesTable from "./components/issues/issues-table";
 import IssueDetails from "./components/issues/issue-details";
 import IssuesPage from "./components/issues/issues-page";
 import SignupPage from "./components/login/signup-page";
 import ProfilePage from "./components/profile/profile-page";
-import sessionReducer from "./reducers/session-reducer";
 import LandingPage from "./components/home/landing-page";
 import UserProfile from "./components/users/user-profile";
 import {PersistGate} from "redux-persist/integration/react"
@@ -27,14 +22,6 @@ import {store, persistor} from "./redux/store";
 import CreateProject from "./components/projects/create-project";
 import ManageProjectUsers from "./components/users/manage-project-users";
 import './components/sidebar/custom-sidebar-style.scss'
-// const reducer = combineReducers({
-//     userReducer: userReducer,
-//     projectReducer: projectReducer,
-//     projectIssuesReducer: projectIssuesReducer,
-//     sessionReducer: sessionReducer
-// })
-//
-// const store = createStore(reducer)
 
 function App() {
   return (

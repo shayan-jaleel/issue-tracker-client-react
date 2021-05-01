@@ -4,8 +4,9 @@ import {Redirect, useLocation, useHistory} from "react-router-dom";
 import {connect} from "react-redux";
 import IssuesSummaryTable from "./issues-summary-table";
 import queryString from 'querystring'
+import {SET_SIDEBAR_ACTIVE_MY_ISSUES, SET_SIDEBAR_ACTIVE_MY_PROJECTS} from "../../reducers/sidebar-reducer";
 
-const IssuesPage = ({userLoggedIn}) => {
+const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
     const [userIssues, setUserIssues] = useState([])
     const [issueSearchText, setIssueSearchText] = useState('')
     const history = useHistory()
@@ -15,6 +16,7 @@ const IssuesPage = ({userLoggedIn}) => {
     const description = parsedQuery.description
     useEffect(() => {
         if(userLoggedIn){
+            setSidebarActive()
             !description && IssuesService.findIssuesForUser(userLoggedIn.id)
                 .then(userIssues => setUserIssues(userIssues))
             description && IssuesService.findMatchingIssuesForUser(userLoggedIn.id, description)
@@ -59,5 +61,10 @@ const IssuesPage = ({userLoggedIn}) => {
 
 
 const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
-
-export default connect(stpm)(IssuesPage)
+const dtpm = (dispatch) => ({
+    setSidebarActive: () =>
+        dispatch({
+            type: SET_SIDEBAR_ACTIVE_MY_ISSUES
+        })
+})
+export default connect(stpm, dtpm)(IssuesPage)

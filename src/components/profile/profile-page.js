@@ -4,11 +4,13 @@ import sessionService from "../../services/session-service";
 import {SET_CURRENT_USER} from "../../reducers/session-reducer";
 import React, {useEffect, useState} from "react";
 import userService from "../../services/user-service";
+import {SET_SIDEBAR_ACTIVE_MY_PROFILE} from "../../reducers/sidebar-reducer";
 
 const ProfilePage = ({
      userLoggedIn,
      setUserLoggedOut,
-     updateUserLoggedIn
+     updateUserLoggedIn,
+     setSidebarActive
  }) => {
     const [username, setUsername] = useState("")
     const [firstname, setFirstname] = useState("")
@@ -21,6 +23,7 @@ const ProfilePage = ({
 
     useEffect(() => {
         if(userLoggedIn) {
+            setSidebarActive()
             setUsername(userLoggedIn.username ? userLoggedIn.username : '')
             setFirstname(userLoggedIn.firstname ? userLoggedIn.firstname : '')
             setLastname(userLoggedIn.lastname ? userLoggedIn.lastname : '')
@@ -29,6 +32,7 @@ const ProfilePage = ({
             setEmail(userLoggedIn.email ? userLoggedIn.email : '')
         }
     }, [userLoggedIn])
+
 
     const validate = () => {
         let isValid = true
@@ -197,7 +201,8 @@ const ProfilePage = ({
     )
 }
 
-const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
+const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn,
+    sidebarActive: state.sidebar.sidebarActive})
 
 const dtpm = (dispatch) => ({
     setUserLoggedOut: () => sessionService.logout()
@@ -210,7 +215,11 @@ const dtpm = (dispatch) => ({
         dispatch({
             type: SET_CURRENT_USER,
             userLoggedIn: user
-    })
+    }),
+    setSidebarActive: () =>
+        dispatch({
+            type: SET_SIDEBAR_ACTIVE_MY_PROFILE
+        })
 })
 
 const updateUser = (userLoggedIn, password, firstname, lastname, email, role, updateUserLoggedIn) => {

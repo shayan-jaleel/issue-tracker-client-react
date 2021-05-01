@@ -1,9 +1,14 @@
 import userService from "../../services/user-service";
 import {useEffect, useState} from "react";
+import sessionService from "../../services/session-service";
+import {SET_CURRENT_USER} from "../../reducers/session-reducer";
+import {SET_SIDEBAR_ACTIVE_MANAGE_USERS, SET_SIDEBAR_ACTIVE_MY_PROFILE} from "../../reducers/sidebar-reducer";
+import {connect} from "react-redux";
 
 //_id will need to be changed when backend is moved to custom server
-const ManageUsers = () => {
+const ManageUsers = ({setSidebarActive}) => {
     useEffect(() => {
+        setSidebarActive()
         userService.findAllUsers().then((users) => setUsers(users))
     }, [])
     const [users, setUsers] = useState([])
@@ -62,27 +67,27 @@ const ManageUsers = () => {
                             })}
                         />}
                         {editingUser && <i className="fa fa-check btn btn-dark"
-                                           onClick={() => {
-                                               const newUser = {
-                                                   id: editingUser.id,
-                                                   username:username,
-                                                   email:email,
-                                                   password:password
-                                               }
-                                               userService.updateUserForRole(editingUser.id,
-                                                   roleToId(role),
-                                                   newUser).then((updatedUser) =>
-                                                   setUsers(users.map((user) => {
-                                                           if(user.id === editingUser.id){
-                                                               return updatedUser
-                                                           } else return user
-                                               })))
-                                               setEditingUser(null)
-                                               setUsername('')
-                                               setEmail('')
-                                               setPassword('')
-                                               setRole('DEVELOPER')
-                                           }}/>}
+                           onClick={() => {
+                               const newUser = {
+                                   id: editingUser.id,
+                                   username:username,
+                                   email:email,
+                                   password:password
+                               }
+                               userService.updateUserForRole(editingUser.id,
+                                   roleToId(role),
+                                   newUser).then((updatedUser) =>
+                                   setUsers(users.map((user) => {
+                                           if(user.id === editingUser.id){
+                                               return updatedUser
+                                           } else return user
+                               })))
+                               setEditingUser(null)
+                               setUsername('')
+                               setEmail('')
+                               setPassword('')
+                               setRole('DEVELOPER')
+                           }}/>}
                     </span>
                 </td>
             </tr>
@@ -138,7 +143,15 @@ export const roleIdToObject = role => {
         name: 'DEVELOPER'
     }
 }
+const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn,
+    sidebarActive: state.sidebar.sidebarActive})
 
+const dtpm = (dispatch) => ({
+    setSidebarActive: () =>
+        dispatch({
+            type: SET_SIDEBAR_ACTIVE_MANAGE_USERS
+        })
+})
     // const stpm = (state) => ({users: state.userReducer.users})
     // const dtpm = (dispatch) => ({
     //     findUsers: () => userService.findAllUsers()
@@ -164,4 +177,4 @@ export const roleIdToObject = role => {
     //     })
 
 
-export default ManageUsers;
+export default connect(stpm, dtpm)(ManageUsers);
