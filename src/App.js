@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from './components/home-page'
 import LoginPage from "./components/login/login-page";

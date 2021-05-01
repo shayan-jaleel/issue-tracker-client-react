@@ -1,3 +1,6 @@
+$logoNavyColor: #000080;
+$logoSalmonColor: #db6c4b;
+
 .App {
   text-align: center;
 }
@@ -35,4 +38,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.on-track-logo-primary {
+  color: $logoNavyColor
+}
+
+.on-track-logo-alt {
+  color: $logoSalmonColor
 }
