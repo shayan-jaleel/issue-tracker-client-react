@@ -12,7 +12,7 @@ import {
     VscFileSubmodule
 } from "react-icons/all";
 import {useState} from "react";
-import './custom-sidebar-style.css'
+import './custom-sidebar-style.scss'
 import './custom-sidebar-extra.scss'
 
 const Sidebar = () => {

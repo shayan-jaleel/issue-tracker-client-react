@@ -1,15 +1,6 @@
 /** {*/
 /*    box-sizing: border-box;*/
 /*}*/
-/*body {*/
-/*    font-family: "Open Sans", sans-serif;*/
-/*    height: 100vh;*/
-/*    margin: 0;*/
-/*}*/
-
-/*#root {*/
-/*    height: 100%;*/
-/*}*/
 
 .custom-sidebar {
     /*position: sticky;*/
@@ -26,26 +17,25 @@
     position: relative;
     display: flex;
     height: 100%;
+    .content {
+        /*background-color: #bec4de;*/
+        padding-left: 20px;
+        flex-grow: 1
+    }
+
     /*border: 2px solid purple;*/
     /*align-items: flex-start;*/
     /*justify-content: stretch;*/
     /*position: absolute;*/
 }
 
-.layout-hello .content {
-    /*background-color: #bec4de;*/
-    padding-left: 20px;
-    flex-grow: 1
-}
-
 .custom-button{
     /*position: relative;*/
     color: #adadad;
+    &:hover{
+        cursor: pointer;
+    }
 }
-.custom-button:hover{
-    cursor: pointer;
-}
-
 .custom-menu-item{
     font-size: 20px;
 }
