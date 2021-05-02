@@ -51,13 +51,19 @@ $creamColor: #F8F0C6;
   color: $logoSalmonColor
 }
 .on-track-btn-idle {
-  color: $logoNavyColor;
-  background: white;
-  border: 1px solid $logoSalmonColor;
+  color: $logoNavyColor !important;
+  background: white !important;
+  border: 1px solid $logoSalmonColor !important;
+  &:hover{
+    color: white !important;
+    background: $logoSalmonColor !important;
+  }
+
 }
 .on-track-btn-active {
-  color: white;
-  background: $logoSalmonColor;
+  color: white !important;
+  background: $logoSalmonColor !important;
+  border: 1px solid $logoSalmonColor !important;
 }
 .on-track-btn-cream {
   background: $creamColor;

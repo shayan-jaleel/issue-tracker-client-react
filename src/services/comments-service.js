@@ -15,10 +15,23 @@ const findCommentsForUser = (userId) =>
     fetch(`${USERS_URL}/${userId}/comments`)
         .then(response => response.json())
 
+const postComment = (issueId, userId, comment) => {
+    console.log(comment)
+    return fetch(`${ISSUES_URL}/${issueId}/users/${userId}/comments`, {
+        method: 'POST',
+        body: JSON.stringify(comment),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+}
+
 const commentsService = {
     findAllComments,
     findCommentsForIssue,
-    findCommentsForUser
+    findCommentsForUser,
+    postComment
 }
 
 export default commentsService
