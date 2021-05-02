@@ -27,11 +27,33 @@ const postComment = (issueId, userId, comment) => {
         .then(response => response.json())
 }
 
+const updateComment = (commentId, comment) => {
+    // console.log(JSON.stringify(comment))
+    return fetch(`${COMMENTS_URL}/${commentId}`, {
+        method: 'PUT',
+        body: JSON.stringify(comment),
+        headers: {
+            'content-type': 'application/json'
+        }
+    }).then(response => response.json())
+}
+
+const deleteComment = (commentId) =>
+    fetch(
+        `${COMMENTS_URL}/${commentId}`, {
+            method: 'DELETE'
+        }
+    ).then(response => response.json())
+
+
+
 const commentsService = {
     findAllComments,
     findCommentsForIssue,
     findCommentsForUser,
-    postComment
+    postComment,
+    updateComment,
+    deleteComment
 }
 
 export default commentsService

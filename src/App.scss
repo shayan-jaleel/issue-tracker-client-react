@@ -1,5 +1,5 @@
 $logoNavyColor: rgb(0, 0, 128);
-$logoSalmonColor: #c77665;
+$logoSalmonColor: #1261a0;
 $creamColor: #F8F0C6;
 
 .App {
@@ -77,4 +77,12 @@ $creamColor: #F8F0C6;
   width: 100%;
   border-bottom: 1px solid logoNavyColorCreator(.2);
   margin-bottom: 20px;
+}
+.on-track-icon {
+  &:hover{
+    cursor: pointer;
+  }
+//.on-track-danger {
+//  color: #ba2f2f !important;
+//}
 }
