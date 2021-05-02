@@ -1,5 +1,6 @@
 $logoNavyColor: rgb(0, 0, 128);
-$logoSalmonColor: #db6c4b;
+$logoSalmonColor: #c77665;
+$creamColor: #F8F0C6;
 
 .App {
   text-align: center;
@@ -58,6 +59,10 @@ $logoSalmonColor: #db6c4b;
   color: white;
   background: $logoSalmonColor;
 }
+.on-track-btn-cream {
+  background: $creamColor;
+  color: navy;
+}
 .on-track-background {
   //background-color: $logoSalmonColor;
   //color: white
@@ -65,4 +70,5 @@ $logoSalmonColor: #db6c4b;
 .on-track-separator {
   width: 100%;
   border-bottom: 1px solid logoNavyColorCreator(.2);
+  margin-bottom: 20px;
 }

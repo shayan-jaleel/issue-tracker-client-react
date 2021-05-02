@@ -1,6 +1,8 @@
 import {Link, useHistory, useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import issuesService from "../../services/issues-service";
+import commentsService from "../../services/comments-service";
+import CommentCard from "../comments/comment-card";
 
 const IssueDetails = () => {
     const {issueId} = useParams();
@@ -11,7 +13,7 @@ const IssueDetails = () => {
     const [issueType, setIssueType] = useState('BUG')
     const [editing, setEditing] = useState(false)
     const [showComments, setShowComments] = useState(false)
-    const [comments, setComments] = useState([])
+    const [comments, setComments] = useState(null)
     const history = useHistory()
     useEffect(() => {
         setIssue(issue)
@@ -22,9 +24,17 @@ const IssueDetails = () => {
             setIssuePriority(issue.priority)
             setIssueStatus(issue.status)
             setIssueType(issue.type)
-            setComments(issue.comments)
         })
+
     }, [issue])
+
+    const getComments = () => {
+        if(!comments) {
+            commentsService.findCommentsForIssue(issueId).then((comments) => {
+                setComments(comments)
+            })
+        }
+    }
 
     const resetIssueFields = () => {
         setIssueDescription('')
@@ -183,15 +193,16 @@ const IssueDetails = () => {
             <ul className="nav nav-pills btn">
                 <li className={`nav-item nav-link ${showComments? 'on-track-btn-active' : 'on-track-btn-idle'}`}
                     onClick={() => {
-                    setShowComments(!showComments)
+                        setShowComments(!showComments)
+                        getComments()
                 }}>Comments</li>
             </ul>
-            <ul className="list-group">
-                {showComments &&
-                comments.map((comment) => <li className="list-group-item">
-                    {comment.text}
-                </li>)}
-            </ul>
+            <div className="">
+                {showComments && comments &&
+                comments.map((comment) => <div className="" key={comment.id}>
+                    <CommentCard author={comment.user.username} text={comment.text}/>
+                </div>)}
+            </div>
             </div>
         </>
     )
