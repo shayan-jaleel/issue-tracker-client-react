@@ -1,10 +1,12 @@
-$logoNavyColor: #000080;
+$logoNavyColor: rgb(0, 0, 128);
 $logoSalmonColor: #db6c4b;
 
 .App {
   text-align: center;
 }
-
+@function logoNavyColorCreator($opacity) {
+  @return rgba(0, 0, 128, $opacity);
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -47,7 +49,20 @@ $logoSalmonColor: #db6c4b;
 .on-track-logo-alt {
   color: $logoSalmonColor
 }
+.on-track-btn-idle {
+  color: $logoNavyColor;
+  background: white;
+  border: 1px solid $logoSalmonColor;
+}
+.on-track-btn-active {
+  color: white;
+  background: $logoSalmonColor;
+}
 .on-track-background {
   //background-color: $logoSalmonColor;
   //color: white
+}
+.on-track-separator {
+  width: 100%;
+  border-bottom: 1px solid logoNavyColorCreator(.2);
 }

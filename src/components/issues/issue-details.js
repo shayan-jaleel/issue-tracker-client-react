@@ -10,6 +10,8 @@ const IssueDetails = () => {
     const [issueStatus, setIssueStatus] = useState('OPEN')
     const [issueType, setIssueType] = useState('BUG')
     const [editing, setEditing] = useState(false)
+    const [showComments, setShowComments] = useState(false)
+    const [comments, setComments] = useState([])
     const history = useHistory()
     useEffect(() => {
         setIssue(issue)
@@ -20,6 +22,7 @@ const IssueDetails = () => {
             setIssuePriority(issue.priority)
             setIssueStatus(issue.status)
             setIssueType(issue.type)
+            setComments(issue.comments)
         })
     }, [issue])
 
@@ -46,8 +49,8 @@ const IssueDetails = () => {
     }
 
 
-    return (
-                <div className="container ml-n3">
+    return (<>
+                <div className="container ml-n3 on-track-separator">
                     <h3 className="mb-5">
                         Issue {issueId}
                         <i className="fas fa-trash btn float-right"
@@ -176,6 +179,21 @@ const IssueDetails = () => {
                         </div>
                     </div>
         </div>
+            <div className="ml-n3">
+            <ul className="nav nav-pills btn">
+                <li className={`nav-item nav-link ${showComments? 'on-track-btn-active' : 'on-track-btn-idle'}`}
+                    onClick={() => {
+                    setShowComments(!showComments)
+                }}>Comments</li>
+            </ul>
+            <ul className="list-group">
+                {showComments &&
+                comments.map((comment) => <li className="list-group-item">
+                    {comment.text}
+                </li>)}
+            </ul>
+            </div>
+        </>
     )
 }
 export default IssueDetails
