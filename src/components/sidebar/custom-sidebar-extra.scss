@@ -1,8 +1,9 @@
+@import '../../../src/App';
 // Your variable overrides
 $sidebar-bg-color: #ffffff;
 $sidebar-color: #AA8D68;
 //$sidebar-color: #C8987F;
-$icon-bg-color: #db6c4b;
+$icon-bg-color: $logoSalmonColor;
 //$icon-bg-color: #2b2b2b;
 $highlight-color: #000080;
 

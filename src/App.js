@@ -25,7 +25,7 @@ import './components/sidebar/custom-sidebar-style.scss'
 
 function App() {
   return (
-      <div className="custom-flex-parent">
+      <div className="custom-flex-parent on-track-background">
         <Provider store={store}>
             <BrowserRouter>
                 <PersistGate persistor={persistor}>
