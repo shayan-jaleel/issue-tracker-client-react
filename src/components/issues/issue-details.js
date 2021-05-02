@@ -4,6 +4,7 @@ import issuesService from "../../services/issues-service";
 import commentsService from "../../services/comments-service";
 import CommentCard from "../comments/comment-card";
 import {connect} from "react-redux";
+import CommentList from "../comments/comment-list";
 
 const IssueDetails = ({userLoggedIn}) => {
     const {issueId} = useParams();
@@ -31,14 +32,6 @@ const IssueDetails = ({userLoggedIn}) => {
 
     }, [issue])
 
-    const getComments = () => {
-        if(!comments) {
-            commentsService.findCommentsForIssue(issueId).then((comments) => {
-                setComments(comments)
-            })
-        }
-    }
-
     const resetIssueFields = () => {
         setIssueDescription('')
         setIssuePriority('HIGH')
@@ -54,11 +47,6 @@ const IssueDetails = ({userLoggedIn}) => {
             status: issueStatus
         }
         issuesService.updateIssue(issueId, newIssue).then(issue => setIssue(issue))
-        // resetIssueFields()
-        // setIssueDescription('')
-        // setIssuePriority('HIGH')
-        // setIssueStatus('OPEN')
-        // setIssueType('BUG')
     }
 
 
@@ -197,36 +185,10 @@ const IssueDetails = ({userLoggedIn}) => {
                 <li className={`nav-item nav-link btn ${showComments? 'on-track-btn-active' : 'on-track-btn-idle'}`}
                     onClick={() => {
                         setShowComments(!showComments)
-                        getComments()
+                        // getComments()
                 }}>Comments</li>
             </ul>
-            <div className="">
-                {
-                    showComments &&
-                    <div>
-                        <textarea className="form-control mb-2 mt-4 w-75"
-                                  onChange={(e) => setWrittenComment(e.target.value)}
-                                  onFocus={() => setCommentInFocus(true)}
-                                  onBlur={() => setCommentInFocus(false)}
-                                  value={writtenComment}
-                                  placeholder="Add a comment..."
-                                  rows="3"/>
-                        {commentInFocus && <div className=" btn on-track-btn-active mb-4"
-                                                onMouseDown={event => event.preventDefault()}
-                                                onClick={() => {
-                            commentsService.postComment(issueId, userLoggedIn.id, {text: writtenComment})
-                            .then(returnedComment => {
-                                setWrittenComment('')
-                                setComments([...comments, returnedComment])
-                            })
-                        }}>Post</div>}
-                    </div>
-                }
-                {showComments && comments &&
-                comments.map((comment) => <div className="" key={comment.id}>
-                    <CommentCard author={comment.user.username} text={comment.text}/>
-                </div>)}
-            </div>
+                {showComments && <CommentList userLoggedIn={userLoggedIn} issueId={issueId}/>}
             </div>
         </>
     )
