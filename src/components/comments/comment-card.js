@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import './comment-style.scss'
 import {IoIosSave, MdCancel, MdEdit} from "react-icons/all";
+import {connect} from "react-redux";
 
 const CommentCard = ({comment, updateComment, userLoggedIn}) => {
     const [editing, setEditing] = useState(false)
@@ -9,9 +10,9 @@ const CommentCard = ({comment, updateComment, userLoggedIn}) => {
         <div className="mt-2 mb-3 mr-3">
             <div className="card comment-text">
                 <div className="card-header comment-box-padding comment-header font-weight-bold">
-                    {comment.user.username}
+                    {comment.user.id === userLoggedIn.id ? <span style={{color: "#ba2f2f"}}>YOU</span>: comment.user.username}
                     {
-                        !editing &&
+                        !editing && comment.user.id === userLoggedIn.id &&
                         <MdEdit className="float-right on-track-icon" size="1.5rem" onClick={() => {
                             setEditing(true)
                         }}/>
@@ -51,4 +52,5 @@ const CommentCard = ({comment, updateComment, userLoggedIn}) => {
     )
 }
 
-export default CommentCard
+const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
+export default connect(stpm)(CommentCard)
