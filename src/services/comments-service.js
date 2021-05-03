@@ -10,6 +10,10 @@ const findCommentsForIssue = (issueId) =>
     fetch(`${ISSUES_URL}/${issueId}/comments`)
         .then(response => response.json())
 
+const findPaginatedCommentsForIssue = (issueId, pageNum, pageSize) =>
+    fetch(`${ISSUES_URL}/${issueId}/comments?pageNum=${pageNum}&pageSize=${pageSize}`)
+        .then(response => response.json())
+
 
 const findCommentsForUser = (userId) =>
     fetch(`${USERS_URL}/${userId}/comments`)
@@ -50,6 +54,7 @@ const deleteComment = (commentId) =>
 const commentsService = {
     findAllComments,
     findCommentsForIssue,
+    findPaginatedCommentsForIssue,
     findCommentsForUser,
     postComment,
     updateComment,
