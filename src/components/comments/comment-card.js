@@ -11,7 +11,7 @@ const CommentCard = ({comment, updateComment, userLoggedIn}) => {
         return `${time.toLocaleTimeString()}, ${time.toLocaleDateString()}`
     }
     return (
-        <div className="mt-2 mb-3 mr-3">
+        <div className="mt-2 mb-3 mr-3 w-75">
             <div className="card comment-text">
                 <div className="card-header comment-box-padding comment-header font-weight-bold">
                     {comment.user.id === userLoggedIn.id ?
