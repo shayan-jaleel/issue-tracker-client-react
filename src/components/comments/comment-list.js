@@ -10,6 +10,17 @@ const CommentList = ({userLoggedIn, issueId}) => {
         getComments()
     }, [userLoggedIn])
 
+    const postComment = () => {
+        let createdComment = {
+            text: writtenComment,
+            creationTime: Date.now()
+        }
+        commentsService.postComment(issueId, userLoggedIn.id, createdComment)
+            .then(returnedComment => {
+                setWrittenComment('')
+                setComments([...comments, returnedComment])
+            })
+    }
     const updateComment = (comment) => commentsService.updateComment(comment.id, comment)
     const getComments = () => {
         if(!comments) {
@@ -34,13 +45,7 @@ const CommentList = ({userLoggedIn, issueId}) => {
                     commentInFocus &&
                     <div className=" btn on-track-btn-active mb-4"
                         onMouseDown={event => event.preventDefault()}
-                        onClick={() => {
-                            commentsService.postComment(issueId, userLoggedIn.id, {text: writtenComment})
-                                .then(returnedComment => {
-                                    setWrittenComment('')
-                                    setComments([...comments, returnedComment])
-                                })
-                        }}>Post
+                        onClick={() => postComment()}>Post
                     </div>}
             </div>
             }
