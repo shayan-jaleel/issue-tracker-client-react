@@ -70,7 +70,7 @@ const CommentList = ({userLoggedIn, issueId}) => {
             </div>
             }
             {
-                comments &&
+                comments && comments.length > 0 &&
                 <div className="mt-4 mb-3">
                     Show
                     <select onChange={(e) => {
@@ -96,7 +96,7 @@ const CommentList = ({userLoggedIn, issueId}) => {
                         </div>)
             }
             {
-                comments &&
+                comments && comments.length > 0 &&
                 <div className="w-75">
                     {
                         commentsMeta &&
