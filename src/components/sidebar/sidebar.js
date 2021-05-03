@@ -13,6 +13,7 @@ import {useState} from "react";
 import './custom-sidebar-style.scss'
 import './custom-sidebar-extra.scss'
 import {
+    SET_SIDEBAR_ACTIVE_HOME,
     SET_SIDEBAR_ACTIVE_MANAGE_USERS,
     SET_SIDEBAR_ACTIVE_MY_ISSUES,
     SET_SIDEBAR_ACTIVE_MY_PROFILE,
@@ -32,6 +33,10 @@ const Sidebar = ({sidebarActive}) => {
                          </div>
                     </SidebarHeader>
                     <Menu iconShape="circle">
+                        <MenuItem icon={<CgProfile size="2em" color="white"/>}
+                                  active={sidebarActive === SET_SIDEBAR_ACTIVE_HOME}>
+                            <span className="custom-menu-item font-weight-bold">Home<Link to="/"/></span>
+                        </MenuItem>
                         <MenuItem icon={<FaUsersCog size="2em" color="white"/>}
                                   active={sidebarActive === SET_SIDEBAR_ACTIVE_MANAGE_USERS}>
                             <span className="custom-menu-item font-weight-bold">Manage Users<Link to="/user-roles"/></span>
