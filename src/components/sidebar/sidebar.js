@@ -6,7 +6,7 @@ import {
     CgProfile,
     FaUsersCog, GiFiles,
     IoChevronBackCircleSharp,
-    IoChevronForwardCircleSharp,
+    IoChevronForwardCircleSharp, IoHome,
     VscFileSubmodule
 } from "react-icons/all";
 import {useState} from "react";
@@ -33,7 +33,7 @@ const Sidebar = ({sidebarActive}) => {
                          </div>
                     </SidebarHeader>
                     <Menu iconShape="circle">
-                        <MenuItem icon={<CgProfile size="2em" color="white"/>}
+                        <MenuItem icon={<IoHome size="2em" color="white"/>}
                                   active={sidebarActive === SET_SIDEBAR_ACTIVE_HOME}>
                             <span className="custom-menu-item font-weight-bold">Home<Link to="/"/></span>
                         </MenuItem>
