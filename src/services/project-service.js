@@ -5,6 +5,10 @@ const findAllProjects = () =>
     fetch(PROJECTS_URL)
         .then(response => response.json())
 
+const findAllPaginatedProjects = (pageNum, pageSize) =>
+    fetch(`${PROJECTS_URL}?pageNum=${pageNum}&pageSize=${pageSize}`)
+        .then(response => response.json())
+
 const findProject = (projectId) =>
     fetch(`${PROJECTS_URL}/${projectId}`)
         .then(response => response.json())
@@ -46,6 +50,7 @@ const projectService = {
     updateProject,
     findProject,
     findAllProjects,
+    findAllPaginatedProjects,
     deleteProject,
     findProjectsForUser
 }
