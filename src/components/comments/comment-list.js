@@ -25,14 +25,18 @@ const CommentList = ({userLoggedIn, issueId}) => {
             })
     }
     const updateComment = (comment) => commentsService.updateComment(comment.id, comment)
+        .then((returnedComment) => {
+            comment.text = returnedComment.text
+            comment.edited = returnedComment.edited
+        })
     const getComments = () => {
         if(!comments) {
             commentsService.findCommentsForIssue(issueId).then((commentsPage) => {
-                setComments(commentsPage.comments)
+                setComments(commentsPage.items)
                 setCommentsMeta({
                     currentPage: commentsPage.currentPage,
                     totalPages: commentsPage.totalPages,
-                    totalComments: commentsPage.totalComments,
+                    totalItems: commentsPage.totalItems,
                     pageSize: commentsPage.pageSize
                 })
             })
@@ -40,11 +44,11 @@ const CommentList = ({userLoggedIn, issueId}) => {
     }
     const getPaginatedComments = (pageNum, pageSize) => {
         commentsService.findPaginatedCommentsForIssue(issueId, pageNum, pageSize).then((commentsPage) => {
-            setComments(commentsPage.comments)
+            setComments(commentsPage.items)
             setCommentsMeta({
                 currentPage: commentsPage.currentPage,
                 totalPages: commentsPage.totalPages,
-                totalComments: commentsPage.totalComments,
+                totalItems: commentsPage.totalItems,
                 pageSize: commentsPage.pageSize
             })
         })
@@ -102,10 +106,10 @@ const CommentList = ({userLoggedIn, issueId}) => {
                         commentsMeta &&
                         <div>
                             Showing <span>{(commentsMeta.currentPage - 1) * commentsMeta.pageSize + 1}</span>
-                            <span className="ml-1 mr-1">to {Math.min(commentsMeta.totalComments,
+                            <span className="ml-1 mr-1">to {Math.min(commentsMeta.totalItems,
                                 (commentsMeta.currentPage) * commentsMeta.pageSize)}
                             </span>
-                            <span>of {commentsMeta.totalComments} comments</span>
+                            <span>of {commentsMeta.totalItems} comments</span>
                         </div>
                     }
                     {
