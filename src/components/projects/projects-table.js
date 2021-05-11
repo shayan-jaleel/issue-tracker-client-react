@@ -80,7 +80,7 @@ const ProjectsTable = ({
             }
             {userLoggedIn ? null : <Redirect to="/login"/>}
             <div className="mr-3">
-            <h3>Projects</h3>
+            <h2 className="font-weight-bold ml-3 mt-1" style={{color: "navy"}}>Projects</h2>
             <div className="container-fluid">
             {
                 projects && projects.length > 0 &&

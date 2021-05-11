@@ -31,7 +31,7 @@ const CreateProject = ({setOpen, setProjects, projects}) => {
     }
     return (
         <>
-            <div className="p-2" style={{background: "#1261a0", color: "white", display: "flex"}}>
+            <div className="pr-2 pl-2 pt-2" style={{background: "#1261a0", color: "white", display: "flex"}}>
                 <AiFillFolderAdd className="mr-2" color="white" size="2.3em"/>
                 <h3>
                     <span>Create Project</span>
