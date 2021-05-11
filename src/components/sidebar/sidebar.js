@@ -24,7 +24,7 @@ const Sidebar = ({sidebarActive}) => {
     const [collapsed, setCollapsed] = useState(false);
 
     return (
-            <aside>
+            <aside style={{zIndex: 10}}>
                 <ProSidebar collapsed={collapsed} width="250px" className="custom-sidebar">
                     <SidebarHeader>
                          <div className="m-2 ml-4 custom-button" onClick={() => setCollapsed(!collapsed)}>

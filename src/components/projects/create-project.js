@@ -1,8 +1,11 @@
 import {Link} from "react-router-dom";
 import React, {useState} from 'react'
 import projectService from "../../services/project-service"
+import {AiFillCloseCircle, AiFillCloseSquare, AiFillFolderAdd} from "react-icons/all";
 
-const CreateProject = () => {
+
+
+const CreateProject = ({setOpen}) => {
     const [projectTitle, setProjectTitle] = useState('')
     const [projectDescription, setProjectDescription] = useState('')
 
@@ -14,18 +17,21 @@ const CreateProject = () => {
         console.log('create service called')
         projectService.createProject(newProject).then(r => console.log(r))
     }
-
     return (
-        <div>
-            <div className="container ml-n4">
+        <>
+            <div className="p-2" style={{background: "#1261a0", color: "white", display: "flex"}}>
+                <AiFillFolderAdd className="mr-2" color="white" size="2.3em"/>
                 <h3>
-                    Create Project
+                    <span>Create Project</span>
                 </h3>
-
+                {/*<AiFillCloseSquare className="" size="2.3em" color="#ba2f2f"*/}
+                {/*                   style={{marginLeft: "auto", padding: "0"}}/>*/}
+            </div>
+            <div className="container-fluid">
                 {/*Title*/}
                 <div className="mt-4 row">
                     <label htmlFor="project-title"
-                           className="col-sm-2 col-form-label">
+                           className="col-sm-2 col-form-label font-weight-bold">
                         Title
                     </label>
                     <div className="col-sm-10">
@@ -40,12 +46,11 @@ const CreateProject = () => {
                 {/*Description*/}
                 <div className="mt-3 row">
                     <label htmlFor="project-description"
-                           className="col-sm-2 col-form-label">
+                           className="col-sm-2 col-form-label font-weight-bold">
                         Description
                     </label>
                     <div className="col-sm-10">
-                        <textarea type="text"
-                                  className="form-control"
+                        <textarea className="form-control"
                                   id="project-description"
                                   onChange={(e) => setProjectDescription(e.target.value)}
                                   value={projectDescription}
@@ -62,6 +67,7 @@ const CreateProject = () => {
                     </label>
                     <div className="col-sm-10">
                         <div className="btn btn-success btn-block"
+                             style={{background: "#1261a0"}}
                              onClick={createProject}>
                             Create
                         </div>
@@ -69,20 +75,21 @@ const CreateProject = () => {
                 </div>
 
                 {/*cancel*/}
-                <div className="mt-3 row">
+                <div className="mt-3 row mb-3">
                     <label htmlFor="dob"
                            className="col-sm-2 col-form-label">
 
                     </label>
                     <div className="col-sm-10">
-                        <Link to="/" className="btn btn-danger btn-block">
+                        <div className="btn btn-danger btn-block"
+                              style={{background: "#ba2f2f"}} onClick={() => setOpen(false)}>
                             Cancel
-                        </Link>
+                        </div>
                     </div>
                 </div>
 
             </div>
-        </div>
+        </>
     )
 }
 
