@@ -112,7 +112,9 @@ const ProjectsTable = ({
                         {
                             userLoggedIn && userLoggedIn.role.name === 'ADMIN' &&
                             <div className="on-track-icon float-right pl-1 pr-1 pt-1"
-                                  style={{border: "1px solid navy", display: "flex", background: "#1261a0"}} onClick={() => {
+                                    style={{border: "1px solid navy", display: "flex",
+                                      background: "#1261a0", borderRadius: 4}}
+                                    onClick={() => {
                                 setShowCreateProject(true)
                                 console.log(showCreateProject)
                             }}>
