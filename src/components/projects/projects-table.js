@@ -75,7 +75,7 @@ const ProjectsTable = ({
                 <Modal style={customStyles} isOpen={showCreateProject} onRequestClose={() => {
                         setShowCreateProject(false)
                     }}>
-                    <CreateProject setOpen={setShowCreateProject}/>
+                    <CreateProject setOpen={setShowCreateProject} setProjects={setProjects}/>
                 </Modal>
             }
             {userLoggedIn ? null : <Redirect to="/login"/>}
