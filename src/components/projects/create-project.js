@@ -2,12 +2,14 @@ import {Link} from "react-router-dom";
 import React, {useState} from 'react'
 import projectService from "../../services/project-service"
 import {AiFillCloseCircle, AiFillCloseSquare, AiFillFolderAdd} from "react-icons/all";
+import {useToasts} from "react-toast-notifications";
 
 
 
 const CreateProject = ({setOpen}) => {
     const [projectTitle, setProjectTitle] = useState('')
     const [projectDescription, setProjectDescription] = useState('')
+    const { addToast } = useToasts();
 
     const createProject = () => {
         const newProject = {
@@ -15,7 +17,15 @@ const CreateProject = ({setOpen}) => {
             description: projectDescription
         }
         console.log('create service called')
-        projectService.createProject(newProject).then(r => console.log(r))
+        // addToast(`Success!`,
+        //     {appearance: 'error', autoDismiss: true, autoDismissTimeout: 3000})
+        projectService.createProject(newProject).then(createdProject => {
+            console.log(createdProject)
+            setOpen(false)
+            addToast('Saved Successfully!',
+                { appearance: 'success', autoDismiss: true, autoDismissTimeout: 3000 });
+        }).catch(e => addToast(`Failed! ${e}`,
+            { appearance: 'success', autoDismiss: true, autoDismissTimeout: 3000 }))
     }
     return (
         <>

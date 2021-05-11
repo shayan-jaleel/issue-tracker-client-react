@@ -22,9 +22,49 @@ import {store, persistor} from "./redux/store";
 import CreateProject from "./components/projects/create-project";
 import ManageProjectUsers from "./components/users/manage-project-users";
 import './components/sidebar/custom-sidebar-style.scss'
+import {DefaultToast, ToastProvider} from "react-toast-notifications";
+import {AiFillCheckCircle, RiErrorWarningFill} from "react-icons/all";
 
+export const MyCustomToast = ({ children, appearance, ...props }) => {
+    return (
+        <>
+        {
+            appearance && appearance === 'success' &&
+            <div className="pr-2 pt-1 pb-1"
+                 style={{
+                     background: '#1261a0',
+                     color: "white",
+                     border: '1px solid black',
+                     minWidth: 300,
+                     borderRadius: 10
+                 }}>
+                <div className="ml-2 mr-2" style={{display: "flex"}}>
+                    <div className="mr-3"><AiFillCheckCircle size="1.5em"/></div>
+                    <div className="mr-3" style={{flexBasis: 200}}>{children}</div>
+                </div>
+            </div>
+        }
+        {
+            appearance && appearance === 'error' &&
+            <div className="pr-2 pt-1 pb-1"
+                 style={{
+                     background: '#ba2f2f',
+                     color: "white",
+                     border: '1px solid black',
+                     minWidth: 300,
+                     borderRadius: 10
+                 }}>
+                <div className="ml-2 mr-2" style={{display: "flex"}}>
+                    <div className="mr-3"><RiErrorWarningFill size="1.5em"/></div>
+                    <div className="mr-3" style={{flexBasis: 200}}>{children}</div>
+                </div>
+            </div>
+        }
+        </>)
+}
 function App() {
   return (
+      <ToastProvider components={{ Toast: MyCustomToast }}>
       <div className="custom-flex-parent on-track-background">
         <Provider store={store}>
             <BrowserRouter>
@@ -57,6 +97,7 @@ function App() {
             </BrowserRouter>
         </Provider>
       </div>
+      </ToastProvider>
   );
 }
 
