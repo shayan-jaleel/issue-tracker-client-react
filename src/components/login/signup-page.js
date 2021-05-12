@@ -150,10 +150,15 @@ const dtpm = (dispatch) => ({
             username,
             password
         }
-        sessionService.register(user).then(actualUser => dispatch({
-            type: SET_CURRENT_USER,
-            userLoggedIn: actualUser
-        }))
+        sessionService.register(user)
+            .then(actualUser => {
+                console.log(actualUser)
+                return dispatch({
+                    type: SET_CURRENT_USER,
+                    userLoggedIn: actualUser
+                })
+            }
+        )
     }
 })
 

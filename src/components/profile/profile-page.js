@@ -23,6 +23,7 @@ const ProfilePage = ({
 
     useEffect(() => {
         if(userLoggedIn) {
+            console.log(userLoggedIn)
             setSidebarActive()
             setUsername(userLoggedIn.username ? userLoggedIn.username : '')
             setFirstname(userLoggedIn.firstname ? userLoggedIn.firstname : '')
@@ -159,9 +160,9 @@ const ProfilePage = ({
                                 value={role}
                                 onChange={(e) => setRole(e.target.value)}
                                 disabled={true}>
-                            <option>Admin</option>
-                            <option>Developer</option>
-                            <option>Manager</option>
+                            <option value="ADMIN">Admin</option>
+                            <option value="DEVELOPER">Developer</option>
+                            <option value="MANAGER">Manager</option>
                         </select>
                     </div>
                 </div>

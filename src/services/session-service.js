@@ -25,7 +25,6 @@ const register = (user) =>
             'content-type' : 'application/json'
         }
     }).then(response => {
-        console.log(response)
         return response.json()
     })
 

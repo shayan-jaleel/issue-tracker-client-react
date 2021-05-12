@@ -80,7 +80,7 @@ const ProjectsTable = ({
             }
             {userLoggedIn ? null : <Redirect to="/login"/>}
             <div className="mr-3">
-            <h2 className="font-weight-bold ml-3 mt-1" style={{color: "navy"}}>Projects</h2>
+            <h2 className="ml-3 mt-1" style={{color: "navy"}}>Projects Summary</h2>
             <div className="container-fluid">
             {
                 projects && projects.length > 0 &&
@@ -119,7 +119,7 @@ const ProjectsTable = ({
                                 console.log(showCreateProject)
                             }}>
                                 <AiFillFolderAdd className="mb-1 mr-1" color="white" size="2em"/>
-                                <div className="mt-1" style={{color: "white"}}>Create Project</div>
+                                <div className="mt-1" style={{color: "white", whiteSpace: "normal"}}>Create Project</div>
                             </div>
                         }
                     </th>
@@ -164,14 +164,14 @@ const ProjectsTable = ({
                                 {itemsMeta.currentPage !== itemsMeta.totalPages
                                 &&
                                 <div className="btn btn-sm btn-secondary float-right mb-3 ml-2" onClick={() =>
-                                    getPaginatedItems(itemsMeta.currentPage+1, 5)}>
+                                    getPaginatedItems(itemsMeta.currentPage+1, numItemsPerPage)}>
                                     Next
                                 </div>
                                 }
                                 <div className="btn btn-sm float-right mb-3 ml-2"> {itemsMeta.currentPage}</div>
                                 {itemsMeta.currentPage !== 1 &&
                                 <div className="btn btn-sm btn-secondary float-right mb-3" onClick={() =>
-                                    getPaginatedItems(itemsMeta.currentPage-1, 5)}>
+                                    getPaginatedItems(itemsMeta.currentPage-1, numItemsPerPage)}>
                                     Previous
                                 </div>
                                 }
