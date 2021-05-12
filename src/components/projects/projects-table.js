@@ -121,7 +121,7 @@ const ProjectsTable = ({
                                 console.log(showCreateProject)
                             }}>
                                 <AiFillFolderAdd className="mb-1 mr-1" color="white" size="2em"/>
-                                <div className="mt-1" style={{color: "white", whiteSpace: "normal"}}>Create Project</div>
+                                <div className="mt-1" style={{color: "white", whiteSpace: "nowrap"}}>Create Project</div>
                             </div>
                         }
                     </th>
