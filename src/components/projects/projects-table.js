@@ -75,7 +75,9 @@ const ProjectsTable = ({
                 <Modal style={customStyles} isOpen={showCreateProject} onRequestClose={() => {
                         setShowCreateProject(false)
                     }}>
-                    <CreateProject setOpen={setShowCreateProject} setProjects={setProjects}/>
+                    <CreateProject setOpen={setShowCreateProject}
+                                   numItemsPerPage={numItemsPerPage}
+                                   getPaginatedItems={getPaginatedItems}/>
                 </Modal>
             }
             {userLoggedIn ? null : <Redirect to="/login"/>}

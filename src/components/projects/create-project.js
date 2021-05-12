@@ -6,7 +6,7 @@ import {useToasts} from "react-toast-notifications";
 
 
 
-const CreateProject = ({setOpen, setProjects, projects}) => {
+const CreateProject = ({setOpen, numItemsPerPage, getPaginatedItems}) => {
     const [projectTitle, setProjectTitle] = useState('')
     const [projectDescription, setProjectDescription] = useState('')
     const { addToast } = useToasts();
@@ -21,8 +21,7 @@ const CreateProject = ({setOpen, setProjects, projects}) => {
         //     {appearance: 'error', autoDismiss: true, autoDismissTimeout: 3000})
         projectService.createProject(newProject).then(createdProject => {
             console.log(createdProject)
-            setProjects(prevProjects => [createdProject, ...prevProjects])
-            console.log(projects)
+            getPaginatedItems(1, numItemsPerPage)
             setOpen(false)
             addToast('Saved Successfully!',
                 { appearance: 'success', autoDismiss: true, autoDismissTimeout: 3000 });
