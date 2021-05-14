@@ -18,7 +18,7 @@ const IssuesSummaryTable = ({userIssues}) => {
                 </thead>
                 <tbody>
                 {
-                    userIssues.map(issue =>
+                    userIssues && userIssues.map(issue =>
                         <IssuesSummaryRow
                             // key={issue.id}
                             key={issue.issueId}
