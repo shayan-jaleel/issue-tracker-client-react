@@ -141,7 +141,7 @@ const IssueDetails = ({userLoggedIn}) => {
 
                         </label>
                         <div className="col-sm-10">
-                            <div className="btn btn-success btn-block"
+                            <div style={{color: "white", background:"#1261a0"}} className="btn btn-success btn-block"
                                  onClick={() => {
                                      updateIssue()
                                      setEditing(false)
@@ -151,6 +151,7 @@ const IssueDetails = ({userLoggedIn}) => {
                         </div>
                     </div>
                     }
+                    {/*edit*/}
                     {
                         !editing &&
                         <div className="mb-3 row">
@@ -159,7 +160,7 @@ const IssueDetails = ({userLoggedIn}) => {
 
                             </label>
                             <div className="col-sm-10">
-                                <div className="btn btn-success btn-block"
+                                <div style={{color: "white", background:"#1261a0"}} className="btn btn-success btn-block"
                                      onClick={() => setEditing(true)}>
                                     Edit
                                 </div>
@@ -174,9 +175,13 @@ const IssueDetails = ({userLoggedIn}) => {
 
                         </label>
                         <div className="col-sm-10">
-                            <Link to="/" className="btn btn-danger btn-block">
+                            <div style={{color: "white", background:"#ba2f2f"}}
+                                 className="btn btn-danger btn-block"
+                                 onClick={() => {
+                                     history.goBack()
+                                 }}>
                                 Cancel
-                            </Link>
+                            </div>
                         </div>
                     </div>
         </div>
