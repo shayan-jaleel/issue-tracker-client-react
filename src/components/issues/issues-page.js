@@ -99,9 +99,10 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
                     <div className="mt-4 mb-3">
                         Show
                         <select onChange={(e) => {
-                                    let selectedVal = parseInt(e.target.value)
+                                    const selectedVal = parseInt(e.target.value)
                                     setNumItemsPerPage(selectedVal)
-                                    history.push(`/issues?description=${description}&pageNum=1&pageSize=${selectedVal}`)
+                                    const descriptionInUrl = description? description : ""
+                                    history.push(`/issues?description=${descriptionInUrl}&pageNum=1&pageSize=${selectedVal}`)
                                     getPaginatedItems( 1, selectedVal, description)
                                 }}
                                 value={numItemsPerPage}
