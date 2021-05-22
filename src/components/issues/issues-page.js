@@ -69,7 +69,7 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
             {userLoggedIn ? null : <Redirect to="/login"/>}
             <div className="mr-3">
                 {/*<span className="row">*/}
-                <h3 className="">Issues Page for {userLoggedIn && userLoggedIn.username}
+                <h3 className=""  style={{color: "navy"}}>All Issues For <span style={{color:"#1261a0"}}>{userLoggedIn && userLoggedIn.username}</span>
                 <span className="d-none d-md-block float-right" style={{fontSize: 18}}>
                     <label htmlFor="issue-search-box">Search</label>
                     <input id="issue-search-box"
