@@ -5,6 +5,7 @@ import commentsService from "../../services/comments-service";
 import CommentCard from "../comments/comment-card";
 import {connect} from "react-redux";
 import CommentList from "../comments/comment-list";
+import {FaTrash, MdCancel} from "react-icons/all";
 
 const IssueDetails = ({userLoggedIn}) => {
     const {issueId} = useParams();
@@ -54,11 +55,17 @@ const IssueDetails = ({userLoggedIn}) => {
                 <div className="container ml-n3 on-track-separator">
                     <h3 className="mb-5">
                         Issue {issueId}
-                        <i className="fas fa-trash btn float-right"
-                           onClick={() => {
-                               issuesService.deleteIssue(issueId).then(r => history.goBack())
-                               resetIssueFields()
-                           }}/>
+                        <MdCancel size="1.5em" style={{color: "#ba2f2f"}}
+                                  className="float-right ml-3"
+                                  onClick={() => {history.goBack()}}
+                        />
+                        <div className="float-right">
+                            <FaTrash size="1.1em"
+                                     onClick={() => {
+                                         issuesService.deleteIssue(issueId).then(r => history.goBack())
+                                         resetIssueFields()
+                                     }}/>
+                        </div>
                     </h3>
 
                     {/*Description*/}
@@ -169,21 +176,24 @@ const IssueDetails = ({userLoggedIn}) => {
                     }
 
                     {/*cancel*/}
+                    {
+                    editing &&
                     <div className="mb-3 row">
                         <label htmlFor="dob"
                                className="col-sm-2 col-form-label">
 
                         </label>
                         <div className="col-sm-10">
-                            <div style={{color: "white", background:"#ba2f2f"}}
+                            <div style={{color: "white", background: "#ba2f2f"}}
                                  className="btn btn-danger btn-block"
                                  onClick={() => {
-                                     history.goBack()
+                                     history.go(0)
                                  }}>
                                 Cancel
                             </div>
                         </div>
                     </div>
+                    }
         </div>
             <div className="ml-n3">
             <ul className="nav nav-pills">
