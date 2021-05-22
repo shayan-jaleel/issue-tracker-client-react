@@ -15,7 +15,6 @@ const IssueDetails = ({userLoggedIn}) => {
     const [issueStatus, setIssueStatus] = useState('OPEN')
     const [issueType, setIssueType] = useState('BUG')
     const [editing, setEditing] = useState(false)
-    const [showComments, setShowComments] = useState(false)
     const [comments, setComments] = useState(null)
     const [writtenComment, setWrittenComment] = useState('')
     const [commentInFocus, setCommentInFocus] = useState(false)
@@ -52,7 +51,7 @@ const IssueDetails = ({userLoggedIn}) => {
 
 
     return (<>
-                <div className="container ml-n3 on-track-separator">
+                <div className="container ml-n3 on-track-separator w-75">
                     <h3 className="mb-5">
                         Issue {issueId}
                         <MdCancel size="1.5em" style={{color: "#ba2f2f"}}
@@ -195,15 +194,11 @@ const IssueDetails = ({userLoggedIn}) => {
                     </div>
                     }
         </div>
-            <div className="ml-n3">
+            <div className="container-fluid w-75">
             <ul className="nav nav-pills">
-                <li className={`nav-item nav-link btn ${showComments? 'on-track-btn-active' : 'on-track-btn-idle'}`}
-                    onClick={() => {
-                        setShowComments(!showComments)
-                        // getComments()
-                }}>Comments</li>
+                <li className={`nav-item nav-link btn on-track-btn-active`}>Comments</li>
             </ul>
-                {showComments && <CommentList userLoggedIn={userLoggedIn} issueId={issueId}/>}
+                {<CommentList userLoggedIn={userLoggedIn} issueId={issueId}/>}
             </div>
         </>
     )
