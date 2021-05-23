@@ -20,6 +20,10 @@ const findProjectsForUser = (userId) => {
         .then(response => response.json())
 }
 
+const findPaginatedIssuesForProject = (projectId, pageNum, pageSize) =>
+    fetch(`${PROJECTS_URL}/${projectId}/users-p?pageNum=${pageNum}&pageSize=${pageSize}`)
+        .then(response => response.json())
+
 const createProject = (project) =>
     fetch(PROJECTS_URL, {
         method: 'POST',
@@ -52,7 +56,8 @@ const projectService = {
     findAllProjects,
     findAllPaginatedProjects,
     deleteProject,
-    findProjectsForUser
+    findProjectsForUser,
+    findPaginatedIssuesForProject
 }
 
 export default projectService

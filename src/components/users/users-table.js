@@ -4,14 +4,13 @@ import {connect} from "react-redux";
 
 const UsersTable = ({users, projectId, userLoggedIn}) =>
     <div className="mt-3">
-        <h2>Users Table</h2>
         <table className="table table-striped">
             <thead>
             <tr>
                 <th className="d-none d-sm-table-cell">Username</th>
                 <th className="d-none d-sm-table-cell">Firstname</th>
                 <th className="d-none d-sm-table-cell">Lastname</th>
-                <th className="d-none d-sm-table-cell">Role</th>
+                <th className="d-none d-sm-table-cell">User ID</th>
                 <th>
                     {userLoggedIn && (userLoggedIn.role.name === 'ADMIN' || userLoggedIn.role.name === 'MANAGER') &&
                     <Link to={`/projects/${projectId}/manage-project-users`}>

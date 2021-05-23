@@ -13,6 +13,7 @@ const IssuesTable = ({issues, projectId, userLoggedIn}) => {
                     <th className="d-none d-sm-table-cell">Description</th>
                     <th className="d-none d-sm-table-cell">Type</th>
                     <th className="d-none d-sm-table-cell">Priority</th>
+                    <th className="d-none d-sm-table-cell">Status</th>
                     <th>
                         {
                         userLoggedIn && (userLoggedIn.role.name === 'ADMIN' || userLoggedIn.role.name === 'MANAGER') &&

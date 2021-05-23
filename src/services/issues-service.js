@@ -10,6 +10,10 @@ const findIssuesForProject = (projectId) =>
     fetch(`${PROJECTS_URL}/${projectId}/issues`)
         .then(response => response.json())
 
+const findPaginatedIssuesForProject = (projectId, pageNum, pageSize) =>
+    fetch(`${PROJECTS_URL}/${projectId}/issues?pageNum=${pageNum}&pageSize=${pageSize}`)
+        .then(response => response.json())
+
 
 const findIssuesForUser = (userId) =>
     fetch(`${USERS_URL}/${userId}/issues`)
@@ -80,7 +84,8 @@ const IssuesService = {
     createIssueForProject,
     updateIssue,
     deleteIssue,
-    findIssueById
+    findIssueById,
+    findPaginatedIssuesForProject
 }
 
 export default IssuesService

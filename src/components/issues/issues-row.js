@@ -6,7 +6,7 @@ const IssuesRow = ({issue}) => {
     return (
         <tr>
             <td className="text-right">
-                <Link to={decideUrl(projectId, issue)}>{issue.id}</Link>
+                <Link to={decideUrl(projectId, issue)}>{issue.issueId}</Link>
             </td>
             <td>
                 {issue.description}
@@ -18,11 +18,14 @@ const IssuesRow = ({issue}) => {
                 {issue.priority}
             </td>
             <td>
+                {issue.status}
+            </td>
+            <td>
             </td>
         </tr>
     )
 }
 const decideUrl = (projectId, issue) => {
-    return projectId? `/projects/${projectId}/issues/${issue.id}` : `/issues/${issue.id}`
+    return projectId? `/projects/${projectId}/issues/${issue.issueId}` : `/issues/${issue.issueId}`
 }
 export default IssuesRow

@@ -5,7 +5,7 @@ const UsersRow = ({user}) => {
         return (
         <tr>
         <td>
-                <Link to={`/projects/${projectId}/users/${user.id}`}>{user.username}</Link>
+                <Link to={`/projects/${projectId}/users/${user.userId}`}>{user.username}</Link>
         </td>
         <td>
             {user.firstname}
@@ -14,7 +14,7 @@ const UsersRow = ({user}) => {
             {user.lastname}
         </td>
         <td>
-            {user.role.name}
+            {user.userId}
         </td>
         <td>
         </td>
