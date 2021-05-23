@@ -128,7 +128,7 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
                                 <span className="ml-1 mr-1">to {Math.min(itemsMeta.totalItems,
                                     (itemsMeta.currentPage) * itemsMeta.pageSize)}
                             </span>
-                                <span>of {itemsMeta.totalItems} projects</span>
+                                <span>of {itemsMeta.totalItems} issues</span>
                             </div>
                         }
                         {
