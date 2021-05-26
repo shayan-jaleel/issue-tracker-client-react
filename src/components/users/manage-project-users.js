@@ -19,8 +19,10 @@ const ManageProjectUsers = () => {
         })
     }, [rerender])
     return(
-    <div className="mr-3">
-        <h3>Users for project {projectId}</h3>
+    <div className="mr-3 container-fluid mb-4">
+        <h4 style={{color: "navy"}} className="font-weight-bold">Users For Project
+            <span style={{color: "#1261a0"}}> {projectId}</span>
+        </h4>
         <div className="mt-3">
             <select onChange={(e) => setSelectedUser(e.target.value)}
                     value={selectedUser? selectedUser: 'no_selection'}
@@ -32,7 +34,7 @@ const ManageProjectUsers = () => {
                 <option value= 'no_selection'>Select User</option>
             </select>
         </div>
-        <button className="btn btn-success btn-block mt-2 mb-2"
+        <button className="btn btn-success btn-block mt-2 mb-2" style={{background: "#1261a0"}}
             onClick={() => {
                 userService.addUserToProject(projectId, selectedUser)
                     .then(r => {
@@ -81,8 +83,8 @@ const ManageProjectUsers = () => {
             }
             </tbody>
         </table>
-        <div className="">
-            <Link to={`/projects/${projectId}`} className="btn btn-danger btn-block">
+        <div className="" >
+            <Link to={`/projects/${projectId}`} className="btn btn-danger btn-block" style={{background: "#ba2f2f"}}>
                 Cancel
             </Link>
         </div>

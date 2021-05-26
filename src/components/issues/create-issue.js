@@ -1,13 +1,16 @@
 import {Link, useParams} from "react-router-dom";
 import React, {useState} from 'react'
 import issuesService from "../../services/issues-service"
+import {useToasts} from "react-toast-notifications";
+import {AiFillFileAdd, AiFillFolderAdd} from "react-icons/all";
 
-const CreateIssue = () => {
+const CreateIssue = ({setOpen, getPaginatedItems, numItemsPerPage}) => {
     const [issueDescription, setIssueDescription] = useState('')
     const [issuePriority, setIssuePriority] = useState('HIGH')
     const [issueStatus, setIssueStatus] = useState('OPEN')
     const [issueType, setIssueType] = useState('BUG')
     const {projectId} = useParams()
+    const { addToast } = useToasts();
 
     const createIssue = () => {
         const newIssue = {
@@ -17,7 +20,14 @@ const CreateIssue = () => {
             status: issueStatus
         }
         console.log('create service called')
-        issuesService.createIssueForProject(newIssue, projectId).then(r => console.log(r))
+        issuesService.createIssueForProject(newIssue, projectId).then(r => {
+            console.log(r)
+            getPaginatedItems(1, numItemsPerPage)
+            setOpen(false)
+            addToast('Saved Successfully!',
+                { appearance: 'success', autoDismiss: true, autoDismissTimeout: 3000 });
+        }).catch(e => addToast(`Failed! ${e}`,
+            { appearance: 'success', autoDismiss: true, autoDismissTimeout: 3000 }))
         setIssueDescription('')
         setIssuePriority('HIGH')
         setIssueStatus('OPEN')
@@ -25,14 +35,16 @@ const CreateIssue = () => {
     }
 
     return (
-        <div>
-            <div className="container ml-n3">
+        <>
+            <div className="pr-2 pl-2 pt-2" style={{background: "#1261a0", color: "white", display: "flex"}}>
+                <AiFillFileAdd className="mr-2" color="white" size="2.3em"/>
                 <h3>
-                    Create Issue
+                    <span>Create Issue</span>
                 </h3>
-
+            </div>
+            <div className="container-fluid">
                 {/*Description*/}
-                <div className="mt-3 row">
+                <div className="mt-4 row">
                     <label htmlFor="issue-description"
                            className="col-sm-2 col-form-label">
                         Description
@@ -106,6 +118,7 @@ const CreateIssue = () => {
                     </label>
                     <div className="col-sm-10">
                         <div className="btn btn-success btn-block"
+                             style={{background: "#1261a0"}}
                             onClick={createIssue}>
                             Create
                         </div>
@@ -113,20 +126,22 @@ const CreateIssue = () => {
                 </div>
 
                 {/*cancel*/}
-                <div className="mt-3 row">
+                <div className="mt-3 row mb-3">
                     <label htmlFor="dob"
                            className="col-sm-2 col-form-label">
 
                     </label>
                     <div className="col-sm-10">
-                        <Link to={`/projects/${projectId}`} className="btn btn-danger btn-block">
+                        <div className="btn btn-danger btn-block"
+                             style={{background: "#ba2f2f"}}
+                             onClick={() => setOpen(false)}>
                             Cancel
-                        </Link>
+                        </div>
                     </div>
                 </div>
 
             </div>
-        </div>
+        </>
     )
 }
 

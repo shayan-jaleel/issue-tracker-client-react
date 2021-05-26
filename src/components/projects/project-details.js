@@ -56,16 +56,18 @@ const ProjectDetails = () => {
         <div>
             <div className="container ml-n3">
                 <div className="card">
-                    <h5 className="card-header">Project: <span className="">{project.id}</span></h5>
+                    <h4 className="card-header font-weight-bold" style={{color: "navy"}}>
+                        Project: <span style={{color: "#1261a0"}}>{project.id}</span>
+                    </h4>
                     <div className="card-body">
-                        <h5 className="card-title"><span className="">{project.title}</span></h5>
+                        <h4 className="card-title" style={{color: "#1261a0"}}><span className="">{project.title}</span></h4>
                         <p className="card-text"><span className="">{project.description}</span></p>
                     </div>
                 </div>
                 <br/>
                 <ul className="list-group">
-                    <div className="mb-3">
-                    <h3>Project Issues</h3>
+                    <div className="mb-3 container-fluid border-bottom mt-2">
+                    <h4 className="font-weight-bold" style={{color: "navy"}}>Project Issues</h4>
                     {
                         issues && issues.length > 0 &&
                         <div className="mt-4 mb-1">
@@ -88,48 +90,49 @@ const ProjectDetails = () => {
                 {
 
                     issues &&
-                    <IssuesTable projectId={projectId} issues={issues}/>
+                    <IssuesTable projectId={projectId} issues={issues}
+                                 numItemsPerPage={numIssuesPerPage} getPaginatedItems={getPaginatedIssues}/>
                 }
-                    {
-                        issues && issues.length > 0 &&
-                        <div className="" style={{display: "flex"}}>
-                            {
-                                issuesMeta &&
-                                <div>
-                                    Showing <span>{(issuesMeta.currentPage - 1) * issuesMeta.pageSize + 1}</span>
-                                    <span className="ml-1 mr-1">to {Math.min(issuesMeta.totalItems,
-                                        (issuesMeta.currentPage) * issuesMeta.pageSize)}
-                            </span>
-                                    <span>of {issuesMeta.totalItems} issues</span>
+                {
+                    issues && issues.length > 0 &&
+                    <div className="" style={{display: "flex"}}>
+                        {
+                            issuesMeta &&
+                            <div>
+                                Showing <span>{(issuesMeta.currentPage - 1) * issuesMeta.pageSize + 1}</span>
+                                <span className="ml-1 mr-1">to {Math.min(issuesMeta.totalItems,
+                                    (issuesMeta.currentPage) * issuesMeta.pageSize)}
+                                </span>
+                                <span>of {issuesMeta.totalItems} issues</span>
+                            </div>
+                        }
+                        {
+                            issuesMeta &&
+                            <div style={{marginLeft: "auto"}} className="mr-3">
+                                {issuesMeta.currentPage !== issuesMeta.totalPages
+                                &&
+                                <div className="btn btn-sm btn-secondary float-right mb-3 ml-2" onClick={() => {
+                                    getPaginatedIssues(issuesMeta.currentPage + 1, numIssuesPerPage)
+                                }}>
+                                    Next
                                 </div>
-                            }
-                            {
-                                issuesMeta &&
-                                <div style={{marginLeft: "auto"}} className="mr-3">
-                                    {issuesMeta.currentPage !== issuesMeta.totalPages
-                                    &&
-                                    <div className="btn btn-sm btn-secondary float-right mb-3 ml-2" onClick={() => {
-                                        getPaginatedIssues(issuesMeta.currentPage + 1, numIssuesPerPage)
-                                    }}>
-                                        Next
-                                    </div>
-                                    }
-                                    <div className="btn btn-sm float-right mb-3 ml-2"> {issuesMeta.currentPage}</div>
-                                    {issuesMeta.currentPage !== 1 &&
-                                    <div className="btn btn-sm btn-secondary float-right mb-3" onClick={() => {
-                                        getPaginatedIssues(issuesMeta.currentPage - 1, numIssuesPerPage)
-                                    }}>
-                                        Previous
-                                    </div>
-                                    }
+                                }
+                                <div className="btn btn-sm float-right mb-3 ml-2"> {issuesMeta.currentPage}</div>
+                                {issuesMeta.currentPage !== 1 &&
+                                <div className="btn btn-sm btn-secondary float-right mb-3" onClick={() => {
+                                    getPaginatedIssues(issuesMeta.currentPage - 1, numIssuesPerPage)
+                                }}>
+                                    Previous
                                 </div>
-                            }
-                        </div>
-                    }
+                                }
+                            </div>
+                        }
+                    </div>
+                }
                     </div>
 
-                    <div>
-                    <h3>Project Users</h3>
+                    <div className="container-fluid mt-4">
+                    <h4 className="font-weight-bold" style={{color: "navy"}}>Project Users</h4>
                     {
                         users && users.length > 0 &&
                         <div className="mt-4 mb-1">
@@ -163,7 +166,7 @@ const ProjectDetails = () => {
                                     Showing <span>{(usersMeta.currentPage - 1) * usersMeta.pageSize + 1}</span>
                                     <span className="ml-1 mr-1">to {Math.min(usersMeta.totalItems,
                                         (usersMeta.currentPage) * usersMeta.pageSize)}
-                            </span>
+                                    </span>
                                     <span>of {usersMeta.totalItems} users</span>
                                 </div>
                             }
