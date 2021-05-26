@@ -5,7 +5,7 @@ import commentsService from "../../services/comments-service";
 import CommentCard from "../comments/comment-card";
 import {connect} from "react-redux";
 import CommentList from "../comments/comment-list";
-import {FaTrash, MdCancel} from "react-icons/all";
+import {FaTrash, IoMdTrash, MdCancel} from "react-icons/all";
 
 const IssueDetails = ({userLoggedIn}) => {
     const {issueId} = useParams();
@@ -50,22 +50,24 @@ const IssueDetails = ({userLoggedIn}) => {
     }
 
 
-    return (<>
-                <div className="container ml-n3 on-track-separator w-75">
-                    <h3 className="mb-5">
+    return (
+            <div className="container w-75">
+                <div className="container on-track-separator">
+                    <h4 className="mb-5 font-weight-bold" style={{color: "navy"}}>
                         Issue {issueId}
-                        <MdCancel size="1.5em" style={{color: "#ba2f2f"}}
+                        <MdCancel size="1.3em" style={{color: "#ba2f2f"}}
                                   className="float-right ml-3"
                                   onClick={() => {history.goBack()}}
                         />
-                        <div className="float-right">
-                            <FaTrash size="1.1em"
+                        {/*<div className="float-right">*/}
+                            <IoMdTrash size="1.3em"
+                                     className="float-right"
                                      onClick={() => {
                                          issuesService.deleteIssue(issueId).then(r => history.goBack())
                                          resetIssueFields()
                                      }}/>
-                        </div>
-                    </h3>
+                        {/*</div>*/}
+                    </h4>
 
                     {/*Description*/}
                     <div className="mb-3 row">
@@ -193,14 +195,14 @@ const IssueDetails = ({userLoggedIn}) => {
                         </div>
                     </div>
                     }
-        </div>
-            <div className="container-fluid w-75">
+            </div>
+            <div className="container-fluid">
             <ul className="nav nav-pills">
                 <li className={`nav-item nav-link btn on-track-btn-active`}>Comments</li>
             </ul>
                 {<CommentList userLoggedIn={userLoggedIn} issueId={issueId}/>}
             </div>
-        </>
+        </div>
     )
 }
 const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})

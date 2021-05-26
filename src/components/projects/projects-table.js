@@ -81,8 +81,8 @@ const ProjectsTable = ({
                 </Modal>
             }
             {userLoggedIn ? null : <Redirect to="/login"/>}
-            <div className="mr-3">
-            <h2 className="ml-3 mt-1" style={{color: "navy"}}>Projects Summary</h2>
+            <div className="mr-3 container-fluid">
+            <h4 className="ml-3 mt-1 font-weight-bold" style={{color: "navy"}}>Projects Summary</h4>
             <div className="container-fluid">
             {
                 projects && projects.length > 0 &&
@@ -103,11 +103,11 @@ const ProjectsTable = ({
                     entries
                 </div>
             }
-            <table className="table table-striped">
+            <table className="table table-striped border">
                 <thead style={{color: "navy"}}>
                 <tr>
-                    <th><h4>Name</h4></th>
-                    <th className="d-none d-sm-table-cell"><h4>Description</h4></th>
+                    <th>Name</th>
+                    <th className="d-none d-sm-table-cell">Description</th>
                     {/*<th className="d-none d-sm-table-cell">Type</th>*/}
                     {/*<th className="d-none d-sm-table-cell">Created By</th>*/}
                     <th>

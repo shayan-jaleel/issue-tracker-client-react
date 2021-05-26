@@ -67,9 +67,9 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
     return (
         <>
             {userLoggedIn ? null : <Redirect to="/login"/>}
-            <div className="mr-3">
+            <div className="mr-3 container-fluid">
                 {/*<span className="row">*/}
-                <h3 className=""  style={{color: "navy"}}>All Issues For <span style={{color:"#1261a0"}}>{userLoggedIn && userLoggedIn.username}</span>
+                <h4 className="font-weight-bold"  style={{color: "navy"}}>All Issues For <span style={{color:"#1261a0"}}>{userLoggedIn && userLoggedIn.username}</span>
                 <span className="d-none d-md-block float-right" style={{fontSize: 18}}>
                     <label htmlFor="issue-search-box">Search</label>
                     <input id="issue-search-box"
@@ -89,7 +89,7 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
                            }}
                        }/>
                 </span>
-                </h3>
+                </h4>
                 {/*</span>*/}
                 {/*{userLoggedIn && <h3>for {userLoggedIn.username}</h3>}*/}
                 {/*<Route path="/issues/table" exact={true} >*/}

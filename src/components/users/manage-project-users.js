@@ -46,7 +46,7 @@ const ManageProjectUsers = () => {
             Add User To Project
         </button>
         <table className="table table-striped">
-            <thead>
+            <thead style={{color: "navy"}}>
             <tr>
                 <th className="d-none d-sm-table-cell">Username</th>
                 <th className="d-none d-sm-table-cell">Firstname</th>

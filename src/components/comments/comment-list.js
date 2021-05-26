@@ -57,7 +57,7 @@ const CommentList = ({userLoggedIn, issueId}) => {
 
         <div>
             {
-            <div className="border-bottom w-75">
+            <div className="border-bottom">
                 <textarea className="form-control mb-2 mt-4"
                   onChange={(e) => setWrittenComment(e.target.value)}
                   onFocus={() => setCommentInFocus(true)}
@@ -101,7 +101,7 @@ const CommentList = ({userLoggedIn, issueId}) => {
             }
             {
                 comments && comments.length > 0 &&
-                <div className="w-75">
+                <div className="">
                     {
                         commentsMeta &&
                         <div>

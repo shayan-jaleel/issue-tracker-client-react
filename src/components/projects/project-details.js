@@ -53,8 +53,8 @@ const ProjectDetails = () => {
     }, [])
 
     return (
-        <div>
-            <div className="container ml-n3">
+        <div className="container-fluid">
+            <div className="container-fluid">
                 <div className="card">
                     <h4 className="card-header font-weight-bold" style={{color: "navy"}}>
                         Project: <span style={{color: "#1261a0"}}>{project.id}</span>
@@ -131,7 +131,7 @@ const ProjectDetails = () => {
                 }
                     </div>
 
-                    <div className="container-fluid mt-4">
+                    <div className="container-fluid mt-4 border-bottom mb-1">
                     <h4 className="font-weight-bold" style={{color: "navy"}}>Project Users</h4>
                     {
                         users && users.length > 0 &&

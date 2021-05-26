@@ -8,8 +8,8 @@ const UsersTable = ({users, projectId, userLoggedIn}) => {
     const history = useHistory()
     return (
         <div className="mt-3">
-        <table className="table table-striped">
-            <thead>
+        <table className="table table-striped border">
+            <thead style={{color: "navy"}}>
             <tr>
                 <th className="d-none d-sm-table-cell">User ID</th>
                 <th className="d-none d-sm-table-cell">Username</th>
@@ -24,8 +24,8 @@ const UsersTable = ({users, projectId, userLoggedIn}) => {
                                  background: "#1261a0", borderRadius: 4
                              }}
                              onClick={() => history.push(`/projects/${projectId}/manage-project-users`)}>
-                            <FaUsersCog className="mb-1 mr-1" color="white" size="2em"/>
-                            <div className="mt-1 mr-1" style={{color: "white", whiteSpace: "nowrap"}}>Manage Users</div>
+                            <FaUsersCog className="mb-1 mr-2" color="white" size="2em"/>
+                            <div className="mt-1 mr-1" style={{color: "white", whiteSpace: "nowrap"}}>Add/Remove Users</div>
                         </div>
                     }
                 </th>

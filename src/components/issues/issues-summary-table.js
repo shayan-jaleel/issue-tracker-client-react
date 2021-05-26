@@ -5,13 +5,13 @@ const IssuesSummaryTable = ({userIssues}) => {
     return (
         <div className="mt-3">
             {/*<h3 className="font-weight-bold">Your Issues</h3>*/}
-            <table className="table table-striped">
+            <table className="table table-striped border">
                 <thead style={{color: "navy"}}>
                 <tr>
-                    <th><h5>ID</h5></th>
-                    <th className="d-none d-sm-table-cell"><h5>Description</h5></th>
-                    <th className="d-none d-sm-table-cell"><h5>Priority</h5></th>
-                    <th className="d-none d-sm-table-cell"><h5>Project</h5></th>
+                    <th>ID</th>
+                    <th className="d-none d-sm-table-cell">Description</th>
+                    <th className="d-none d-sm-table-cell">Priority</th>
+                    <th className="d-none d-sm-table-cell">Project</th>
                     <th>
                     </th>
                 </tr>

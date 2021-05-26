@@ -35,8 +35,8 @@ const IssuesTable = ({issues, projectId, userLoggedIn, getPaginatedItems, numIte
             </Modal>
             <div className="mt-3">
                 {/*<h2>Issues Table</h2>*/}
-                <table className="table table-striped">
-                    <thead>
+                <table className="table table-striped border">
+                    <thead style={{color: "navy"}}>
                     <tr>
                         <th>ID</th>
                         <th className="d-none d-sm-table-cell">Description</th>
