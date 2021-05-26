@@ -54,9 +54,9 @@ const ProfilePage = ({
             {userLoggedIn ? null : <Redirect to="/login"/>}
             {/*{userLoggedIn && JSON.stringify(userLoggedIn)}*/}
             <div className="container ml-n3">
-                <h3>
+                <h4 className="font-weight-bold" style={{color: "navy"}}>
                     Profile
-                </h3>
+                </h4>
 
                 <div className="mt-4 row">
                     <label
@@ -174,6 +174,7 @@ const ProfilePage = ({
                     </label>
                     <div className="col-sm-10">
                         <button className="btn btn-success btn-block"
+                                style={{background: "#1261a0"}}
                                 onClick={() => {
                                     if(validate()) {
                                         console.log('validated')
@@ -192,6 +193,7 @@ const ProfilePage = ({
                     </label>
                     <div className="col-sm-10">
                 <span className="btn btn-danger btn-block"
+                      style={{background: "#ba2f2f"}}
                       onClick={setUserLoggedOut}>
                     Logout
                 </span>

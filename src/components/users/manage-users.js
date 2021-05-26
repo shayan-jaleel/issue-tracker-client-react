@@ -1,9 +1,10 @@
 import userService from "../../services/user-service";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import sessionService from "../../services/session-service";
 import {SET_CURRENT_USER} from "../../reducers/session-reducer";
 import {SET_SIDEBAR_ACTIVE_MANAGE_USERS, SET_SIDEBAR_ACTIVE_MY_PROFILE} from "../../reducers/sidebar-reducer";
 import {connect} from "react-redux";
+import {AiFillFolderAdd, TiUserAdd, TiUserDelete} from "react-icons/all";
 
 //_id will need to be changed when backend is moved to custom server
 const ManageUsers = ({setSidebarActive}) => {
@@ -17,9 +18,17 @@ const ManageUsers = ({setSidebarActive}) => {
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
     const [role, setRole] = useState('DEVELOPER')
-    return <>
+    const clearScreen = () => {
+        setEditingUser(null)
+        setUsername('')
+        setEmail('')
+        setPassword('')
+        setRole('DEVELOPER')
+    }
+    return <div className="container-fluid">
+        <h4 className="font-weight-bold mb-3" style={{color: "navy"}}>Add, Modify and Remove Users</h4>
         <table className="table">
-            <thead>
+            <thead className="" style={{color: "navy"}}>
             <tr>
                 <th>Username</th>
                 {/*<th>Password</th>*/}
@@ -55,8 +64,8 @@ const ManageUsers = ({setSidebarActive}) => {
                 {/*<td><span className="pull-right" style="white-space: nowrap">*/}
                 <td>
                     <span className="pull-right fa-button-pull-fix">
-                    <i className="fa fa-search btn btn-dark"/>
-                        {!editingUser && <i className="fa fa-plus btn btn-dark"
+                    <i className="fa fa-search btn btn-dark pl-3 pr-3" style={{background: "#1261a0"}}/>
+                        {!editingUser && <i className="fa ml-1 fa-plus btn btn-dark pl-3 pr-3"style={{background: "#1261a0"}}
                             onClick={() => userService.createUserForRole({
                                 username,
                                 email,
@@ -66,7 +75,8 @@ const ManageUsers = ({setSidebarActive}) => {
                                     [...users, createdUser])
                             })}
                         />}
-                        {editingUser && <i className="fa fa-check btn btn-dark"
+                        {
+                            editingUser && <i className="fa ml-1 fa-check btn btn-dark pl-3 pr-3" style={{background: "#1261a0"}}
                            onClick={() => {
                                const newUser = {
                                    id: editingUser.id,
@@ -87,7 +97,18 @@ const ManageUsers = ({setSidebarActive}) => {
                                setEmail('')
                                setPassword('')
                                setRole('DEVELOPER')
-                           }}/>}
+                           }}/>
+                        }
+                        {
+                            editingUser && <i className="fa ml-1 fa-backspace btn btn-dark" style={{background: "#ba2f2f"}}
+                                              onClick={() => {
+                                                  setEditingUser(null)
+                                                  setUsername('')
+                                                  setEmail('')
+                                                  setPassword('')
+                                                  setRole('DEVELOPER')
+                                              }}/>
+                        }
                     </span>
                 </td>
             </tr>
@@ -103,11 +124,11 @@ const ManageUsers = ({setSidebarActive}) => {
                         <td>{user.role.name}</td>
                         <td>
                         <span className="pull-right fa-button-pull-fix">
-                        <i className="fa fa-times-circle btn btn-dark"
+                        <i className="fa fa-user-minus btn btn-dark" style={{background: "#1261a0"}}
                            onClick={() => userService.deleteUser(user.id).then(() => setUsers(
                                users.filter((u) => user.id !== u.id)
                            ))}/>
-                        <i className="fa fa-edit btn btn-dark"
+                        <i className="fa fa-edit btn btn-dark ml-1" style={{background: "#ba2f2f"}}
                            onClick={() => {
                                setEditingUser(user)
                                setEmail(user.email)
@@ -121,7 +142,7 @@ const ManageUsers = ({setSidebarActive}) => {
                 }
             </tbody>
         </table>
-    </>
+    </div>
 }
 
 export const roleToId = role => {

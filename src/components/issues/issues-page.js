@@ -69,8 +69,10 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
             {userLoggedIn ? null : <Redirect to="/login"/>}
             <div className="mr-3 container-fluid">
                 {/*<span className="row">*/}
-                <h4 className="font-weight-bold"  style={{color: "navy"}}>All Issues For <span style={{color:"#1261a0"}}>{userLoggedIn && userLoggedIn.username}</span>
-                <span className="d-none d-md-block float-right" style={{fontSize: 18}}>
+                <h4 className="font-weight-bold"
+                    style={{color: "navy"}}>
+                    All Issues For <span style={{color:"#1261a0"}}>{userLoggedIn && userLoggedIn.username}</span>
+                <div className="d-none d-md-block float-right mt-1" style={{fontSize: 18}}>
                     <label htmlFor="issue-search-box">Search</label>
                     <input id="issue-search-box"
                        className="ml-3"
@@ -88,7 +90,7 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
                                ev.preventDefault();
                            }}
                        }/>
-                </span>
+                </div>
                 </h4>
                 {/*</span>*/}
                 {/*{userLoggedIn && <h3>for {userLoggedIn.username}</h3>}*/}
