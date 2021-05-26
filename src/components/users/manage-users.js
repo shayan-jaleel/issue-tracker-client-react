@@ -124,11 +124,11 @@ const ManageUsers = ({setSidebarActive}) => {
                         <td>{user.role.name}</td>
                         <td>
                         <span className="pull-right fa-button-pull-fix">
-                        <i className="fa fa-user-minus btn btn-dark" style={{background: "#1261a0"}}
+                        <i className="fa fa-user-minus btn btn-dark" style={{background: "#ba2f2f"}}
                            onClick={() => userService.deleteUser(user.id).then(() => setUsers(
                                users.filter((u) => user.id !== u.id)
                            ))}/>
-                        <i className="fa fa-edit btn btn-dark ml-1" style={{background: "#ba2f2f"}}
+                        <i className="fa fa-edit btn btn-dark ml-1" style={{background: "#1261a0"}}
                            onClick={() => {
                                setEditingUser(user)
                                setEmail(user.email)
