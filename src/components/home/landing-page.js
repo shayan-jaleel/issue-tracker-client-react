@@ -12,29 +12,35 @@ const LandingPage = ({userLoggedIn, setSidebarActive}) => {
     return (
         <div className="container-fluid ml-n5">
         <h1 className="header text-center font-weight-bold m-2">
-            <i className="fas text-danger fa-tasks"/><span className="ml-2">On</span>
-            <span className="text-danger font-weight-bold">Track </span>
-            - Track Bugs and Feature Requests
+            <i className="fas fa-tasks"style={{color: "navy"}}/><span className="ml-2" style={{color: "#ba2f2f"}}>On</span>
+            <span className="font-weight-bold" style={{color: "navy"}}>Track </span>
+            <span>- Track Bugs and Feature Requests</span>
         </h1>
         {
             !userLoggedIn && <>
-                <h3 className="header text-center font-weight-bold text-secondary m-2 mt-5">Get a clear centralized
+                <h3 className="header text-center font-weight-bold m-2 mt-5"
+                    style={{color: "navy"}}>Get a clear centralized
                     overview of
                     development requests.</h3>
                 <h5 className="header text-center text-danger m-2">Track your progress. Sign up below!</h5>
                 <div className="d-lg-flex justify-content-center">
-                    <Link to="/login" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold">Login</Link>
-                    <Link to="/signup" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold">Signup</Link>
+                    <Link to="/login" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold"
+                          style={{background: "#1261a0"}}>Login</Link>
+                    <Link to="/signup" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold"
+                          style={{background: "#1261a0"}}>Signup</Link>
                 </div>
             </>
         }
         {
             userLoggedIn && <>
-                <h3 className="header text-center font-weight-bold text-secondary m-2 mt-5">Hi {userLoggedIn.username},
+                <h3 className="header text-center font-weight-bold text-secondary m-2 mt-5">Hi
+                    <span style={{color: "#1261a0"}}> {userLoggedIn.username}</span>,
                     welcome back!</h3>
                 <div className="d-lg-flex justify-content-center">
-                    <Link to="/issues" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold">My Issues</Link>
-                    <Link to="/projects" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold">My Projects</Link>
+                    <Link to="/issues" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold"
+                          style={{background: "#1261a0"}}>My Issues</Link>
+                    <Link to="/projects" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold"
+                          style={{background: "#1261a0"}}>My Projects</Link>
                 </div>
             </>
         }

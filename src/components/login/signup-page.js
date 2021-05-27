@@ -33,9 +33,9 @@ const SignupPage = ({userLoggedIn, register}) => {
     return (
         <div className="container ml-n3">
             {userLoggedIn ? <Redirect to="/profile"/> : null}
-            <h3>
+            <h4 className="font-weight-bold" style={{color: "navy"}}>
                 Register
-            </h3>
+            </h4>
 
             <div className="row mt-4">
                 <label htmlFor="username"
@@ -113,6 +113,7 @@ const SignupPage = ({userLoggedIn, register}) => {
 
                 <div className="col-sm-10">
                     <a className="btn btn-primary btn-block"
+                       style={{background: "#1261a0"}}
                        onClick={() => {
                            if(validate()) {
                                console.log('validated')
