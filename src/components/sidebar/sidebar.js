@@ -20,7 +20,7 @@ import {
     SET_SIDEBAR_ACTIVE_MY_PROJECTS
 } from "../../reducers/sidebar-reducer";
 
-const Sidebar = ({sidebarActive}) => {
+const Sidebar = ({sidebarActive, userLoggedIn}) => {
     const [collapsed, setCollapsed] = useState(false);
 
     return (
@@ -37,10 +37,14 @@ const Sidebar = ({sidebarActive}) => {
                                   active={sidebarActive === SET_SIDEBAR_ACTIVE_HOME}>
                             <span className="custom-menu-item font-weight-bold">Home<Link to="/"/></span>
                         </MenuItem>
+                        {
+                        userLoggedIn && (userLoggedIn.role.name === 'ADMIN') &&
                         <MenuItem icon={<FaUsersCog size="2em" color="white"/>}
                                   active={sidebarActive === SET_SIDEBAR_ACTIVE_MANAGE_USERS}>
-                            <span className="custom-menu-item font-weight-bold">Manage Users<Link to="/user-roles"/></span>
+                            <span className="custom-menu-item font-weight-bold">Manage Users<Link
+                                to="/user-roles"/></span>
                         </MenuItem>
+                        }
                         <MenuItem icon={<VscFileSubmodule size="2em" color="white"/>}
                                   active={sidebarActive === SET_SIDEBAR_ACTIVE_MY_PROJECTS}>
                             <span className="custom-menu-item font-weight-bold">My Projects<Link to="/projects"/></span>
