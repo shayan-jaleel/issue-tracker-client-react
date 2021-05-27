@@ -1,5 +1,6 @@
-const PROJECTS_URL = "https://issue-tracker-java-server.herokuapp.com/api/projects";
-const USERS_URL = "https://issue-tracker-java-server.herokuapp.com/api/users"
+const SERVER_API_URL = process.env.REACT_APP_SERVER_API_URL
+const PROJECTS_URL = `${SERVER_API_URL}/projects`;
+const USERS_URL = `${SERVER_API_URL}/users`
 
 const findAllProjects = () =>
     fetch(PROJECTS_URL)

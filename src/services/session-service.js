@@ -1,7 +1,8 @@
-const LOGIN_URL = "https://issue-tracker-java-server.herokuapp.com/api/login";
-const REGISTER_URL = "https://issue-tracker-java-server.herokuapp.com/api/register"
-const PROFILE_URL = "https://issue-tracker-java-server.herokuapp.com/api/profile"
-const LOGOUT_URL = "https://issue-tracker-java-server.herokuapp.com/api/logout"
+const SERVER_API_URL = process.env.REACT_APP_SERVER_API_URL
+const LOGIN_URL = `${SERVER_API_URL}/login`;
+const REGISTER_URL = `${SERVER_API_URL}/register`
+const PROFILE_URL = `${SERVER_API_URL}/profile`
+const LOGOUT_URL = `${SERVER_API_URL}/logout`
 
 const profile = () =>
     fetch(PROFILE_URL)
