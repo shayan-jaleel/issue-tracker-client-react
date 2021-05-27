@@ -1,5 +1,5 @@
-const PROJECTS_URL = "http://localhost:8080/api/projects";
-const USERS_URL = "http://localhost:8080/api/users"
+const PROJECTS_URL = "https://issue-tracker-java-server.herokuapp.com/api/projects";
+const USERS_URL = "https://issue-tracker-java-server.herokuapp.com/api/users"
 
 const findAllProjects = () =>
     fetch(PROJECTS_URL)

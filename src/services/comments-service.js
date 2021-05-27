@@ -1,6 +1,10 @@
-const ISSUES_URL = "http://localhost:8080/api/issues";
-const COMMENTS_URL = "http://localhost:8080/api/comments"
-const USERS_URL = "http://localhost:8080/api/users"
+const ISSUES_URL = "https://issue-tracker-java-server.herokuapp.com/api/issues";
+const COMMENTS_URL = "https://issue-tracker-java-server.herokuapp.com/api/comments"
+const USERS_URL = "https://issue-tracker-java-server.herokuapp.com/api/users"
+
+// const ISSUES_URL = "http://localhost:8080/api/issues";
+// const COMMENTS_URL = "http://localhost:8080/api/comments"
+// const USERS_URL = "http://localhost:8080/api/users"
 
 const findAllComments = () =>
     fetch(COMMENTS_URL)

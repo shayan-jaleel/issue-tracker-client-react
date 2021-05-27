@@ -1,7 +1,7 @@
-const LOGIN_URL = "http://localhost:8080/api/login";
-const REGISTER_URL = "http://localhost:8080/api/register"
-const PROFILE_URL = "http://localhost:8080/api/profile"
-const LOGOUT_URL = "http://localhost:8080/api/logout"
+const LOGIN_URL = "https://issue-tracker-java-server.herokuapp.com/api/login";
+const REGISTER_URL = "https://issue-tracker-java-server.herokuapp.com/api/register"
+const PROFILE_URL = "https://issue-tracker-java-server.herokuapp.com/api/profile"
+const LOGOUT_URL = "https://issue-tracker-java-server.herokuapp.com/api/logout"
 
 const profile = () =>
     fetch(PROFILE_URL)

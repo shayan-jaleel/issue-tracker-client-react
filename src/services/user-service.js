@@ -1,6 +1,6 @@
-const USERS_URL = "http://localhost:8080/api/users";
-const ROLES_URL = "http://localhost:8080/api/roles";
-const PROJECTS_URL = "http://localhost:8080/api/projects";
+const USERS_URL = "https://issue-tracker-java-server.herokuapp.com/api/users";
+const ROLES_URL = "https://issue-tracker-java-server.herokuapp.com/api/roles";
+const PROJECTS_URL = "https://issue-tracker-java-server.herokuapp.com/api/projects";
 
 const findAllUsers = () => {
     console.log('reached findAllUsers()')
