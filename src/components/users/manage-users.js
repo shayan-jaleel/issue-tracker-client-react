@@ -64,7 +64,7 @@ const ManageUsers = ({setSidebarActive}) => {
                 {/*<td><span className="pull-right" style="white-space: nowrap">*/}
                 <td>
                     <span className="pull-right fa-button-pull-fix">
-                    <i className="fa fa-search btn btn-dark pl-3 pr-3" style={{background: "#1261a0"}}/>
+                    <i className="fa fa-search btn btn-dark pl-3 pr-3 ml-n1" style={{background: "#1261a0"}}/>
                         {!editingUser && <i className="fa ml-1 fa-plus btn btn-dark pl-3 pr-3"style={{background: "#1261a0"}}
                             onClick={() => userService.createUserForRole({
                                 username,

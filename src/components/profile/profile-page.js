@@ -55,7 +55,7 @@ const ProfilePage = ({
             {/*{userLoggedIn && JSON.stringify(userLoggedIn)}*/}
             <div className="container ml-n3">
                 <h4 className="font-weight-bold" style={{color: "navy"}}>
-                    Profile
+                    Personal Information
                 </h4>
 
                 <div className="mt-4 row">

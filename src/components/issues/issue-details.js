@@ -51,8 +51,8 @@ const IssueDetails = ({userLoggedIn}) => {
 
 
     return (
-            <div className="container w-75">
-                <div className="container on-track-separator">
+            <div className="container">
+                <div className="container-fluid on-track-separator">
                     <h4 className="mb-5 font-weight-bold" style={{color: "navy"}}>
                         Issue {issueId}
                         <MdCancel size="1.3em" style={{color: "#ba2f2f"}}
