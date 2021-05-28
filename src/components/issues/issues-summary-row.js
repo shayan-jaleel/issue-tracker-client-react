@@ -9,16 +9,16 @@ const IssuesSummaryRow = ({issue}) => {
         <>
             {issue.issueId &&
                 <tr>
-                    <td className="text-right">
+                    <td>
                         <Link to={`/issues/${issue.issueId}`}>{issue.issueId}</Link>
                     </td>
-                    <td style={{color: "gray"}}>
+                    <td  className="d-none d-sm-table-cell" style={{color: "gray"}}>
                         {issue.description}
                     </td>
-                    <td>
+                    <td className="d-none d-sm-table-cell">
                         {issue.priority}
                     </td>
-                    <td>
+                    <td className="d-none d-sm-table-cell">
                         {issue && issue.projectTitle}
                     </td>
                     <td className="btn btn-primary btn-sm float-right mr-3"
