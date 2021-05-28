@@ -134,7 +134,7 @@ const ProjectsTable = ({
                         <tr key={i}>
                             <td className="font-weight-bold">{project.title}</td>
                             {/*<td><Link to={`/projects/${project.id}`}>{project.title}</Link></td>*/}
-                            <td style={{color: "gray"}}>{project.description}</td>
+                            <td className="d-none d-sm-table-cell" style={{color: "gray"}}>{project.description}</td>
                             <td className="btn btn-primary btn-sm float-right mr-3"
                                 style={{backgroundColor:"#1261a0"}}
                                 onClick={() => {

@@ -19,13 +19,15 @@ import {
     SET_SIDEBAR_ACTIVE_MY_PROFILE,
     SET_SIDEBAR_ACTIVE_MY_PROJECTS
 } from "../../reducers/sidebar-reducer";
+import {useMediaQuery} from 'react-responsive';
 
 const Sidebar = ({sidebarActive, userLoggedIn}) => {
     const [collapsed, setCollapsed] = useState(false);
+    const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
     return (
             <aside style={{zIndex: 10}}>
-                <ProSidebar collapsed={collapsed} width="250px" className="custom-sidebar">
+                <ProSidebar collapsed={isMobile? true: collapsed} width="250px" className="custom-sidebar">
                     <SidebarHeader>
                          <div className="m-2 ml-4 custom-button" onClick={() => setCollapsed(!collapsed)}>
                              {collapsed && <IoChevronForwardCircleSharp size="2em"/>}
