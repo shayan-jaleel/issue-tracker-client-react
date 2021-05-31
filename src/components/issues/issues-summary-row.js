@@ -12,7 +12,10 @@ const IssuesSummaryRow = ({issue}) => {
                     <td>
                         <Link to={`/issues/${issue.issueId}`}>{issue.issueId}</Link>
                     </td>
-                    <td  className="d-none d-sm-table-cell" style={{color: "gray"}}>
+                    <td className="">
+                        {issue.status}
+                    </td>
+                    <td className="d-none d-sm-table-cell" style={{color: "gray"}}>
                         {issue.description}
                     </td>
                     <td className="d-none d-sm-table-cell">

@@ -9,6 +9,7 @@ const IssuesSummaryTable = ({userIssues}) => {
                 <thead style={{color: "navy"}}>
                 <tr>
                     <th>ID</th>
+                    <th>Status</th>
                     <th className="d-none d-sm-table-cell">Description</th>
                     <th className="d-none d-sm-table-cell">Priority</th>
                     <th className="d-none d-sm-table-cell">Project</th>

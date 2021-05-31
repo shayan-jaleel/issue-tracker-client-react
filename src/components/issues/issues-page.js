@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import IssuesService from "../../services/issues-service";
 import {Redirect, useLocation, useHistory} from "react-router-dom";
 import {connect} from "react-redux";
 import IssuesSummaryTable from "./issues-summary-table";
 import queryString from 'querystring'
 import {SET_SIDEBAR_ACTIVE_MY_ISSUES, SET_SIDEBAR_ACTIVE_MY_PROJECTS} from "../../reducers/sidebar-reducer";
+import Switch from "react-switch";
 
 const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
     const [userIssues, setUserIssues] = useState([])
@@ -14,12 +15,14 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
     const history = useHistory()
     const location = useLocation()
     const parsedQuery = queryString.parse(location.search.slice(1))
+    const isOpen = useRef(false)
+    const [refresh, setRefresh] = useState(false)
     // const description = queryString.parse(location.search);
 
     const getPaginatedItems = (pageNum, pageSize, description) => {
         description && IssuesService
             .findPaginatedMatchingIssuesForUser(userLoggedIn.id, description,
-                pageNum, pageSize)
+                pageNum, pageSize, isOpen.current)
             .then((userIssuesPage) => {
                 console.log(userIssuesPage)
                 console.log(pageSize)
@@ -34,7 +37,7 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
                 })
         })
         !description && IssuesService
-            .findPaginatedIssuesForUser(userLoggedIn.id, pageNum, pageSize)
+            .findPaginatedIssuesForUser(userLoggedIn.id, pageNum, pageSize, isOpen.current)
             .then((userIssuesPage) => {
             setUserIssues(userIssuesPage.items)
             setItemsMeta({
@@ -52,22 +55,22 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
     useEffect(() => {
         if(userLoggedIn){
             setSidebarActive()
-            // console.log('urlPageNum = ' + urlPageNum)
-            // console.log('urlPageSize = ' + urlPageSize)
-            // setNumItemsPerPage(prevVal => (urlPageSize? urlPageSize : (prevVal? prevVal : DEFAULT_PAGE_SIZE)))
-            !description &&
-                getPaginatedItems(1, numItemsPerPage)
-            description &&
-                getPaginatedItems(urlPageNum? urlPageNum: 1,
-                    urlPageSize? urlPageSize : numItemsPerPage, description)
-            // IssuesService.findPaginatedMatchingIssuesForUser(userLoggedIn.id, description, 1, numItemsPerPage)
-            //     .then(userIssues => setUserIssues(userIssues))
+            getPaginatedItems(urlPageNum? urlPageNum: 1,
+                urlPageSize? urlPageSize : numItemsPerPage, description)
         }
-    }, [userLoggedIn, description])
+    }, [userLoggedIn, description, refresh])
+
+    useEffect(() => {
+        if(userLoggedIn){
+            setSidebarActive()
+            !description &&
+            getPaginatedItems(1, numItemsPerPage)
+        }
+    }, [])
     return (
         <>
             {userLoggedIn ? null : <Redirect to="/login"/>}
-            <div className="container-fluid">
+            <div className="container-fluid mt-1">
                 {/*<span className="row">*/}
                 <h4 className="font-weight-bold"
                     style={{color: "navy"}}>
@@ -92,9 +95,17 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
                        }/>
                 </div>
                 </h4>
-                {/*</span>*/}
-                {/*{userLoggedIn && <h3>for {userLoggedIn.username}</h3>}*/}
-                {/*<Route path="/issues/table" exact={true} >*/}
+
+                <div className="checkbox mb-4 mt-4">
+                    <span className="font-weight-bold mr-2" style={{color: "#ba2f2f"}}>Open Issues Only </span>
+                    <Switch borderRadius={15} checkedIcon={false} onColor="#1261a0"
+                            uncheckedIcon={false} className="mb-n2" onChange={(checked) => {
+                        isOpen.current = checked
+                        setRefresh(!refresh)
+                        const descriptionInUrl = description? description : ""
+                        history.push(`/issues?description=${descriptionInUrl}&pageNum=1&pageSize=${numItemsPerPage}`)
+                    }} checked={isOpen.current}/>
+                </div>
 
                 {
                     userIssues && userIssues.length > 0 &&
@@ -139,7 +150,8 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
                                 {itemsMeta.currentPage !== itemsMeta.totalPages
                                 &&
                                 <div className="btn btn-sm btn-secondary float-right mb-3 ml-2" onClick={() => {
-                                    history.push(`/issues?description=${description}&pageNum=${itemsMeta
+                                    const descriptionInUrl = description? description : ""
+                                    history.push(`/issues?description=${descriptionInUrl}&pageNum=${itemsMeta
                                         .currentPage + 1}&pageSize=${numItemsPerPage}`)
                                     getPaginatedItems(itemsMeta.currentPage + 1, numItemsPerPage, description)
                                 }}>
@@ -149,7 +161,8 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
                                 <div className="btn btn-sm float-right mb-3 ml-2"> {itemsMeta.currentPage}</div>
                                 {itemsMeta.currentPage !== 1 &&
                                 <div className="btn btn-sm btn-secondary float-right mb-3" onClick={() => {
-                                    history.push(`/issues?description=${description}&pageNum=${itemsMeta
+                                    const descriptionInUrl = description? description : ""
+                                    history.push(`/issues?description=${descriptionInUrl}&pageNum=${itemsMeta
                                         .currentPage - 1}&pageSize=${numItemsPerPage}`)
                                     getPaginatedItems(itemsMeta.currentPage - 1, numItemsPerPage, description)
                                 }}>
@@ -163,7 +176,7 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
             </div>
         </>
     )
-}
+};
 
 
 const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
