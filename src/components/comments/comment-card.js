@@ -15,9 +15,9 @@ const CommentCard = ({comment, updateComment, userLoggedIn}) => {
     return (
         <div className="mt-2 mb-3 mr-3">
             <div className="card comment-text">
-                <div className="card-header comment-box-padding comment-header font-weight-bold">
+                <div className="card-header comment-box-padding p-1 comment-header font-weight-bold">
                     <span className="on-track-icon" onClick={() => history.push(`/users/${comment.user.id}`)}>
-                        <FaUserCircle size="1.5em" color="#ba2f2f" className="mr-2 mt-n1"/>
+                        <FaUserCircle size="1.5em" color="#1261a0" className="mr-2 mt-n1"/>
                         {comment.user.id === userLoggedIn.id ?
                             <span style={{color: "#ba2f2f"}}>YOU</span>: comment.user.username}
                     </span>
