@@ -68,6 +68,7 @@ const CommentList = ({userLoggedIn, issueId}) => {
                 {
                     commentInFocus &&
                     <button className="on-track-btn-active mb-3"
+                            style={{borderRadius: 4}}
                         onMouseDown={event => event.preventDefault()}
                         onClick={() => postComment()}>Post
                     </button>}
@@ -75,7 +76,7 @@ const CommentList = ({userLoggedIn, issueId}) => {
             }
             {
                 comments && comments.length > 0 &&
-                <div className="mt-4 mb-3">
+                <div className="mt-4 mb-4">
                     Show
                     <select onChange={(e) => {
                         let selectedVal = parseInt(e.target.value)

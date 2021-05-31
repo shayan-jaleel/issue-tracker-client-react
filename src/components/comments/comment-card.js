@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import './comment-style.scss'
-import {IoIosSave, MdCancel, MdEdit} from "react-icons/all";
+import {BiUserCircle, FaUserCircle, IoIosSave, MdCancel, MdEdit} from "react-icons/all";
 import {connect} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 const CommentCard = ({comment, updateComment, userLoggedIn}) => {
     const [editing, setEditing] = useState(false)
     const [textboxContent, setTextboxContent] = useState(comment.text)
+    const history = useHistory()
     const getDateTime = (unixTime) => {
         let time = new Date(unixTime);
         return `${time.toLocaleTimeString()}, ${time.toLocaleDateString()}`
@@ -13,9 +15,12 @@ const CommentCard = ({comment, updateComment, userLoggedIn}) => {
     return (
         <div className="mt-2 mb-3 mr-3">
             <div className="card comment-text">
-                <div className="card-header comment-box-padding comment-header font-weight-bold">
-                    {comment.user.id === userLoggedIn.id ?
-                        <span style={{color: "#ba2f2f"}}>YOU</span>: comment.user.username}
+                <div className="card-header comment-box-padding p-1 comment-header font-weight-bold">
+                    <span className="on-track-icon" onClick={() => history.push(`/users/${comment.user.id}`)}>
+                        <FaUserCircle size="1.5em" color="#1261a0" className="mr-2 mt-n1"/>
+                        {comment.user.id === userLoggedIn.id ?
+                            <span style={{color: "#ba2f2f"}}>YOU</span>: comment.user.username}
+                    </span>
                     {
                         !editing && comment.user.id === userLoggedIn.id &&
                         <MdEdit className="float-right on-track-icon" size="1.5rem" onClick={() => {
