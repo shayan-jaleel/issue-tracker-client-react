@@ -20,16 +20,16 @@ const findIssuesForUser = (userId) =>
     fetch(`${USERS_URL}/${userId}/issues`)
         .then(response => response.json())
 
-const findPaginatedIssuesForUser = (userId, pageNum, pageSize) =>
-    fetch(`${USERS_URL}/${userId}/issues?pageNum=${pageNum}&pageSize=${pageSize}`)
+const findPaginatedIssuesForUser = (userId, pageNum, pageSize, isOpen) =>
+    fetch(`${USERS_URL}/${userId}/issues?pageNum=${pageNum}&pageSize=${pageSize}&open=${isOpen}`)
         .then(response => response.json())
 
 const findMatchingIssuesForUser = (userId, descriptionString) =>
     fetch(`${USERS_URL}/${userId}/issues?description=${descriptionString}`)
         .then(response => response.json())
 
-const findPaginatedMatchingIssuesForUser = (userId, descriptionString, pageNum, pageSize) =>
-    fetch(`${USERS_URL}/${userId}/issues?description=${descriptionString}&pageNum=${pageNum}&pageSize=${pageSize}`)
+const findPaginatedMatchingIssuesForUser = (userId, descriptionString, pageNum, pageSize, isOpen) =>
+    fetch(`${USERS_URL}/${userId}/issues?description=${descriptionString}&pageNum=${pageNum}&pageSize=${pageSize}&open=${isOpen}`)
         .then(response => response.json())
 
 const findIssueById = (issueId) =>
