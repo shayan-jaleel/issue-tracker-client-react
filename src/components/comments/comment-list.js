@@ -68,6 +68,7 @@ const CommentList = ({userLoggedIn, issueId}) => {
                 {
                     commentInFocus &&
                     <button className="on-track-btn-active mb-3"
+                            style={{borderRadius: 4}}
                         onMouseDown={event => event.preventDefault()}
                         onClick={() => postComment()}>Post
                     </button>}
