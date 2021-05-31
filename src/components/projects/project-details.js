@@ -53,7 +53,7 @@ const ProjectDetails = () => {
     }, [])
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid ml-n4">
             <div className="container-fluid">
                 <div className="card">
                     <h4 className="card-header font-weight-bold" style={{color: "navy"}}>

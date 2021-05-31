@@ -61,7 +61,7 @@ const IssuesTable = ({issues, projectId, userLoggedIn, getPaginatedItems, numIte
                                 <AiFillFileAdd className="mb-1" color="white" size="2em"/>
                                 {
                                     !isMobile &&
-                                    <div className="mt-1 ml-1 mr-1" style={{color: "white", whiteSpace: "nowrap"}}>Create
+                                    <div className="mt-1 ml-2 mr-2" style={{color: "white", whiteSpace: "nowrap"}}>Create
                                     Issue</div>
                                 }
                             </div>
