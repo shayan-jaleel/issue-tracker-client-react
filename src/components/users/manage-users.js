@@ -32,9 +32,9 @@ const ManageUsers = ({setSidebarActive}) => {
             <tr>
                 <th>Username</th>
                 {/*<th>Password</th>*/}
-                <th>Email</th>
-                <th>Password</th>
-                <th>Role</th>
+                <th className="d-none d-sm-table-cell">Email</th>
+                <th className="d-none d-sm-table-cell">Password</th>
+                <th className="d-none d-sm-table-cell">Role</th>
                 <th>&nbsp;</th>
             </tr>
             <tr>
@@ -45,15 +45,15 @@ const ManageUsers = ({setSidebarActive}) => {
                 {/*<td><input className="form-control"*/}
                 {/*           type="password"*/}
                 {/*           placeholder="Password"/></td>*/}
-                <td><input className="form-control"
+                <td className="d-none d-sm-table-cell"><input className="form-control"
                            placeholder="Email"
                            onChange={(e) => setEmail(e.target.value)}
                            value={email}/></td>
-                <td><input className="form-control"
+                <td className="d-none d-sm-table-cell"><input className="form-control"
                            placeholder="Password"
                            onChange={(e) => setPassword(e.target.value)}
                            value={password}/></td>
-                <td>
+                <td className="d-none d-sm-table-cell">
                     <select className="form-control"
                             onChange={(e) => setRole(e.target.value)}
                             value={role}>
@@ -119,9 +119,9 @@ const ManageUsers = ({setSidebarActive}) => {
                     <tr key={user.id}>
                         <td>{user.username}</td>
                         {/*<td></td>*/}
-                        <td>{user.email}</td>
-                        <td>{user.password}</td>
-                        <td>{user.role.name}</td>
+                        <td className="d-none d-sm-table-cell">{user.email}</td>
+                        <td className="d-none d-sm-table-cell">{user.password}</td>
+                        <td className="d-none d-sm-table-cell">{user.role.name}</td>
                         <td>
                         <span className="pull-right fa-button-pull-fix">
                         <i className="fa fa-user-minus btn btn-dark" style={{background: "#ba2f2f"}}
