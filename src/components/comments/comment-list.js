@@ -76,7 +76,7 @@ const CommentList = ({userLoggedIn, issueId}) => {
             }
             {
                 comments && comments.length > 0 &&
-                <div className="mt-4 mb-3">
+                <div className="mt-4 mb-4">
                     Show
                     <select onChange={(e) => {
                         let selectedVal = parseInt(e.target.value)
