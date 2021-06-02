@@ -56,12 +56,12 @@ const IssueDetails = ({userLoggedIn}) => {
                     <h4 className="mb-5 font-weight-bold" style={{color: "navy"}}>
                         Issue {issueId}
                         <MdCancel size="1.3em" style={{color: "#ba2f2f"}}
-                                  className="float-right ml-3"
+                                  className="float-right ml-3 on-track-icon"
                                   onClick={() => {history.goBack()}}
                         />
                         {/*<div className="float-right">*/}
                             <IoMdTrash size="1.3em"
-                                     className="float-right"
+                                     className="float-right on-track-icon"
                                      onClick={() => {
                                          issuesService.deleteIssue(issueId).then(r => history.goBack())
                                          resetIssueFields()
