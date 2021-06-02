@@ -11,7 +11,7 @@ const LandingPage = ({userLoggedIn, setSidebarActive}) => {
     }, [])
     return (
         <div className="container-fluid ml-n5">
-        <h1 className="header text-center font-weight-bold m-2">
+        <h1 className="header text-center font-weight-bold ml-2 mr-2 mb-2">
             <i className="fas fa-tasks"style={{color: "navy"}}/><span className="ml-2" style={{color: "#ba2f2f"}}>On</span>
             <span className="font-weight-bold" style={{color: "navy"}}>Track </span>
             <span>- Track Bugs and Feature Requests</span>
