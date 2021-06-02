@@ -38,9 +38,9 @@ const LandingPage = ({userLoggedIn, setSidebarActive}) => {
                     welcome back!</h3>
                 <div className="d-lg-flex justify-content-center">
                     <Link to="/issues" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold"
-                          style={{background: "#1261a0"}}>My Issues</Link>
+                          style={{background: "#1261a0", width: 200}}>My <br/>Issues</Link>
                     <Link to="/projects" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold"
-                          style={{background: "#1261a0"}}>My Projects</Link>
+                          style={{background: "#1261a0", width: 200}}>My <br/>Projects</Link>
                 </div>
             </>
         }
