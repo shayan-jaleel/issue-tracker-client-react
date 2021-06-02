@@ -30,7 +30,7 @@ const LoginPage = ({
     }
     return (
         <div className="container ml-n3">
-            {userLoggedIn ? <Redirect to="/profile"/> : null}
+            {userLoggedIn ? <Redirect to="/"/> : null}
         <h4 className="font-weight-bold" style={{color: "navy"}}>
             Sign In
         </h4>
