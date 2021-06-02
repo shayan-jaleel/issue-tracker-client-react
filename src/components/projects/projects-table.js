@@ -81,7 +81,7 @@ const ProjectsTable = ({
                 </Modal>
             }
             {userLoggedIn ? null : <Redirect to="/login"/>}
-            <div className="mr-3 container-fluid">
+            <div className={`mr-3 ml-n4 container-fluid`}>
             <h4 className="ml-3 mt-1 font-weight-bold" style={{color: "navy"}}>Projects Summary</h4>
             <div className="container-fluid">
             {

@@ -20,7 +20,7 @@ const UsersTable = ({users, projectId, userLoggedIn}) => {
                 <th>
                     {
                         userLoggedIn && (userLoggedIn.role.name === 'ADMIN' || userLoggedIn.role.name === 'MANAGER') &&
-                        <div className={`on-track-icon pl-1 pr-1 pt-1 ${(isMobile? 'ml-n2 w-50' : 'float-right')}`}
+                        <div className={`on-track-icon pl-1 pr-1 pt-1 ${(isMobile? 'ml-n2 w-75' : 'float-right')}`}
                              style={{
                                  border: "1px solid navy", display: "flex",
                                  background: "#1261a0", borderRadius: 4
@@ -28,7 +28,7 @@ const UsersTable = ({users, projectId, userLoggedIn}) => {
                              onClick={() => history.push(`/projects/${projectId}/manage-project-users`)}>
                             <FaUsersCog className="mb-1" color="white" size="2em"/>
                             {
-                                !isMobile && (<div className="mt-1 ml-2 mr-1" style={{color: "white", whiteSpace: "nowrap"}}>Add/Remove
+                                !isMobile && (<div className="mt-1 ml-2 mr-2" style={{color: "white", whiteSpace: "nowrap"}}>Add/Remove
                                 Users</div>)
                             }
                         </div>
