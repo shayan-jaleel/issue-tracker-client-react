@@ -3,6 +3,7 @@ import {Link, Redirect} from "react-router-dom";
 import sessionService from "../../services/session-service";
 import {SET_CURRENT_USER} from "../../reducers/session-reducer";
 import {connect} from "react-redux";
+import {useToasts} from "react-toast-notifications";
 
 const LoginPage = ({
                        userLoggedIn,
@@ -12,6 +13,7 @@ const LoginPage = ({
     const [usernameError, setUsernameError] = useState("")
     const [password, setPassword] = useState("")
     const [passwordError, setPasswordError] = useState("")
+    const { addToast } = useToasts();
     const validate = () => {
         let isValid = true
         setUsernameError('')
@@ -88,7 +90,7 @@ const LoginPage = ({
                     onClick={() => {
                         if(validate()) {
                             console.log('validated')
-                            login(username, password, setUserLoggedIn)
+                            login(username, password, setUserLoggedIn, addToast)
                         }
                     }}>
                     Sign In
@@ -120,9 +122,11 @@ const LoginPage = ({
 
 const stpm = (state) => ({userLoggedIn: state.session.userLoggedIn})
 const dtpm = (dispatch) => ({
-    setUserLoggedIn: (user) => sessionService.login(user)
+    setUserLoggedIn: (user, addToast) => sessionService.login(user)
         .then(user => {
             console.log(user)
+            addToast('Logged In!',
+                { appearance: 'success', autoDismiss: true, autoDismissTimeout: 3000 });
             return dispatch({
                 type: SET_CURRENT_USER,
                 userLoggedIn: user
@@ -131,12 +135,12 @@ const dtpm = (dispatch) => ({
         .catch(e => alert('Login failed. Please check your credentials.'))
 })
 
-const login = (username, password, setUserLoggedIn) => {
+const login = (username, password, setUserLoggedIn, addToast) => {
     const user = {
         username,
         password
     }
-    setUserLoggedIn(user)
+    setUserLoggedIn(user, addToast)
     // sessionService.login(user).then((returnedUser) => console.log(returnedUser))
 }
 
