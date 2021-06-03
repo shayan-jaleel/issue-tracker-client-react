@@ -19,7 +19,7 @@ const CommentCard = ({comment, updateComment, userLoggedIn}) => {
                     <span className="on-track-icon" onClick={() => history.push(`/users/${comment.user.id}`)}>
                         <FaUserCircle size="1.5em" color="#1261a0" className="mr-2 mt-n1"/>
                         {comment.user.id === userLoggedIn.id ?
-                            <span style={{color: "#ba2f2f"}}>YOU</span>: comment.user.username}
+                            <span style={{color: "#ba2f2f"}}>YOU</span>: <span style={{color: "navy"}}>{comment.user.username}</span>}
                     </span>
                     {
                         !editing && comment.user.id === userLoggedIn.id &&

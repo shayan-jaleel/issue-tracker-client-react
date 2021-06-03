@@ -48,7 +48,7 @@ const ManageProjectUsers = () => {
         <table className="table table-striped">
             <thead style={{color: "navy"}}>
             <tr>
-                <th className="d-none d-sm-table-cell">Username</th>
+                <th className="">Username</th>
                 <th className="d-none d-sm-table-cell">Firstname</th>
                 <th className="d-none d-sm-table-cell">Lastname</th>
                 <th className="d-none d-sm-table-cell">Role</th>
@@ -62,13 +62,13 @@ const ManageProjectUsers = () => {
                         <td>
                             <Link to={`/projects/${projectId}/users/${assignedUser.id}`}>{assignedUser.username}</Link>
                         </td>
-                        <td>
+                        <td className="d-none d-sm-table-cell">
                             {assignedUser.firstname}
                         </td>
-                        <td>
+                        <td className="d-none d-sm-table-cell">
                             {assignedUser.lastname}
                         </td>
-                        <td>
+                        <td className="d-none d-sm-table-cell">
                             {assignedUser.role.name}
                         </td>
                         <td>
