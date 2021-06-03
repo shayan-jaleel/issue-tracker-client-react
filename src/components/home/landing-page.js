@@ -11,7 +11,7 @@ const LandingPage = ({userLoggedIn, setSidebarActive}) => {
     }, [])
     return (
         <div className="container-fluid ml-n5">
-        <h1 className="header text-center font-weight-bold m-2">
+        <h1 className="header text-center font-weight-bold ml-2 mr-2 mb-2">
             <i className="fas fa-tasks"style={{color: "navy"}}/><span className="ml-2" style={{color: "#ba2f2f"}}>On</span>
             <span className="font-weight-bold" style={{color: "navy"}}>Track </span>
             <span>- Track Bugs and Feature Requests</span>
@@ -38,9 +38,9 @@ const LandingPage = ({userLoggedIn, setSidebarActive}) => {
                     welcome back!</h3>
                 <div className="d-lg-flex justify-content-center">
                     <Link to="/issues" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold"
-                          style={{background: "#1261a0"}}>My Issues</Link>
+                          style={{background: "#1261a0", width: 200}}>My <br/>Issues</Link>
                     <Link to="/projects" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold"
-                          style={{background: "#1261a0"}}>My Projects</Link>
+                          style={{background: "#1261a0", width: 200}}>My <br/>Projects</Link>
                 </div>
             </>
         }

@@ -1,6 +1,7 @@
 import commentsService from "../../services/comments-service";
 import CommentCard from "./comment-card";
 import React, {useEffect, useState} from "react";
+import {useToasts} from "react-toast-notifications";
 
 const CommentList = ({userLoggedIn, issueId}) => {
     const [writtenComment, setWrittenComment] = useState('')
@@ -8,6 +9,7 @@ const CommentList = ({userLoggedIn, issueId}) => {
     const [comments, setComments] = useState(null)
     const [numCommentsPerPage, setNumCommentsPerPage] = useState(5)
     const [commentsMeta, setCommentsMeta] = useState(null)
+    const { addToast } = useToasts();
     useEffect(() => {
         getComments()
     }, [userLoggedIn])
@@ -21,8 +23,11 @@ const CommentList = ({userLoggedIn, issueId}) => {
             .then(returnedComment => {
                 setWrittenComment('')
                 setComments([...comments, returnedComment])
+                addToast('Saved Successfully!',
+                    { appearance: 'success', autoDismiss: true, autoDismissTimeout: 3000 });
                 getPaginatedComments(1, numCommentsPerPage)
-            })
+            }).catch(e => addToast(`Failed! ${e}`,
+        { appearance: 'success', autoDismiss: true, autoDismissTimeout: 3000 }))
     }
     const updateComment = (comment) => commentsService.updateComment(comment.id, comment)
         .then((returnedComment) => {
@@ -118,14 +123,14 @@ const CommentList = ({userLoggedIn, issueId}) => {
                         <div>
                             {commentsMeta.currentPage !== commentsMeta.totalPages
                             &&
-                            <button className="float-right mt-n4 mb-3 ml-2" onClick={() =>
+                            <button className="float-right mt-n4 mb-3 ml-2 btn btn-sm btn-secondary" onClick={() =>
                                 getPaginatedComments(commentsMeta.currentPage+1, 5)}>
                                 Next
                             </button>
                             }
-                            <div className="float-right mt-n4 mb-3 ml-2"> {commentsMeta.currentPage}</div>
+                            <div className="float-right btn btn-sm mt-n4 mb-3 ml-2"> {commentsMeta.currentPage}</div>
                             {commentsMeta.currentPage !== 1 &&
-                            <button className="float-right mt-n4 mb-3" onClick={() =>
+                            <button className="float-right mt-n4 mb-3 btn btn-sm btn-secondary" onClick={() =>
                                 getPaginatedComments(commentsMeta.currentPage-1, 5)}>
                                 Previous
                             </button>

@@ -70,7 +70,7 @@ const IssuesPage = ({userLoggedIn, setSidebarActive}) => {
     return (
         <>
             {userLoggedIn ? null : <Redirect to="/login"/>}
-            <div className="container-fluid mt-1">
+            <div className="container-fluid mt-2 ml-n2">
                 {/*<span className="row">*/}
                 <h4 className="font-weight-bold"
                     style={{color: "navy"}}>
