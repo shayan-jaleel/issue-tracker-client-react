@@ -117,12 +117,12 @@ const ManageUsers = ({setSidebarActive}) => {
             </thead>
             <tbody>
                 {
-                    users.map((user) =>
+                    users.filter(user => user.role.name !== 'ADMIN').map((user) =>
                     <tr key={user.id}>
                         <td>{user.username}</td>
                         {/*<td></td>*/}
                         <td className="d-none d-sm-table-cell">{user.email}</td>
-                        <td className="d-none d-sm-table-cell">{user.password}</td>
+                        <td className="d-none d-sm-table-cell invisible">{user.password}</td>
                         <td className="d-none d-sm-table-cell">{user.role.name}</td>
                         <td>
                         <span className="pull-right fa-button-pull-fix">
