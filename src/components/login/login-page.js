@@ -98,6 +98,20 @@ const LoginPage = ({
             </div>
         </div>
         <div className="mt-3 row">
+            <label className="col-sm-2 col-form-label">
+            </label>
+
+            <div className="col-sm-10">
+                <a className="btn btn-danger btn-block"
+                    style={{background: "#ba2f2f"}}
+                    onClick={() => {
+                        login('demoAdmin', 'demoAdmin', setUserLoggedIn, addToast)
+                    }}>
+                    Sign In As Demo Admin
+                </a>
+            </div>
+        </div>
+        <div className="mt-3 row">
             <label htmlFor="inputPassword"
                    className="col-sm-2 col-form-label">
             </label>
