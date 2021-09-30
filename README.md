@@ -1,73 +1,38 @@
-# Introduction
-https://docs.google.com/document/d/17srvm4mBkRSA76ZbBKcbWlfwaoH3jzub8ZWgZVTslJo/edit?usp=sharing
+<h1><span style="color:navy;"><img src="readme-res/tasks-solid.svg" style="height: 1.5rem; filter: invert(8%) sepia(61%) saturate(5019%) hue-rotate(234deg) brightness(112%) contrast(123%);">
+    <span style="color: #ba2f2f">On</span>Track
+</span>
+</h1>
 
-# Getting Started with Create React App
+Shayan Jaleel
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**INTRODUCTION**
 
-## Available Scripts
+**OnTrack** is an issue tracker helpful for tracking bugs and feature requests during product development in a collaborative environment. The main benefit of such a bug-tracking system is to provide a clear centralized overview of development requests (including both bugs and improvements), and their state.
 
-In the project directory, you can run:
+The app can track different projects, each composed of their own set of issues or tickets.
 
-### `npm start`
+An issue will have, among other things, a priority and a status. After issues have been opened for a project, users can tackle them based on their priority and discuss them in the comments section. When an issue is resolved, it can be marked as closed.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**USERS**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The app has 3 different user types:
 
-### `npm test`
+* **Developer**: Can add comments to issues and change issue priority and status.
+* **Project Manager**: Can assign users to their projects and submit new issues for them.
+* **Admin**: An administrator will be able to do everything the other two roles can, and also assign project managers to projects.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**SYSTEM ARCHITECTURE**
 
-### `npm run build`
+**MySQL** was used to create the database and run queries. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A RESTful service was built using **Spring Boot** with **Hibernate** ORM helping query the database.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**React** was used to create the front-end, with **Redux** handling state management. **Sass** was utilized for **CSS** pre-processing.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The web application is currently deployed to the cloud via **Heroku** with the database served via **JawsDB**. 
 
-### `npm run eject`
+**DATABASE DESIGN**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The following ER Diagram represents the different database entities and how they interact.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![alt_text](readme-res/er-diag.png "image_tooltip")
