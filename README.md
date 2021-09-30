@@ -11,13 +11,13 @@
 The app can track different projects, each composed of their own set of issues or tickets.
 <br/>
 
-![alt_text](readme-res/project-screen.png "image_tooltip")
+> ![alt_text](readme-res/project-screen.png "image_tooltip")
 <br/>
 
 An issue will have, among other things, a priority and a status. After issues have been opened for a project, users can tackle them based on their priority and discuss them in the comments section. When an issue is resolved, it can be marked as closed.
 <br/>
 
-![alt_text](readme-res/issue-screen.png "image_tooltip")
+> ![alt_text](readme-res/issue-screen.png "image_tooltip")
 <br/>
 
 ## **USERS**
@@ -29,7 +29,7 @@ The app has 3 different user types:
 * **Admin**: An administrator will be able to do everything the other two roles can, and also assign project managers to projects.
 <br/>
 
-![alt_text](readme-res/user-profile-screen.png "image_tooltip")
+> ![alt_text](readme-res/user-profile-screen.png "image_tooltip")
 <br/>
 
 ## **SYSTEM ARCHITECTURE**
@@ -45,7 +45,7 @@ The web application is currently deployed to the cloud via **Heroku** with the d
 The app was designed from the ground up to be responsive to all viewport sizes.
 <br/>
 
-![alt_text](readme-res/responsive-example.gif "image_tooltip")
+> ![alt_text](readme-res/responsive-example.gif "image_tooltip")
 <br/>
 
 ## **DATABASE DESIGN**
@@ -53,5 +53,5 @@ The app was designed from the ground up to be responsive to all viewport sizes.
 The following ER Diagram represents the different database entities and how they interact.
 <br/>
 
-![alt_text](readme-res/er-diag.png "image_tooltip")
+> ![alt_text](readme-res/er-diag.png "image_tooltip")
 <br/>
