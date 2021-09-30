@@ -3,9 +3,8 @@
 </span>
 </h1>
 
-Shayan Jaleel
-
-## **INTRODUCTION**
+#### *Shayan Jaleel*
+<br/>
 
 **OnTrack** is an issue tracker helpful for tracking bugs and feature requests during product development in a collaborative environment. The main benefit of such a bug-tracking system is to provide a clear centralized overview of development requests (including both bugs and improvements), and their state.
 
