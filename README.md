@@ -1,4 +1,4 @@
-<h1><span style="color:navy;"><img src="readme-res/tasks-solid.svg" style="height: 1.5rem; filter: invert(8%) sepia(61%) saturate(5019%) hue-rotate(234deg) brightness(112%) contrast(123%);">
+<h1><span style="color:navy;"><img src="readme-res/tasks-solid.svg" style="height: 22px; filter: invert(8%) sepia(61%) saturate(5019%) hue-rotate(234deg) brightness(112%) contrast(123%);">
     <span style="color: #ba2f2f">On</span>Track
 </span>
 </h1>
