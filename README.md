@@ -2,9 +2,9 @@
     <span style="color: #ba2f2f">On</span>Track
 </span>
 </h1>
-<div style="margin-top: -15px; margin-bottom: 7px; font-style: italic">
-Shayan
-</div>
+
+*Mohammad Shayan Jaleel*
+<br/>
 
 **OnTrack** is an issue tracker helpful for tracking bugs and feature requests during product development in a collaborative environment. The main benefit of such a bug-tracking system is to provide a clear centralized overview of development requests (including both bugs and improvements), and their state.
 
