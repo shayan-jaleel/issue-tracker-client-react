@@ -1,73 +1,52 @@
-# Introduction
-https://docs.google.com/document/d/17srvm4mBkRSA76ZbBKcbWlfwaoH3jzub8ZWgZVTslJo/edit?usp=sharing
+<h1 style="font-weight: bold"><span style="color:navy;"><img src="readme-res/tasks-solid.svg" style="height: 22px; filter: invert(8%) sepia(61%) saturate(5019%) hue-rotate(234deg) brightness(112%) contrast(123%);">
+    <span style="color: #ba2f2f">On</span>Track
+</span>
+</h1>
 
-# Getting Started with Create React App
+*Mohammad Shayan Jaleel*
+<br/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**OnTrack** is an issue tracker helpful for tracking bugs and feature requests during product development in a collaborative environment. The main benefit of such a bug-tracking system is to provide a clear centralized overview of development requests (including both bugs and improvements), and their state.
 
-## Available Scripts
+**[Try it out here. Login as Demo Admin](https://issue-tracker-client-shayan.herokuapp.com/)**<br/> 
+*(The initial load times may be long as the client and server are hosted on Heroku with a free plan. Heroku puts the apps to sleep after 30 mins of inactivity to save dyno hours)*
 
-In the project directory, you can run:
+The app can track different projects, each composed of their own set of issues or tickets.
 
-### `npm start`
+> ![alt_text](readme-res/project-screen.png "image_tooltip")
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+An issue will have, among other things, a priority and a status. After issues have been opened for a project, users can tackle them based on their priority and discuss them in the comments section. When an issue is resolved, it can be marked as closed.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+> ![alt_text](readme-res/issue-screen.png "image_tooltip")
+## **USERS**
 
-### `npm test`
+The app has 3 different user types:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **Developer**: Can add comments to issues and change issue priority and status.
+* **Project Manager**: Can assign users to their projects and submit new issues for them.
+* **Admin**: An administrator will be able to do everything the other two roles can, and also assign project managers to projects.
 
-### `npm run build`
+> ![alt_text](readme-res/user-profile-screen.png "image_tooltip")
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **SYSTEM ARCHITECTURE**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**MySQL** was used to create the database and run queries. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A RESTful service was built using **Spring Boot** with **Hibernate** ORM helping query the database.
 
-### `npm run eject`
+**[You can find the server source code here.](https://github.com/shayan-jaleel/issue-tracker-java-server)**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**React** was used to create the front-end, with **Redux** handling state management. **Sass** was utilized for **CSS** pre-processing.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The app was designed from the ground up to be responsive to all viewport sizes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+> ![alt_text](readme-res/responsive-example.gif "image_tooltip")
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+The web application is currently deployed to the cloud via **Heroku** with the database served via **JawsDB**.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## **DATABASE DESIGN**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The following ER Diagram represents the different database entities and how they interact.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> ![alt_text](readme-res/er-diag.png "image_tooltip")
