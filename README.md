@@ -14,6 +14,8 @@
 **[Try it out here. Login as Demo Admin](https://issue-tracker-client-shayan.herokuapp.com/)**<br/> 
 *(The initial load times may be long as the client and server are hosted on Heroku with a free plan. Heroku puts the apps to sleep after 30 mins of inactivity to save dyno hours)*
 
+<br/>
+
 The app can track different `projects`, each composed of their own set of `issues` or tickets.
 <br/><br/>
 
