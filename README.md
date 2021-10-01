@@ -11,22 +11,22 @@
 **[Try it out here. Login as Demo Admin](https://issue-tracker-client-shayan.herokuapp.com/)**<br/> 
 *(The initial load times may be long as the client and server are hosted on Heroku with a free plan. Heroku puts the apps to sleep after 30 mins of inactivity to save dyno hours)*
 
-The app can track different projects, each composed of their own set of issues or tickets.
+The app can track different `projects`, each composed of their own set of `issues` or tickets.
 
-> ![alt_text](readme-res/project-screen.png "image_tooltip")
+> ![alt_text](readme-res/project-screen.png "Project page for project 'Pika Do'")
 
-An issue will have, among other things, a priority and a status. After issues have been opened for a project, users can tackle them based on their priority and discuss them in the comments section. When an issue is resolved, it can be marked as closed.
+An issue will have, among other things, a `priority` and a `status`. After issues have been opened for a project, users can tackle them based on their priority and discuss them in the comments section. When an issue is resolved, it can be marked as closed.
 
-> ![alt_text](readme-res/issue-screen.png "image_tooltip")
+> ![alt_text](readme-res/issue-screen.png "Editing an issue")
 ## **USERS**
 
 The app has 3 different user types:
 
-* **Developer**: Can add comments to issues and change issue priority and status.
-* **Project Manager**: Can assign users to their projects and submit new issues for them.
-* **Admin**: An administrator will be able to do everything the other two roles can, and also assign project managers to projects.
+* **Developer**: Can add `comments` to `issues` and change issue properties.
+* **Project Manager**: Can assign `developers` to their `projects` and submit new `issues` for them.
+* **Admin**: An administrator will be able to do everything the other two roles can, and also assign project `managers` to `projects`.
 
-> ![alt_text](readme-res/user-profile-screen.png "image_tooltip")
+> ![alt_text](readme-res/user-profile-screen.png "Profile page for user 'Shayan'")
 
 ## **SYSTEM ARCHITECTURE**
 
@@ -40,7 +40,7 @@ A RESTful service was built using **Spring Boot** with **Hibernate** ORM helping
 
 The app was designed from the ground up to be responsive to all viewport sizes.
 
-> ![alt_text](readme-res/responsive-example.gif "image_tooltip")
+> ![alt_text](readme-res/responsive-example.gif "An example of the viewport responsive design")
 
 
 The web application is currently deployed to the cloud via **Heroku** with the database served via **JawsDB**.
@@ -49,4 +49,4 @@ The web application is currently deployed to the cloud via **Heroku** with the d
 
 The following ER Diagram represents the different database entities and how they interact. The schema was designed in the Third Normal Form (3NF).
 
-> ![alt_text](readme-res/er-diag.png "image_tooltip")
+> ![alt_text](readme-res/er-diag.png "Database schema")
