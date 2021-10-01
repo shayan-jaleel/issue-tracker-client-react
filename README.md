@@ -47,6 +47,6 @@ The web application is currently deployed to the cloud via **Heroku** with the d
 
 ## **DATABASE DESIGN**
 
-The following ER Diagram represents the different database entities and how they interact.
+The following ER Diagram represents the different database entities and how they interact. The schema was designed in the Third Normal Form (3NF).
 
 > ![alt_text](readme-res/er-diag.png "image_tooltip")
