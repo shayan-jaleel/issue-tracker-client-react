@@ -10,7 +10,7 @@ const LandingPage = ({userLoggedIn, setSidebarActive}) => {
         setSidebarActive()
     }, [])
     return (
-        <div className="container-fluid ml-n5">
+        <div className="container-fluid ml-n4">
         <h1 className="header text-center font-weight-bold ml-2 mr-2 mb-2">
             <i className="fas fa-tasks"style={{color: "navy"}}/><span className="ml-2" style={{color: "#ba2f2f"}}>On</span>
             <span className="font-weight-bold" style={{color: "navy"}}>Track </span>
@@ -22,12 +22,12 @@ const LandingPage = ({userLoggedIn, setSidebarActive}) => {
                     style={{color: "navy"}}>Get a clear centralized
                     overview of
                     development requests.</h3>
-                <h5 className="header text-center text-danger m-2">Track your progress. Sign up below!</h5>
+                <h5 className="header text-center text-danger m-2 ml-3">Track your progress. Sign up below!</h5>
                 <div className="d-lg-flex justify-content-center">
                     <Link to="/login" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold"
-                          style={{background: "#1261a0"}}>Login</Link>
+                          style={{background: "#1261a0", width: 200}}>Login</Link>
                     <Link to="/signup" className="btn-danger btn-lg btn p-5 m-5 font-weight-bold"
-                          style={{background: "#1261a0"}}>Signup</Link>
+                          style={{background: "#1261a0", width: 200}}>Signup</Link>
                 </div>
             </>
         }
