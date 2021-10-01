@@ -8,6 +8,9 @@
 
 **OnTrack** is an issue tracker helpful for tracking bugs and feature requests during product development in a collaborative environment. The main benefit of such a bug-tracking system is to provide a clear centralized overview of development requests (including both bugs and improvements), and their state.
 
+**[Try it out here. Login as Demo Admin](https://issue-tracker-client-shayan.herokuapp.com/)**<br/> 
+*(The initial load times may be long as the client and server are hosted on Heroku with a free plan. Heroku puts the apps to sleep after 30 mins of inactivity to save dyno hours)*
+
 The app can track different projects, each composed of their own set of issues or tickets.
 <br/>
 
@@ -38,15 +41,18 @@ The app has 3 different user types:
 
 A RESTful service was built using **Spring Boot** with **Hibernate** ORM helping query the database.
 
-**React** was used to create the front-end, with **Redux** handling state management. **Sass** was utilized for **CSS** pre-processing.
+**[You can find the server source code here.](https://github.com/shayan-jaleel/issue-tracker-java-server)**
 
-The web application is currently deployed to the cloud via **Heroku** with the database served via **JawsDB**.
+**React** was used to create the front-end, with **Redux** handling state management. **Sass** was utilized for **CSS** pre-processing.
 
 The app was designed from the ground up to be responsive to all viewport sizes.
 <br/>
 
 > ![alt_text](readme-res/responsive-example.gif "image_tooltip")
+
 <br/>
+
+The web application is currently deployed to the cloud via **Heroku** with the database served via **JawsDB**.
 
 ## **DATABASE DESIGN**
 
